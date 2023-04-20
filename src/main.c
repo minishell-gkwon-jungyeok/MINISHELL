@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/21 01:12:05 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/21 02:12:17 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,31 +54,53 @@ int	tokenize(char *line)
 	return (0);
 }
 
-int	display(t_command **command, char **envp)
+void	ft_free_command(t_command **command)
 {
-	char	*line;
+	int	i;
 
-	command = NULL;
-	(void)envp;
+	i = 0;
+	while (command[i])
+	{
+		if (command[i]->input)
+			free(command[i]->input);
+		if (command[i]->output)
+			free(command[i]->output);
+		if (command[i]->delimiter)
+			free(command[i]->delimiter);
+		if (command[i]->output_append)
+			free(command[i]->output_append);
+		free(command[i]);
+		i++;
+	}
+	free(command);
+}
+
+int	display(char **envp)
+{
+	t_command	*command;
+	char		*line;
+//	int			number_of_pipe;
+
 	while (1)
 	{
 		line = readline("bash-3.2$ ");
-		tokenize(line);
+		tokenize(line/*, &number_of_pipe*/);
+		//command = ft_calloc(number_of_pipe + 2, sizeof(t_command));
+		//ft_memset(&command, 0, sizeof(command));
 		printf("\n");
 		//add_history();
 		//excute();
+		_jungyeok(&command, envp);
+		//ft_free_command(&command);
 	}
 }
 
 int	main(int ac, char **av, char **envp)
 {
-	t_command	*command;
-
 	if (ac != 1)
 		return (1);
 	//execve("/bin/bash", NULL, envp);
-	display(&command, envp);
-	_jungyeok(&command, envp);
+	display(envp);
 	(void)av;
 	return (0);
 }

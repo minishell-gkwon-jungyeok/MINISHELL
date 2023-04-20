@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 00:55:11 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/21 02:34:50 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,5 @@
 
 /* jungyeok.c */
 void	_jungyeok(t_command **command, char **envp);
-
-/* err.c */
-void	_err(char *s);
 
 #endif
