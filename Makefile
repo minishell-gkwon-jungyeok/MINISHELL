@@ -6,7 +6,7 @@
 #    By: edwin <edwin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/19 23:31:55 by edwin             #+#    #+#              #
-#    Updated: 2023/04/20 22:45:34 by jungyeok         ###   ########.fr        #
+#    Updated: 2023/04/21 00:32:42 by jungyeok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
 
 SRCS = 	src/main.c\
 		src/ft_split.c\
-		src/minishell_utils.c
+		src/minishell_utils.c\
+		src/basic1.c\
+		src/jungyeok/jungyeok.c\
 		
 OBJS	=	$(SRCS:.c=.o)
 
