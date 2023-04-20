@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/20 03:37:55 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/20 22:24:05 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <stdbool.h>
+# include <fcntl.h>
 
 # define PIPE 3
 # define COMMAND 4
@@ -36,7 +38,17 @@ typedef struct s_token
 	char				*str;
 	struct s_token		*pre;
 	struct s_token		*next;
-}						t_token;
+}t_token;
+
+typedef struct s_command
+{
+	bool	built_in;			//echo, cd, pwd, export, unset, env, exit
+	char	**program;
+	char	*input;
+	char	*output;
+	char	*delimiter;
+	char	*output_append;
+}t_command;
 
 /* ===============.=============== */
 

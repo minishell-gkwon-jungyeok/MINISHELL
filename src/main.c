@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/20 03:49:14 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/20 22:24:08 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ int	ft_strlen(char *str)
 	int i;
 
 	i = 0;
-	while (str[i])
-		i++;
+	if (str)
+		while (str[i])
+			i++;
 	return (i);
 }
 
@@ -75,11 +76,14 @@ int	display(char **envp)
 	}
 }
 
-int	main(int ac, char **envp)
+int	main(int ac, char **av, char **envp)
 {
+	t_command	*command;
+
 	if (ac != 1)
 		return (1);
 	//execve("/bin/bash", NULL, envp);
 	display(envp);
+	_jungyeok(&command, envp);
 	return (0);
 }
