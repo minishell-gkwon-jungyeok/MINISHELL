@@ -6,22 +6,11 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/20 22:24:08 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/21 00:37:17 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-int	ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	if (str)
-		while (str[i])
-			i++;
-	return (i);
-}
 
 int	validate_type(char *node, t_token *token)
 {
@@ -31,12 +20,13 @@ int	validate_type(char *node, t_token *token)
 		token->type = PIPE;
 	if (node[0] == '\'')
 		token->type = OPTION;
+	/* non-void function does not return a value */
 }
 
 t_token	creat_token_list(char **nodes)
 {
-	int	i;
-	t_token *tmp;
+	int		i;
+	t_token	*tmp;
 
 	i = 0;
 	while (nodes[i])
@@ -44,6 +34,7 @@ t_token	creat_token_list(char **nodes)
 		tmp = malloc(sizeof(t_token));
 		validate_type(nodes[i], tmp);
 	}
+	/* non-void function does not return a value */
 }
 
 int	tokenize(char *line)
@@ -51,6 +42,7 @@ int	tokenize(char *line)
 	char	**nodes;
 	t_token	*token;
 
+	/* assigning to 't_token *' from incompatible type 't_token' */
 	nodes = ft_split(line, ' ');
 	token = creat_token_list(nodes);
 	while (*nodes)
@@ -85,5 +77,6 @@ int	main(int ac, char **av, char **envp)
 	//execve("/bin/bash", NULL, envp);
 	display(envp);
 	_jungyeok(&command, envp);
+	(void)av;
 	return (0);
 }
