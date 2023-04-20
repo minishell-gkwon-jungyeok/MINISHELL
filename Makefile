@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: edwin <edwin@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/19 23:31:55 by edwin             #+#    #+#              #
-#    Updated: 2023/04/21 00:32:42 by jungyeok         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra
 LDFLAGS		=	-L/opt/homebrew/opt/readline/lib -lreadline
@@ -19,7 +7,7 @@ SRCS = 	src/main.c\
 		src/ft_split.c\
 		src/minishell_utils.c\
 		src/basic1.c\
-		src/jungyeok/jungyeok.c\
+		src/jungyeok/jungyeok.c src/jungyeok/err.c\
 		
 OBJS	=	$(SRCS:.c=.o)
 

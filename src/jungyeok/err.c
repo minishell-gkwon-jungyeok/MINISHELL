@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jungyeok.h                                         :+:      :+:    :+:   */
+/*   err.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 00:55:11 by jungyeok         ###   ########.fr       */
+/*   Created: 2023/04/21 00:52:33 by jungyeok          #+#    #+#             */
+/*   Updated: 2023/04/21 01:00:24 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef JUNGYEOK_H
-# define JUNGYEOK_H
+#include "../../includes/minishell.h"
 
-# include "../../includes/header.h"
-# include "../../includes/struct.h"
-
-/* jungyeok.c */
-void	_jungyeok(t_command **command, char **envp);
-
-/* err.c */
-void	_err(char *s);
-
-#endif
+void	_err(char *s)
+{
+	write(2, s, ft_strlen(s));
+	write(2, "\n", 1);
+	exit(1);
+}

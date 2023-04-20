@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/21 00:37:17 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/21 01:12:05 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int	validate_type(char *node, t_token *token)
 	if (node[0] == '\'')
 		token->type = OPTION;
 	/* non-void function does not return a value */
+	return (1);
 }
 
-t_token	creat_token_list(char **nodes)
+t_token	*creat_token_list(char **nodes)
 {
 	int		i;
 	t_token	*tmp;
@@ -35,6 +36,7 @@ t_token	creat_token_list(char **nodes)
 		validate_type(nodes[i], tmp);
 	}
 	/* non-void function does not return a value */
+	return (tmp);
 }
 
 int	tokenize(char *line)
@@ -42,7 +44,6 @@ int	tokenize(char *line)
 	char	**nodes;
 	t_token	*token;
 
-	/* assigning to 't_token *' from incompatible type 't_token' */
 	nodes = ft_split(line, ' ');
 	token = creat_token_list(nodes);
 	while (*nodes)
@@ -53,10 +54,11 @@ int	tokenize(char *line)
 	return (0);
 }
 
-int	display(char **envp)
+int	display(t_command **command, char **envp)
 {
 	char	*line;
 
+	command = NULL;
 	(void)envp;
 	while (1)
 	{
@@ -75,7 +77,7 @@ int	main(int ac, char **av, char **envp)
 	if (ac != 1)
 		return (1);
 	//execve("/bin/bash", NULL, envp);
-	display(envp);
+	display(&command, envp);
 	_jungyeok(&command, envp);
 	(void)av;
 	return (0);
