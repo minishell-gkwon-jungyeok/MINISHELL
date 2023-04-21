@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 00:27:44 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/21 02:34:42 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,12 @@ typedef struct s_command
 	char	*delimiter;
 	char	*output_append;
 }t_command;
+
+typedef struct s_mini
+{
+	char	**path;
+	int		ncmd;
+	int		pipe[2];
+}t_mini;
 
 #endif
