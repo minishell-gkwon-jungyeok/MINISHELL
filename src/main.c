@@ -6,22 +6,11 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/21 00:29:09 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/21 14:25:30 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-int	ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	if (str)
-		while (str[i])
-			i++;
-	return (i);
-}
 
 int	validate_type(char *node, t_token *token)
 {
@@ -31,12 +20,14 @@ int	validate_type(char *node, t_token *token)
 		token->type = PIPE;
 	if (node[0] == '\'')
 		token->type = OPTION;
+	/* non-void function does not return a value */
+	return (1);
 }
 
-t_token	creat_token_list(char **nodes)
+t_token	*creat_token_list(char **nodes)
 {
-	int	i;
-	t_token *tmp;
+	int		i;
+	t_token	*tmp;
 
 	i = 0;
 	while (nodes[i])
@@ -44,6 +35,26 @@ t_token	creat_token_list(char **nodes)
 		tmp = malloc(sizeof(t_token));
 		validate_type(nodes[i], tmp);
 	}
+	/* non-void function does not return a value */
+	return (tmp);
+}
+
+int pipe_cnt(char *line)
+{
+	int cnt;
+
+	cnt = 0;
+	while (*line)
+	{
+		if (*line == '|')
+			cnt++;
+	}
+	return (cnt);
+}
+
+int check_cmd(char *line, t_command **cmd)
+{
+	
 }
 
 int pipe_cnt(char *line)
@@ -82,29 +93,53 @@ int	tokenize(char *line)
 	return (0);
 }
 
+void	ft_free_command(t_command **command)
+{
+	int	i;
+
+	i = 0;
+	while (command[i])
+	{
+		if (command[i]->input)
+			free(command[i]->input);
+		if (command[i]->output)
+			free(command[i]->output);
+		if (command[i]->delimiter)
+			free(command[i]->delimiter);
+		if (command[i]->output_append)
+			free(command[i]->output_append);
+		free(command[i]);
+		i++;
+	}
+	free(command);
+}
+
 int	display(char **envp)
 {
-	char	*line;
+	t_command	*command;
+	char		*line;
+//	int			number_of_pipe;
 
-	(void)envp;
 	while (1)
 	{
 		line = readline("bash-3.2$ ");
-		tokenize(line);
+		tokenize(line/*, &number_of_pipe*/);
+		//command = ft_calloc(number_of_pipe + 2, sizeof(t_command));
+		//ft_memset(&command, 0, sizeof(command));
 		printf("\n");
 		//add_history();
 		//excute();
+		_jungyeok(&command, envp);
+		//ft_free_command(&command);
 	}
 }
 
 int	main(int ac, char **av, char **envp)
 {
-	t_command	*command;
-
 	if (ac != 1)
 		return (1);
 	//execve("/bin/bash", NULL, envp);
 	display(envp);
-	_jungyeok(&command, envp);
+	(void)av;
 	return (0);
 }
