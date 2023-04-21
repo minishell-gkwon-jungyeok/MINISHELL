@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/21 17:04:13 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/21 17:08:57 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	init_cmd(char *node, t_command *cmd)
 	int					len;
 
 	i = -1;
+	cmd->info = malloc(sizeof(char *) * 4);
 	while (string_table[++i])
 	{
 		len = 0;
