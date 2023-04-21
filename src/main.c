@@ -6,42 +6,15 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/21 14:25:30 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/21 17:04:13 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	validate_type(char *node, t_token *token)
+int	pipe_cnt(char *line)
 {
-	if (node[0] == '-')
-		token->type = OPTION;
-	if (node[0] == '|')
-		token->type = PIPE;
-	if (node[0] == '\'')
-		token->type = OPTION;
-	/* non-void function does not return a value */
-	return (1);
-}
-
-t_token	*creat_token_list(char **nodes)
-{
-	int		i;
-	t_token	*tmp;
-
-	i = 0;
-	while (nodes[i])
-	{
-		tmp = malloc(sizeof(t_token));
-		validate_type(nodes[i], tmp);
-	}
-	/* non-void function does not return a value */
-	return (tmp);
-}
-
-int pipe_cnt(char *line)
-{
-	int cnt;
+	int	cnt;
 
 	cnt = 0;
 	while (*line)
@@ -52,39 +25,56 @@ int pipe_cnt(char *line)
 	return (cnt);
 }
 
-int check_cmd(char *line, t_command **cmd)
+int	init_cmd(char *node, t_command *cmd)
 {
-	
-}
+	const static char	*string_table[] = {"<", ">", "<<", ">>"};
+	int					i;
+	int					at;
+	int					end;
+	int					len;
 
-int pipe_cnt(char *line)
-{
-	int cnt;
-
-	cnt = 0;
-	while (*line)
+	i = -1;
+	while (string_table[++i])
 	{
-		if (*line == '|')
-			cnt++;
+		len = 0;
+		at = ft_strnstr(node, string_table[i], ft_strlen(node));
+		end = at;
+		if (at)
+		{
+			if (i < 2)
+				end++;
+			else
+				end += 2;
+			while (node[end] != ' ')
+				end++;
+			while (node[end + len] != ' ' && !node[end + len])
+				len++;
+			cmd->info[i] = malloc(len + 1);
+			cmd->info[i][len] = 0;
+			ft_memmove(cmd->info[i], node[end], len);
+			ft_strlcpy(node[at], node[end + len - 1], ft_strlen(&node[end + len
+					- 1]));
+			node[at + len] = 0;
+		}
 	}
-	return (cnt);
-}
-
-int check_cmd(char *line, t_command **cmd)
-{
-	
+	cmd->program = node;
 }
 
 int	tokenize(char *line)
 {
-	char	**nodes;
-	t_token	*token;
-	t_command *cmd;
+	char		**nodes;
+	t_token		*token;
+	t_command	**cmd;
+	int			i;
 
+	i = -1;
 	cmd = malloc(sizeof(t_command) * pipe_cnt(line) + 1);
-	//nodes = ft_split(line, ' ');
-	check_cmd();
-	token = creat_token_list(nodes);
+	cmd[pipe_cnt(line)] = NULL;
+	nodes = ft_split(line, '|');
+	// handle quotes
+	while (cmd[++i])
+		init_cmd(nodes[i], cmd[i]);
+	// check is built-in or not
 	while (*nodes)
 	{
 		printf("%s\n", *nodes);
@@ -118,12 +108,12 @@ int	display(char **envp)
 {
 	t_command	*command;
 	char		*line;
-//	int			number_of_pipe;
 
+	//	int			number_of_pipe;
 	while (1)
 	{
 		line = readline("bash-3.2$ ");
-		tokenize(line/*, &number_of_pipe*/);
+		tokenize(line /*, &number_of_pipe*/);
 		//command = ft_calloc(number_of_pipe + 2, sizeof(t_command));
 		//ft_memset(&command, 0, sizeof(command));
 		printf("\n");
