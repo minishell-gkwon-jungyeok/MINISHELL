@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/20 22:24:08 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/21 00:29:09 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,33 @@ t_token	creat_token_list(char **nodes)
 	}
 }
 
+int pipe_cnt(char *line)
+{
+	int cnt;
+
+	cnt = 0;
+	while (*line)
+	{
+		if (*line == '|')
+			cnt++;
+	}
+	return (cnt);
+}
+
+int check_cmd(char *line, t_command **cmd)
+{
+	
+}
+
 int	tokenize(char *line)
 {
 	char	**nodes;
 	t_token	*token;
+	t_command *cmd;
 
-	nodes = ft_split(line, ' ');
+	cmd = malloc(sizeof(t_command) * pipe_cnt(line) + 1);
+	//nodes = ft_split(line, ' ');
+	check_cmd();
 	token = creat_token_list(nodes);
 	while (*nodes)
 	{
