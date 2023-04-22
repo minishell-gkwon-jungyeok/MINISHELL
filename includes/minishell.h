@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/21 15:35:57 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/23 03:21:47 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define BACKSLASH 11
 
 /* functions of GKWON*/
-int		tokenize(char *line);
+int		tokenize(char *line, t_command **cmd, t_sys_info *info);
 void	write_prompt(void);
 int		start_shell(char **envp);
 
@@ -45,7 +45,8 @@ char	*ft_strdup(char *s);
 /* basic2.c */
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strncmp(char *s1, char *s2, int n);
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-char	*ft_strnstr_but_next(const char *haystack, const char *needle, size_t len);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+int		ft_strnstr(const char *haystack, const char *needle, size_t len);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 #endif

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   basic2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 16:30:10 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/22 20:49:19 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inlcudes/minishell.h"
+#include "../includes/minishell.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -18,7 +18,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	ret = ft_calloc(1, _strlen(s1) + _strlen(s2) + 1);
+	ret = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
 	while (s1[i])
 	{
@@ -48,44 +48,23 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	return (0);
 }
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+// which is very different with standard strnstr;
+
+int	ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	if (needle[i] == 0)
-		return ((char *)haystack);
+		return (0);
 	while (haystack[i] && len)
 	{
 		j = 0;
 		while (haystack[i + j] == needle[j] && len - j)
 		{
 			if (needle[j + 1] == '\0')
-				return ((char *)&haystack[i]);
-			j++;
-		}
-		i++;
-		len--;
-	}
-	return (0);
-}
-
-char	*ft_strnstr_but_next(const char *haystack, const char *needle, size_t len)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	if (needle[i] == 0)
-		return ((char *)haystack);
-	while (haystack[i] && len)
-	{
-		j = 0;
-		while (haystack[i + j] == needle[j] && len - j)
-		{
-			if (needle[j + 1] == '\0')
-				return ((char *)&haystack[i + j + 1]);
+				return (i);
 			j++;
 		}
 		i++;

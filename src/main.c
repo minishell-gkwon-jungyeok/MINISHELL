@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/21 17:08:57 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/23 06:33:23 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,116 +21,148 @@ int	pipe_cnt(char *line)
 	{
 		if (*line == '|')
 			cnt++;
+		line++;
 	}
 	return (cnt);
 }
 
-int	init_cmd(char *node, t_command *cmd)
+void	init_cmd(char *nod, t_command *cmd)
 {
 	const static char	*string_table[] = {"<", ">", "<<", ">>"};
 	int					i;
 	int					at;
 	int					end;
 	int					len;
+	int					tmp;
+	char *node;
 
+	node = ft_strdup(nod);
 	i = -1;
-	cmd->info = malloc(sizeof(char *) * 4);
+	cmd->info = malloc(sizeof(char *) * 5);
+	cmd->info[4] = 0;
 	while (string_table[++i])
 	{
 		len = 0;
 		at = ft_strnstr(node, string_table[i], ft_strlen(node));
 		end = at;
-		if (at)
+		if (at && node[at + ft_strlen((char *)string_table[i])] != string_table[i][0])
 		{
 			if (i < 2)
 				end++;
 			else
 				end += 2;
-			while (node[end] != ' ')
+			while (node[end] == ' ')
 				end++;
-			while (node[end + len] != ' ' && !node[end + len])
+			while (node[end + len] != ' ' && node[end + len] != 0)
 				len++;
 			cmd->info[i] = malloc(len + 1);
 			cmd->info[i][len] = 0;
-			ft_memmove(cmd->info[i], node[end], len);
-			ft_strlcpy(node[at], node[end + len - 1], ft_strlen(&node[end + len
-					- 1]));
-			node[at + len] = 0;
+			ft_memmove(cmd->info[i], node + end, len);
+			tmp = ft_strlen(&node[len]);
+			ft_strlcpy(node + at, node + end + len, tmp);
+			node[at + tmp] = 0;
 		}
+		else
+		{
+			cmd->info[i] = malloc(1);
+			cmd->info[i][0] = 0;
+		}
+			
 	}
-	cmd->program = node;
+	cmd->program = ft_split(node, ' ');
 }
 
-int	tokenize(char *line)
+int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 {
-	char		**nodes;
-	t_token		*token;
-	t_command	**cmd;
-	int			i;
+	char	**nodes;
+	int		i;
+	int		j;
 
 	i = -1;
-	cmd = malloc(sizeof(t_command) * pipe_cnt(line) + 1);
-	cmd[pipe_cnt(line)] = NULL;
 	nodes = ft_split(line, '|');
-	// handle quotes
-	while (cmd[++i])
-		init_cmd(nodes[i], cmd[i]);
-	// check is built-in or not
-	while (*nodes)
+	if (!nodes[0])
 	{
-		printf("%s\n", *nodes);
-		nodes++;
+		free(nodes);
+		return (0);
+	}
+	// handle quotes
+	while (++i < info->cmd_cnt)
+		init_cmd(nodes[i], &(*cmd)[i]);
+	i = -1;
+	while (++i < info->cmd_cnt)
+	{
+		j = -1;
+		while ((*cmd)[i].program[++j])
+			printf("program is : %s\n", (*cmd)[i].program[j]);
+		printf("input is : %s\n", (*cmd)[i].info[0]);
+		printf("output is : %s\n", (*cmd)[i].info[1]);
+		printf("del is : %s\n", (*cmd)[i].info[2]);
+		printf("output_append is : %s\n", (*cmd)[i].info[3]);
+	}
+	free(nodes);
+	// check is built-in or not
+	return (0);
+}
+
+void	ft_free_command(t_command **tmp, t_sys_info *info)
+{
+	int	i;
+	int j;
+	t_command *cmd;
+
+	cmd = *tmp;
+	i = 0;
+	while (i < info->cmd_cnt)
+	{
+		j = 0;
+		if (cmd[i].program)
+			while (cmd[i].program[j])
+				free(cmd[i].program[j++]);
+		free(cmd[i].program);
+		j = -1;
+		while (++j < 4)
+			if (cmd[i].info[j])
+				free(cmd[i].info[j]);
+		free(cmd[i].info);
+		i++;
+	}
+	free(cmd);
+}
+
+int	display(t_sys_info *info, char ***envp)
+{
+	t_command	*cmd;
+	char		*line;
+	int			i;
+
+	i = 0;
+	envp = NULL;
+	while (1)
+	{
+		line = readline("bash-3.3$ ");
+		if (ft_strncmp(line, "\0", 1))
+		{
+			info->cmd_cnt = pipe_cnt(line) + 1;
+			cmd = malloc(sizeof(t_command) * info->cmd_cnt);
+			while (i < info->cmd_cnt)
+				ft_memset(&cmd[i++], 0, sizeof(t_command));
+			tokenize(line, &cmd, info);
+			add_history(line);
+			//_jungyeok(&command, envp);
+			ft_free_command(&cmd, info);
+		}
 	}
 	return (0);
 }
 
-void	ft_free_command(t_command **command)
-{
-	int	i;
-
-	i = 0;
-	while (command[i])
-	{
-		if (command[i]->input)
-			free(command[i]->input);
-		if (command[i]->output)
-			free(command[i]->output);
-		if (command[i]->delimiter)
-			free(command[i]->delimiter);
-		if (command[i]->output_append)
-			free(command[i]->output_append);
-		free(command[i]);
-		i++;
-	}
-	free(command);
-}
-
-int	display(char **envp)
-{
-	t_command	*command;
-	char		*line;
-
-	//	int			number_of_pipe;
-	while (1)
-	{
-		line = readline("bash-3.2$ ");
-		tokenize(line /*, &number_of_pipe*/);
-		//command = ft_calloc(number_of_pipe + 2, sizeof(t_command));
-		//ft_memset(&command, 0, sizeof(command));
-		printf("\n");
-		//add_history();
-		//excute();
-		_jungyeok(&command, envp);
-		//ft_free_command(&command);
-	}
-}
-
 int	main(int ac, char **av, char **envp)
 {
+	t_sys_info	info;
+
 	if (ac != 1)
 		return (1);
 	//execve("/bin/bash", NULL, envp);
-	display(envp);
+	display(&info, &envp);
 	(void)av;
 	return (0);
 }

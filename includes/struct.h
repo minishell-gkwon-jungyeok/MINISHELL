@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 16:53:29 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/22 23:36:29 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,20 @@
 
 # include "header.h"
 
-typedef struct s_token
+typedef struct s_sys_info
 {
-	int				type;
-	char			*str;
-	struct s_token	*pre;
-	struct s_token	*next;
-}t_token;
+	int	cmd_cnt;
+	//so on..
+}t_sys_info;
 
 typedef struct s_command
 {
 	bool	built_in;	//echo, cd, pwd, export, unset, env, exit
 	char	**program;
-	char	*input;
-	char	*output;
-	char	*delimiter;
-	char	*output_append;
+	//char	*input;
+	//char	*output;
+	//char	*delimiter;
+	//char	*output_append;
 	char	**info;
 }t_command;
 
