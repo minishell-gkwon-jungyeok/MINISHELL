@@ -6,11 +6,11 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 02:09:02 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:54:57 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inlcudes/minishell.h"
+#include "../includes/minishell.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -18,7 +18,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	ret = ft_calloc(1, _strlen(s1) + _strlen(s2) + 1);
+	ret = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
 	while (s1[i])
 	{
