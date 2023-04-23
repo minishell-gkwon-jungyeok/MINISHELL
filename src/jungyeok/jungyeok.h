@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 22:29:40 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:49:57 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ int		command_access(char **path, t_command *cmd, t_mini *c);
 
 /* err.c */
 int		_err(char *s);
+
+/* ft_fd.c */
+void	ft_putstr_fd(char *s, int fd);
+void	ft_char_fd(char c, int fd);
 
 	/* built in functions */
 /* echo.c */

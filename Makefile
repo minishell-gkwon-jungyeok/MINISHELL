@@ -6,9 +6,10 @@ CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
 SRCS = 	src/main.c\
 		src/ft_split.c\
 		src/minishell_utils.c\
-		src/basic1.c\
+		src/basic1.c src/basic2.c\
 		src/jungyeok/jungyeok.c src/jungyeok/err.c\
-		
+		src/jungyeok/ft_fd.c\
+
 OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	minishell
