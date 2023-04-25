@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 22:39:56 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/25 07:13:04 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ int	_jungyeok(t_command **command, char **envp)
 	ft_memset(&c, 0, sizeof(t_mini));
 	c.ncmd = -1;
 	while (command[++c.ncmd])
-	{
 		if (!command[c.ncmd]->program[0])
 			return (_err("bash: syntax error near unexpected token `|'"));
-	}
 	if (c.ncmd > 200)
 		return (_err("no more than 200 pipes"));
 	pat = find_path(envp);

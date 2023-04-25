@@ -1,25 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 22:29:59 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 22:51:13 by jungyeok         ###   ########.fr       */
+/*   Created: 2023/04/24 17:40:20 by jungyeok          #+#    #+#             */
+/*   Updated: 2023/04/25 01:50:40 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
-void	ft_echo(t_command **command, t_mini *c, int fd)
-{
-	int	i;
-	int	flag;
+/*
+#include <unistd.h>
+#include <stdlib.h>
 
-	flag = (!(ft_strncmp(command[c->index]->program[1], "-n\0", 3)));
-	i = (flag) * 2 + (!flag);
-	write(fd, s, ft_strlen(s));
-	if (flag)
-		write(2, "\n", 1);
+int	ft_strlen(char *s){
+	int	i = 0;
+	if (s)
+		while(s[i])
+			i++;
+	return (i);
 }
+
+void	ft_putstr_fd(char *s, int fd){
+	write(fd, s, ft_strlen(s));
+}
+*/
+
+int	_pwd(int fd)
+{
+	char	*pwd;
+
+	pwd = getcwd(0, 0);
+	ft_putstr_fd(pwd, fd);
+	write(fd, "\n", 1);
+	free(pwd);
+	return (0);
+}
+
+/*
+int	main(){
+	_pwd(1);
+}
+*/
