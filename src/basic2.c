@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/23 15:54:36 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/26 05:39:09 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	i = 0;
 	if (needle[i] == 0)
-		return (0);
+		return (-1);
 	while (haystack[i] && len)
 	{
 		j = 0;
@@ -72,7 +72,7 @@ int	ft_strnstr(const char *haystack, const char *needle, size_t len)
 		i++;
 		len--;
 	}
-	return (0);
+	return (-1);
 }
 
 void	*ft_memmove(void *dst, const void *src, size_t len)

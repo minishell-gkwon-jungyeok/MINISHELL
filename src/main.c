@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/23 16:24:25 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/26 06:33:48 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	pipe_cnt(char *line)
 	return (cnt);
 }
 
-void	init_cmd(char *nod, t_command *cmd)
+void	init_cmd(char *node, t_command *cmd)
 {
 	const static char	*string_table[] = {"<", ">", "<<", ">>"};
 	int					i;
@@ -34,18 +34,22 @@ void	init_cmd(char *nod, t_command *cmd)
 	int					end;
 	int					len;
 	int					tmp;
-	char *node;
-	char *ret;
+	//char				*node;
+	char				*ret;
 
-	node = ft_strdup(nod);
+	//node = ft_strdup(nod);
+	i = -1;
+	cmd->info = (char **)ft_calloc(sizeof(char *), 4);
+	while (++i < 4)
+		cmd->info[i] = (char *)ft_calloc(sizeof(char), 1);
 	i = 0;
-	cmd->info = ft_calloc(sizeof(char *), 5);
 	while (i < 4)
 	{
 		len = 0;
 		at = ft_strnstr(node, string_table[i], ft_strlen(node));
 		end = at;
-		if (at && node[at + ft_strlen((char *)string_table[i])] != string_table[i][0])
+		if (at != -1 && node[at
+				+ ft_strlen((char *)string_table[i])] != string_table[i][0])
 		{
 			if (i < 2)
 				end++;
@@ -53,9 +57,10 @@ void	init_cmd(char *nod, t_command *cmd)
 				end += 2;
 			while (node[end] == ' ')
 				end++;
-			while (node[end + len] != ' ' && node[end + len] != 0 && node[end + len] != '<' && node[end + len] != '>')
+			while (node[end + len] != ' ' && node[end + len] != 0 && node[end
+					+ len] != '<' && node[end + len] != '>')
 				len++;
-			if (cmd->info[i])
+			if (cmd->info[i][0])
 			{
 				ret = malloc(len + 2);
 				ret[len] = 0;
@@ -65,7 +70,7 @@ void	init_cmd(char *nod, t_command *cmd)
 			}
 			else
 			{
-				cmd->info[i] = malloc(len + 1);
+				cmd->info[i] = ft_calloc(len + 1, 1);
 				cmd->info[i][len] = 0;
 				ft_memmove(cmd->info[i], node + end, len);
 			}
@@ -77,6 +82,30 @@ void	init_cmd(char *nod, t_command *cmd)
 			i++;
 	}
 	cmd->program = ft_split(node, ' ');
+	//free(node);
+}
+
+void	builtin_check(t_command **cmd, t_sys_info *info)
+{
+	const static char	*string_table[] = {"cd", "echo",
+		"env", "exit", "export", "pwd", "unset"};
+	int					i;
+	int					j;
+
+	i = 0;
+	while (i < info->cmd_cnt)
+	{
+		j = 0;
+		while (j < 7)
+		{
+			if (ft_strnstr(cmd[i]->program[0], string_table[j], ft_strlen(cmd[i]
+						->program[0])) > -1)
+						if (ft_strlen(cmd[i]->program[0]) == ft_strlen((char *)string_table[j]))
+							(*cmd)[i].built_in = true;
+			j++;
+		}
+		i++;
+	}
 }
 
 int	tokenize(char *line, t_command **cmd, t_sys_info *info)
@@ -92,19 +121,24 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 		free(nodes);
 		return (0);
 	}
-	// handle quotes
 	while (++i < info->cmd_cnt)
-		init_cmd(nodes[i], &(*cmd)[i]);
+		init_cmd(nodes[i], cmd[i]);
+	builtin_check(cmd, info);
 	i = -1;
 	while (++i < info->cmd_cnt)
 	{
 		j = -1;
 		while ((*cmd)[i].program[++j])
 			printf("program is : %s\n", (*cmd)[i].program[j]);
-		printf("input is : %s\n", (*cmd)[i].info[0]);
-		printf("output is : %s\n", (*cmd)[i].info[1]);
-		printf("del is : %s\n", (*cmd)[i].info[2]);
-		printf("output_append is : %s\n", (*cmd)[i].info[3]);
+		printf("is builtin : %d\n", (*cmd)[i].built_in);
+		if ((*cmd)[i].info[0])
+			printf("input is : %s\n", (*cmd)[i].info[0]);
+		if ((*cmd)[i].info[1])
+			printf("output is : %s\n", (*cmd)[i].info[1]);
+		if ((*cmd)[i].info[2])
+			printf("del is : %s\n", (*cmd)[i].info[2]);
+		if ((*cmd)[i].info[3])
+			printf("output_append is : %s\n", (*cmd)[i].info[3]);
 	}
 	free(nodes);
 	// check is built-in or not
@@ -113,36 +147,47 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 
 void	ft_free_command(t_command **tmp, t_sys_info *info)
 {
-	int	i;
-	int j;
-	t_command *cmd;
+	int			i;
+	int			j;
+	t_command	*cmd;
 
 	cmd = *tmp;
 	i = 0;
 	while (i < info->cmd_cnt)
 	{
 		j = 0;
-		if (cmd[i].program)
+		if (cmd[i].program[j])
 			while (cmd[i].program[j])
-				free(cmd[i].program[j++]);
+			{
+				free(cmd[i].program[j]);
+				cmd[i].program[j++] = 0;
+			}
 		free(cmd[i].program);
-		j = -1;
-		while (++j < 4)
+		cmd[i].program = 0;
+		j = 0;
+		while (j < 4)
+		{
 			if (cmd[i].info[j])
+			{
 				free(cmd[i].info[j]);
+				cmd[i].info[j] = 0;
+			}
+			j++;
+		}
 		free(cmd[i].info);
+		cmd[i].info = 0;
 		i++;
 	}
 	free(cmd);
+	cmd = 0;
 }
 
 int	display(t_sys_info *info, char ***envp)
 {
-	t_command	*cmd;
+	t_command	**cmd;
 	char		*line;
 	int			i;
 
-	i = 0;
 	envp = NULL;
 	while (1)
 	{
@@ -150,13 +195,15 @@ int	display(t_sys_info *info, char ***envp)
 		if (ft_strncmp(line, "\0", 1))
 		{
 			info->cmd_cnt = pipe_cnt(line) + 1;
-			cmd = malloc(sizeof(t_command) * info->cmd_cnt);
+			cmd = ft_calloc(sizeof(t_command *), info->cmd_cnt);
+			i = 0;
 			while (i < info->cmd_cnt)
-				ft_memset(&cmd[i++], 0, sizeof(t_command));
-			tokenize(line, &cmd, info);
+				cmd[i++] = ft_calloc(sizeof(t_command), 1);
+			tokenize(line, cmd, info);
 			add_history(line);
 			//_jungyeok(&command, envp);
-			ft_free_command(&cmd, info);
+			ft_free_command(cmd, info);
+			free(cmd);
 		}
 	}
 	return (0);
