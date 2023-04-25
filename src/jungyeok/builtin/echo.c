@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:34:07 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/24 15:52:08 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:37:41 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	_echo(t_command *cmd, int fd)
 	i = flag + 1;
 	ft_putstr_fd(cmd->program[i], fd);
 	if (!flag)
-		ft_putchar('\n', fd);
+		ft_putchar_fd('\n', fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:20:19 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 00:25:29 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:14:59 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@
 # include <curses.h>
 # include <term.h>
 # include <sys/ioctl.h>
+# include <string.h>
 
 #endif

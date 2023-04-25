@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/21 21:32:31 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:36:26 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	command_access(char **path, t_command *cmd, t_mini *c)
 	while (*path)
 	{
 		d = ft_strjoin(*path, "/");
-		ret =  = ft_strjoin(d, cmd->program[0]);
+		ret = ft_strjoin(d, cmd->program[0]);
 		free(d);
 		if (!access(ret, 0))
 		{

@@ -3,7 +3,7 @@ CFLAGS		=	-Wall -Werror -Wextra
 LDFLAGS		=	-L/opt/homebrew/opt/readline/lib -lreadline
 CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
 
-SRCS = 	src/main.c\
+SRCS = 	src/main_jungyeok.c\
 		src/ft_split.c\
 		src/minishell_utils.c\
 		src/basic1.c src/basic2.c\
@@ -26,10 +26,10 @@ NAME	=	minishell
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 # colors
 
