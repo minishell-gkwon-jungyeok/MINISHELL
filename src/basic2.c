@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 02:44:28 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/25 11:58:03 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,4 @@ int	ft_strncmp(char *s1, char *s2, int n)
 		i++;
 	}
 	return (0);
-}
-
-int	ft_strchr(char *s, int c)
-{
-
 }
