@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/23 03:21:47 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/26 08:15:32 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define REDIREC 9
 # define SEMICLON 10
 # define BACKSLASH 11
+# define SHE 0
+# define DFL 1
+# define IGN 2
 
 /* functions of GKWON*/
 int		tokenize(char *line, t_command **cmd, t_sys_info *info);
