@@ -6,13 +6,13 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:34:07 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 12:37:41 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:38:17 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int	_echo(t_command *cmd, int fd)
+int	_echo(t_command *cmd)
 {
 	int	i;
 	int	flag;
@@ -23,8 +23,8 @@ int	_echo(t_command *cmd, int fd)
 	if (ft_strncmp(cmd->program[1], "-n\0", 3))
 		flag = 0;
 	i = flag + 1;
-	ft_putstr_fd(cmd->program[i], fd);
+	write(1, cmd->program[i], ft_strlen(cmd->program[i]));
 	if (!flag)
-		ft_putchar_fd('\n', fd);
+		write(1, "\n", 1);
 	return (0);
 }

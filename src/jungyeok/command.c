@@ -6,13 +6,13 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 12:36:26 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:42:29 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	command_access(char **path, t_command *cmd, t_mini *c)
+void	command_access(char **path, t_command *cmd, t_mini *c)
 {
 	char	*d;
 	char	*ret;
@@ -25,11 +25,10 @@ int	command_access(char **path, t_command *cmd, t_mini *c)
 		if (!access(ret, 0))
 		{
 			c->cmd = ret;
-			return (0);
+			return ;
 		}
 		free(ret);
 		path++;
 		
 	}
-	return (1);
 }

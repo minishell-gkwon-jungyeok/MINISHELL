@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:16:53 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 11:55:00 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:45:34 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@
 typedef struct s_command{
 	char **program;
 }t_command;
-
-void	ft_putstr_fd(char *s, int fd){
-	write(fd, s, strlen(s));
-}
-
-void	ft_putchar_fd(char c, int fd){
-	write(fd, &c, 1);
-}
 
 void	*ft_calloc(int i, int j){
 	return (calloc(i, j));
@@ -78,7 +70,7 @@ char	**_tmp(char ***env)
 	return (ret);
 }
 
-int	_sorted_env(char ***env, int fd)
+int	_sorted_env(char ***env)
 {
 	int		i;
 	int		j;
@@ -88,15 +80,15 @@ int	_sorted_env(char ***env, int fd)
 	i = -1;
 	while (tmp[++i])
 	{
-		ft_putstr_fd("declare -x ", fd);
+		write(1, "declare -x ", 11);
 		j = 0;
 		while (tmp[i][j] != '=')
-			ft_putchar_fd(tmp[i][j++], fd);
-		ft_putchar_fd(tmp[i][j++], fd);
-		ft_putchar_fd('\"', fd);
+			write(1, tmp[i] + j++, 1);
+		write(1, tmp[i] + j++, 1);
+		write(1, "\"", 1);
 		while (tmp[i][j])
-			ft_putchar_fd(tmp[i][j++], fd);
-		ft_putstr_fd("\"\n", fd);
+			write(1, tmp[i] + j++, 1);
+		write(1, "\"\n", 2);
 	}
 	i = -1;
 	while (tmp[++i])
@@ -121,14 +113,14 @@ void	_env_change(char *s, char ***env, int size)
 	*env = ret;
 }
 
-int	_export(t_command *cmd, char ***env, int fd)
+int	_export(t_command *cmd, char ***env)
 {
 	int	i;
 	int	j;
 	int	size;
 
 	if (!cmd->program[1])
-		return (_sorted_env(env, fd));
+		return (_sorted_env(env));
 	size = 0;
 	while ((*env)[size])
 		size++;
@@ -137,9 +129,9 @@ int	_export(t_command *cmd, char ***env, int fd)
 	{
 		if ('0' <= cmd->program[i][0] && cmd->program[i][0] <= '9')
 		{
-			ft_putstr_fd("bash: export: `", fd);
-			ft_putstr_fd(cmd->program[i], fd);
-			ft_putstr_fd("': not a valid identifier\n", fd);
+			write(1, "bash: export: `", 15);
+			write(1, cmd->program[i], ft_strlen(cmd->program[i]));
+			write(1, "': not a valid identifier\n", 26);
 			continue ;
 		}
 		j = -1;
@@ -169,7 +161,7 @@ int main(int ac, char **av, char **env){
 	for (int i = 0; i < ac; i++)
 		c.program[i] = av[i];
 
-	_export(&c, &d, 1);
+	_export(&c, &d);
 
 	printf("\n\n    AFTER    \n\n\n");
 	for (int i = 0; d[i]; i++)

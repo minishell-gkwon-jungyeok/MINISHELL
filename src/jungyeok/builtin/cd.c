@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 20:30:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 02:16:42 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:39:52 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ char	*ft_strdup(char *s){
 		ret[i] = s[i];
 	return (ret);
 }
-
-void	ft_putstr_fd(char *s, int fd){
-	write(fd, s, strlen(s));
-}
 */
 
-int	_cd(t_command *cmd, int fd)
+int	_cd(t_command *cmd)
 {
 	int	flag;
 	int	ret;
@@ -49,10 +45,9 @@ int	_cd(t_command *cmd, int fd)
 	ret = chdir(cmd->program[1]);
 	if (ret)
 	{
-		ft_putstr_fd("bash: cd: ", fd);
-		ft_putstr_fd(cmd->program[1], fd);
-		ft_putstr_fd(": No such file or directory", fd);
-		ft_putstr_fd("\n", fd);
+		write(1, "bash: cd: ", 10);
+		write(1, cmd->program[1], ft_strlen(cmd->program[1]));
+		write(1, ": No such file or directory\n", 28);
 		return (1);
 	}
 	if (flag)
@@ -73,7 +68,7 @@ int main(int ac, char **av){
 	for (int i = 0; i < ac; i++)
 		c.program[i] = strdup(av[i]);
 
-	_cd(&c, 1);
+	_cd(&c);
 
 	pwd = getcwd(0, 0);
 	printf("%s\n", pwd);

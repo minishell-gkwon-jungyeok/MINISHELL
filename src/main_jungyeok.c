@@ -1,5 +1,7 @@
 #include "../includes/minishell.h"
 
+int	g_flag;
+
 /*
 #include <stdio.h>
 #include <stdbool.h>
@@ -22,13 +24,13 @@ void	_printf(t_command *c){
 		boool = "true\0";
 	else
 		boool = "false\0";
-	printf("builtn = %s\n", boool);
+	printf("\nbuiltn = %s\n", boool);
 	for (int i = 0; c->program[i]; i++)
 		printf("progrm[%d] = %s\n", i, c->program[i]);
 	printf("input  = %s\n", c->input);
 	printf("output = %s\n", c->output);
 	printf("delimi = %s\n", c->delimiter);
-	printf("outapd = %s\n", c->output_append);
+	printf("outapd = %s\n\n", c->output_append);
 }
 
 char	*_strdup(char *s){
@@ -78,17 +80,22 @@ void	rem_s(char **inn, char *s){
 		ret[k] = in[i];
 		k++;
 	}
-
-//	free(in);
-	*inn = ret;
+	
+/*	if (g_flag){
+		free(in);
+		g_flag = 0;
+	}
+*/	*inn = ret;
 }
 
 char	**_split(char *s, char c){
 	int size = 0;
-	for (int i = 0; s[i]; i++)
+	for (int i = 0; s[i] && s[i] != '|'; i++)
 		if (s[i] == c)
 			size++;
 
+	if (!size)
+		return (calloc(8, 2));
 	char **ret = calloc(8, size + 2);
 
 	int	j;
@@ -121,6 +128,8 @@ int main(int i, char **av, char **envp){
 		if (av[1][i] == '|')
 			npipe++;
 	
+	g_flag = 1;
+
 	t_command *c;
 
 	c = calloc(sizeof(t_command), npipe + 2);
@@ -160,7 +169,8 @@ int main(int i, char **av, char **envp){
 		}
 		
 		c[ii].program = _split(in, ' ');
-	
+
+	if (c[ii].program[0])	{
 		if (!strcmp(c[ii].program[0], "echo\0") ||
 				!strcmp(c[ii].program[0], "cd\0") ||
 				!strcmp(c[ii].program[0], "pwd\0") ||
@@ -169,6 +179,7 @@ int main(int i, char **av, char **envp){
 				!strcmp(c[ii].program[0], "env\0") ||
 				!strcmp(c[ii].program[0], "exit\0"))
 			c[ii].built_in = true;
+	}
 
 //		_printf(c + ii);
 
@@ -185,7 +196,8 @@ int main(int i, char **av, char **envp){
 		}
 	}
 		
-	_jungyeok(&c, envp);
+	_jungyeok(c, envp, npipe);
+//	(void) envp;
 
 //	printf("in at final = %s\n", in);
 	for (int j = 0; j <= npipe; j++){
