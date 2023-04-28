@@ -1,7 +1,7 @@
 CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra -g -fsanitize=address
-LDFLAGS		=	-lreadline#-L/opt/homebrew/opt/readline/lib 
-#CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
+LDFLAGS		=	-lreadline -L/opt/homebrew/opt/readline/lib 
+CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
 
 SRCS = 	src/main.c\
 		src/ft_split.c\
@@ -20,7 +20,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 # colors
 
