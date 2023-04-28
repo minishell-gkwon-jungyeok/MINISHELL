@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/28 19:11:00 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/28 19:35:11 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,6 @@ int	pipe_cnt(char *line)
 		line++;
 	}
 	return (cnt);
-}
-
-int	parse_set_quotes(char line, int quotes)
-{
-	int	result;
-
-	result = quotes;
-	if (line == '\'')
-	{
-		if (quotes == 1)
-			result = 0;
-		else if (quotes == 2)
-			result = 2;
-		else
-			result = 1;
-	}
-	else if (line == '\"')
-	{
-		if (quotes == 2)
-			result = 0;
-		else if (quotes == 1)
-			result = 1;
-		else
-			result = 2;
-	}
-	return (result);
 }
 
 void	init_cmd(char *node, t_command *cmd)
@@ -142,6 +116,51 @@ void	builtin_check(t_command **cmd, t_sys_info *info)
 	}
 }
 
+int	parse_set_quotes(char line, int quotes)
+{
+	int	result;
+
+	result = quotes;
+	if (line == '\'')
+	{
+		if (quotes == 1)
+			result = 0;
+		else if (quotes == 2)
+			result = 2;
+		else
+			result = 1;
+	}
+	else if (line == '\"')
+	{
+		if (quotes == 2)
+			result = 0;
+		else if (quotes == 1)
+			result = 1;
+		else
+			result = 2;
+	}
+	return (result);
+}
+
+int	ft_line_quote(char *line)
+{
+	int at;
+	int	quotes;
+
+	at = 0;
+	quotes = 0;
+	while (line[at])
+	{
+		quotes = parse_set_quotes(line[at], quotes);
+		at++;
+	}
+	if (quotes != 0) // 닫히지 않은 따옴표 예외처리
+	{
+		printf("test exit: quotes error\n");
+		exit(1);
+	}
+}
+
 int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 {
 	char	**nodes;
@@ -149,6 +168,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	int		j;
 
 	i = -1;
+	ft_line_qoute(line);
 	nodes = ft_split(line, '|');
 	if (!nodes[0])
 	{
