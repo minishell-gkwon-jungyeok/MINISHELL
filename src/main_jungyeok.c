@@ -1,7 +1,5 @@
 #include "../includes/minishell.h"
 
-int	g_flag;
-
 /*
 #include <stdio.h>
 #include <stdbool.h>
@@ -67,7 +65,6 @@ void	rem_s(char **inn, char *s){
 	int	k = 0;
 	int flag = 1;
 	char *ret = calloc(1, size + 1);
-//	printf("in in rem_s = %s\n", in);
 	for (i = 0; in[i]; i++){
 		if (in[i] == s[0] && s_len == 1 && flag){
 			i += 3 + j;
@@ -77,15 +74,13 @@ void	rem_s(char **inn, char *s){
 			i += 4 + j;
 			flag = 0;
 		}
+		if (k == size)
+			break ;
 		ret[k] = in[i];
 		k++;
 	}
 	
-/*	if (g_flag){
-		free(in);
-		g_flag = 0;
-	}
-*/	*inn = ret;
+	*inn = ret;
 }
 
 char	**_split(char *s, char c){
@@ -94,9 +89,11 @@ char	**_split(char *s, char c){
 		if (s[i] == c)
 			size++;
 
+	char **ret;
 	if (!size)
-		return (calloc(8, 2));
-	char **ret = calloc(8, size + 2);
+		ret = calloc(8, 2);
+	else
+		ret = calloc(8, size + 2);
 
 	int	j;
 	int	k = 0;
@@ -130,8 +127,6 @@ int main(int i, char **av, char **envp){
 		if (av[1][i] == '|')
 			npipe++;
 	
-	g_flag = 1;
-
 	t_command *c;
 
 	c = calloc(sizeof(t_command), npipe + 2);
@@ -169,17 +164,17 @@ int main(int i, char **av, char **envp){
 			c[ii].output = _strdup(dr + i);
 			rem_s(&in, ">\0");
 		}
-		
+	
 		c[ii].program = _split(in, ' ');
 
-	if (c[ii].program[0])	{
-		if (!strcmp(c[ii].program[0], "echo") ||
-				!strcmp(c[ii].program[0], "cd") ||
-				!strcmp(c[ii].program[0], "pwd") ||
-				!strcmp(c[ii].program[0], "export") ||
-				!strcmp(c[ii].program[0], "unset") ||
-				!strcmp(c[ii].program[0], "env") ||
-				!strcmp(c[ii].program[0], "exit"))
+		if (c[ii].program[0]){
+			if (!strcmp(c[ii].program[0], "echo\0") ||
+				!strcmp(c[ii].program[0], "cd\0") ||
+				!strcmp(c[ii].program[0], "pwd\0") ||
+				!strcmp(c[ii].program[0], "export\0") ||
+				!strcmp(c[ii].program[0], "unset\0") ||
+				!strcmp(c[ii].program[0], "env\0") ||
+				!strcmp(c[ii].program[0], "exit\0"))
 			c[ii].built_in = true;
 	}
 

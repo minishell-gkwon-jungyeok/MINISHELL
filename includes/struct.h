@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/27 14:26:17 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:00:22 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_token
 
 typedef struct s_command
 {
-	bool	built_in;	//echo, cd, pwd, export, unset, env, exit
+	bool	built_in;
 	char	**program;
 	char	*input;
 	char	*output;
