@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/27 15:44:56 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:18:35 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,9 @@ int	_run(t_command *command, t_mini *c)
 			_dup2(command, c, c->pipe[2 * c->index - 2]
 				, c->pipe[2 * c->index + 1]);
 		close_pipe(c, c->ncmd - 1);
-*/		if (!command[c->index].built_in)
-			command_access(c->path, &command[c->index], c);
-		else if (command[c->index].built_in)
-			c->cmd = ft_strdup(command[c->index].program[0]);
-		printf("c->cmd = %s\n", c->cmd);
-/*		if (command->built_in)
-			builtin(c->cmd, command[c->index]->program, c->env);
-		else
-			execve(c->cmd, command[c->index]->program, c->env);
-*/		free(c->cmd);
+*/		_c_cmd(command, c);
+		_exe(command, c);
+		free(c->cmd);
 		exit(1);
 	}
 	return (0);

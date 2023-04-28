@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/27 17:47:00 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:01:20 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	_dup2(int i, int j);
 
 /* command.c */
 void	command_access(char **path, t_command *cmd, t_mini *c);
+void	_c_cmd(t_command *command, t_mini *c);
+void    _exe(t_command *command, t_mini *c);
 
 /* err.c */
 int		_err(char *s);
