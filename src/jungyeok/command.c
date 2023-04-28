@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 01:18:25 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:54:11 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	command_access(char **path, t_command *cmd, t_mini *c)
 		}
 		free(ret);
 		path++;
-		
 	}
 }
 

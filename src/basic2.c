@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 11:58:03 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:57:50 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,18 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	ret = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		ret[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2[j])
+	while (s2 && s2[j])
 	{
 		ret[i + j] = s2[j];
 		j++;
 	}
+	ret[i + j] = '\0';
 	return (ret);
 }
 

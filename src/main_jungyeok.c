@@ -101,10 +101,12 @@ char	**_split(char *s, char c){
 	int	j;
 	int	k = 0;
 	for (int i = 0; s[i] && s[i] != '|'; i++){
-		if (s[i] != c){
+		if (s[i] && s[i] != c){
 			for (j = 0; s[i + j] && s[i + j] != c; j++);
 			ret[k] = _strdup(s + i);
 			i += j;
+			if (!s[i])
+				break ;
 			k++;
 		}
 	}
@@ -171,13 +173,13 @@ int main(int i, char **av, char **envp){
 		c[ii].program = _split(in, ' ');
 
 	if (c[ii].program[0])	{
-		if (!strcmp(c[ii].program[0], "echo\0") ||
-				!strcmp(c[ii].program[0], "cd\0") ||
-				!strcmp(c[ii].program[0], "pwd\0") ||
-				!strcmp(c[ii].program[0], "export\0") ||
-				!strcmp(c[ii].program[0], "unset\0") ||
-				!strcmp(c[ii].program[0], "env\0") ||
-				!strcmp(c[ii].program[0], "exit\0"))
+		if (!strcmp(c[ii].program[0], "echo") ||
+				!strcmp(c[ii].program[0], "cd") ||
+				!strcmp(c[ii].program[0], "pwd") ||
+				!strcmp(c[ii].program[0], "export") ||
+				!strcmp(c[ii].program[0], "unset") ||
+				!strcmp(c[ii].program[0], "env") ||
+				!strcmp(c[ii].program[0], "exit"))
 			c[ii].built_in = true;
 	}
 
