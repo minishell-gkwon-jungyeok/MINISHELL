@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 03:45:28 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 04:45:55 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	_run(t_command *command, t_mini *c)
 */		close_pipe(c, c->ncmd - 1);
 		_c_cmd(command, c);
 		_exe(command, c);
-		printf("ASDF\n");
 		free(c->cmd);
 		exit(1);
 	}
+	waitpid(-1, NULL, 0);
 	return (0);
 }
 

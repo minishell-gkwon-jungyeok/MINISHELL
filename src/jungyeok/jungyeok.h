@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 01:01:20 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 04:48:11 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 /* jungyeok.c */
 int		_jungyeok(t_command *command, char **envp, int npipe);
 
-/* input.c */
+/* heredoc.c */
 int		_err_hd(char *s);
 int		_heredoc(char *s, t_mini *c);
 
