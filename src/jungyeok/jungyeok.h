@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 04:48:11 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:06:55 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@
 /* jungyeok.c */
 int		_jungyeok(t_command *command, char **envp, int npipe);
 
-/* heredoc.c */
-int		_err_hd(char *s);
+/* input.c */
 int		_heredoc(char *s, t_mini *c);
+int		_input(char *s, t_mini *c);
+int		open_fd(t_command *command, t_mini *c);
+
+/* output.c */
+int		_output(char *s, t_mini *c);
+int		_output_append(char *s, t_mini *c);
+void	close_fd(t_command *command, t_mini *c);
 
 /* pipe.c */
 int		close_pipe(t_mini *c, int opened);

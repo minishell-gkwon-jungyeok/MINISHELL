@@ -9,6 +9,7 @@ SRCS = 	src/main_jungyeok.c\
 		src/basic1.c src/basic2.c\
 		src/jungyeok/jungyeok.c src/jungyeok/err.c\
 		src/jungyeok/input.c\
+		src/jungyeok/output.c\
 		src/jungyeok/pipe.c src/jungyeok/command.c\
 		src/jungyeok/basic.c\
 		src/jungyeok/builtin/cd.c\

@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 04:45:55 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:07:42 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,11 @@ int	_run(t_command *command, t_mini *c)
 	c->pid = fork();
 	if (!c->pid)
 	{
-		if (command[c->index].delimiter)
-			_heredoc(command[c->index].delimiter, c);
-/*		if (c->index == 0)
-			_dup2(command, c, c->fd_in, c->pipe[1]);
-		else if (c->index == c->ncmd - 1)
-			_dup2(command, c, c->pipe[2 * c->index - 2], c->fd_out);
-		else
-			_dup2(command, c, c->pipe[2 * c->index - 2]
-				, c->pipe[2 * c->index + 1]);
-*/		close_pipe(c, c->ncmd - 1);
+		open_fd(command, c);
+		close_pipe(c, c->ncmd - 1);
 		_c_cmd(command, c);
 		_exe(command, c);
+		close_fd(command, c);
 		free(c->cmd);
 		exit(1);
 	}
