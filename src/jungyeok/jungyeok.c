@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 18:07:42 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 19:28:33 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	_run(t_command *command, t_mini *c)
 	c->pid = fork();
 	if (!c->pid)
 	{
-		open_fd(command, c);
+		if (open_fd(command, c))
+			return (1);
 		close_pipe(c, c->ncmd - 1);
 		_c_cmd(command, c);
 		_exe(command, c);

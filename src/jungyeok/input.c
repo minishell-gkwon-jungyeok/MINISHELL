@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 04:57:47 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 18:09:00 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/29 19:59:58 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	_heredoc(char *s, t_mini *c)
 	c->fd_in = open(".heredoc", O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (c->fd_in < 0)
 		return (1);
+	dup2(c->fd_in, 0);
 	while (1)
 	{
 		line = readline("> ");
@@ -46,6 +47,7 @@ int	_input(char *s, t_mini *c)
 		write(2, "\n", 1);
 		return (1);
 	}
+	dup2(c->fd_in, 0);
 	return (0);
 }
 
@@ -53,27 +55,31 @@ int	open_fd(t_command *command, t_mini *c)
 {
 	if (command[c->index].delimiter)
 	{
-		dup2(c->fd_in, c->pipe[2 * c->index + 1]);
 		if (_heredoc(command[c->index].delimiter, c))
 			return (1);
 	}
 	else if (command[c->index].input)
 	{
-		dup2(c->fd_in, c->pipe[2 * c->index + 1]);
 		if (_input(command[c->index].input, c))
 			return (1);
 	}
+	else if (c->index == 0)
+		return (0);
+	else
+		dup2(c->pipe[2 * c->index], 0);
 	if (command[c->index].output)
 	{
-		dup2(c->pipe[2 * c->index], c->fd_out);
 		if (_output(command[c->index].output, c))
 			return (1);
 	}
 	else if (command[c->index].output_append)
 	{
-		dup2(c->pipe[2 * c->index], c->fd_out);
-		if (_output_append(command[c->index].output, c))
+		if (_output_append(command[c->index].output_append, c))
 			return (1);
 	}
+	else if (c->index == c->ncmd - 1)
+		return (0);
+	else
+		dup2(c->pipe[2 * c->index + 1], 1);
 	return (0);
 }
