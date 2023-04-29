@@ -7,7 +7,12 @@ SRCS = 	src/main.c\
 		src/ft_split.c\
 		src/minishell_utils.c\
 		src/basic1.c\
-		src/basic2.c
+		src/basic2.c\
+		src/ft_free.c\
+		src/init_cmd.c\
+		src/parse_quote.c\
+		src/parse_util.c\
+		src/signal.c\
 		#src/jungyeok/jungyeok.c src/jungyeok/err.c\
 		
 OBJS	=	$(SRCS:.c=.o)
