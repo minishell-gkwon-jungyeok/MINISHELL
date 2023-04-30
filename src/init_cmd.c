@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/04/29 22:04:17 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/30 15:59:06 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	init_cmd(char *node, t_command *cmd)
+int	init_cmd(char *node, t_command *cmd)
 {
 	const static char	*string_table[] = {"<", ">", "<<", ">>"};
 	int					i;
@@ -32,7 +32,6 @@ void	init_cmd(char *node, t_command *cmd)
 	while (++i < 4)
 		cmd->info[i] = ft_calloc(sizeof(char), 1);
 	i = 0;
-    ft_line_quote(node);
 	while (i < 4)
 	{
 		len = 0;
@@ -73,6 +72,7 @@ void	init_cmd(char *node, t_command *cmd)
 	}
 	cmd->program = ft_split(node, ' ');
 	free(node);
+	return (is_valid_quote(cmd->program));
 }
 
 void	builtin_check(t_command **cmd, t_sys_info *info)

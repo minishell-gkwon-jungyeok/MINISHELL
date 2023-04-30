@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/22 23:36:29 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/30 15:59:05 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,16 @@ typedef struct s_sys_info
 	//so on..
 }t_sys_info;
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}t_list
+
 typedef struct s_command
 {
 	bool	built_in;	//echo, cd, pwd, export, unset, env, exit
-	char	**program;
+	t_list	*program;
 	//char	*input;
 	//char	*output;
 	//char	*delimiter;

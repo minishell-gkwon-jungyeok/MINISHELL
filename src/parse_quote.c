@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_quote.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/04/29 22:00:48 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/30 15:37:27 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,35 @@ int	ft_line_quote(char *line)
 	}
 	return (0);
 }
+
+int check_quote(char **cmd)
+{
+
+}
+
+int	is_valid_quote(char **cmd)
+{
+	int	cnt;
+	int	is_quote;
+
+	is_quote = 0;
+	while (*cmd)
+	{
+		cnt = 0;
+		while (**cmd)
+		{
+			if (**cmd == '\'' || **cmd == '\"')
+				cnt++;
+			if (cnt && !is_quote)
+				is_quote = 1;
+			(*cmd)++;
+		}
+		if (cnt % 2 == 1)
+			return (0);
+		cmd++;
+	}
+	if (!is_quote)
+		return (2);
+	return (1);
+}
+// 2 -> no quotes, 1 -> valid quotes, 0 -> invalid qutoes
