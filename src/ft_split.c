@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:49:10 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/18 03:18:54 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/30 16:15:21 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@ static int	total_len(char const *str, char c)
 {
 	int	i;
 	int	count;
+	int	single_open;
+	int	double_open;
 
+	single_open = 0;
+	double_open = 0;
 	count = 0;
 	i = 0;
 	while (str[i])
 	{
+		if (str[i] == '\"')
+			double_open++;
+		else if (str[i] == '\'')
+			single_open++;
 		while (str[i] && str[i] == c)
 			i++;
-		if (str[i])
+		if (str[i] && !(single_open % 2) && !(double_open % 2))
 			count++;
 		while (str[i] && str[i] != c)
 			i++;

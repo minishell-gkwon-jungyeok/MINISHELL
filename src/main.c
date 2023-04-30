@@ -6,101 +6,81 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/21 02:12:17 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:33:17 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	validate_type(char *node, t_token *token)
-{
-	if (node[0] == '-')
-		token->type = OPTION;
-	if (node[0] == '|')
-		token->type = PIPE;
-	if (node[0] == '\'')
-		token->type = OPTION;
-	/* non-void function does not return a value */
-	return (1);
-}
-
-t_token	*creat_token_list(char **nodes)
-{
-	int		i;
-	t_token	*tmp;
-
-	i = 0;
-	while (nodes[i])
-	{
-		tmp = malloc(sizeof(t_token));
-		validate_type(nodes[i], tmp);
-	}
-	/* non-void function does not return a value */
-	return (tmp);
-}
-
-int	tokenize(char *line)
+int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 {
 	char	**nodes;
-	t_token	*token;
+	int		i;
+	int		j;
 
-	nodes = ft_split(line, ' ');
-	token = creat_token_list(nodes);
-	while (*nodes)
+	i = -1;
+	nodes = ft_split(line, '|');
+	is_valid_quote(nodes);
+	if (!nodes[0])
 	{
-		printf("%s\n", *nodes);
-		nodes++;
+		free(nodes);
+		return (0);
+	}
+	while (++i < info->cmd_cnt)
+		init_cmd(nodes[i], cmd[i]);
+	builtin_check(cmd, info);
+	i = -1;
+	while (++i < info->cmd_cnt)
+	{
+		j = -1;
+		while (cmd[i]->program[++j])
+			printf("program is : %s\n", cmd[i]->program[j]);
+		printf("is builtin : %d\n", cmd[i]->built_in);
+		printf("input is : %s\n", cmd[i]->info[0]);
+		printf("output is : %s\n", cmd[i]->info[1]);
+		printf("del is : %s\n", cmd[i]->info[2]);
+		printf("output_append is : %s\n", cmd[i]->info[3]);
+	}
+	free(nodes);
+	return (0);
+}
+
+int	display(t_sys_info *info, char ***envp)
+{
+	t_command	**cmd;
+	char		*line;
+	int			i;
+
+	(void)envp;
+	set_signal_handlers();
+	while (1)
+	{
+		line = readline("bash-3.3$ ");
+		if (ft_strncmp(line, "\0", 1))
+		{
+			if (!ft_strncmp(line, "exit", 4))
+				ft_exit(0);
+			info->cmd_cnt = pipe_cnt(line) + 1;
+			cmd = ft_calloc(sizeof(t_command *), info->cmd_cnt);
+			i = 0;
+			while (i < info->cmd_cnt)
+				cmd[i++] = ft_calloc(sizeof(t_command), 1);
+			tokenize(line, cmd, info);
+			add_history(line);
+			//_jungyeok(&command, envp);
+			ft_free_command(cmd, info);
+		}
 	}
 	return (0);
 }
 
-void	ft_free_command(t_command **command)
-{
-	int	i;
-
-	i = 0;
-	while (command[i])
-	{
-		if (command[i]->input)
-			free(command[i]->input);
-		if (command[i]->output)
-			free(command[i]->output);
-		if (command[i]->delimiter)
-			free(command[i]->delimiter);
-		if (command[i]->output_append)
-			free(command[i]->output_append);
-		free(command[i]);
-		i++;
-	}
-	free(command);
-}
-
-int	display(char **envp)
-{
-	t_command	*command;
-	char		*line;
-//	int			number_of_pipe;
-
-	while (1)
-	{
-		line = readline("bash-3.2$ ");
-		tokenize(line/*, &number_of_pipe*/);
-		//command = ft_calloc(number_of_pipe + 2, sizeof(t_command));
-		//ft_memset(&command, 0, sizeof(command));
-		printf("\n");
-		//add_history();
-		//excute();
-		_jungyeok(&command, envp);
-		//ft_free_command(&command);
-	}
-}
-
 int	main(int ac, char **av, char **envp)
 {
+	t_sys_info	info;
+
 	if (ac != 1)
 		return (1);
-	//execve("/bin/bash", NULL, envp);
-	display(envp);
+	display(&info, &envp);
 	(void)av;
 	return (0);
 }

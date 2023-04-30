@@ -1,13 +1,19 @@
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra
-LDFLAGS		=	-L/opt/homebrew/opt/readline/lib -lreadline
+CFLAGS		=	-Wall -Werror -Wextra -g -fsanitize=address
+LDFLAGS		=	-lreadline -L/opt/homebrew/opt/readline/lib 
 CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
 
 SRCS = 	src/main.c\
 		src/ft_split.c\
 		src/minishell_utils.c\
 		src/basic1.c\
-		src/jungyeok/jungyeok.c src/jungyeok/err.c\
+		src/basic2.c\
+		src/ft_free.c\
+		src/init_cmd.c\
+		src/parse_quote.c\
+		src/parse_util.c\
+		src/signal.c\
+		#src/jungyeok/jungyeok.c src/jungyeok/err.c\
 		
 OBJS	=	$(SRCS:.c=.o)
 
@@ -16,10 +22,10 @@ NAME	=	minishell
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 # colors
 
