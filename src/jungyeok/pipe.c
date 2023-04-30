@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:33:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 18:16:18 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 13:28:08 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 int	close_pipe(t_mini *c, int opened)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (i < opened)
+	j = opened << 1;
+	while (i < j)
 	{
 		close(c->pipe[i]);
-		i += 2;
+		i++;
 	}
-	return (0);
+	return (1);
 }
 
 int	open_pipe(t_mini *c, int npipe)
@@ -33,7 +35,7 @@ int	open_pipe(t_mini *c, int npipe)
 	i = 0;
 	while (i < npipe)
 	{
-		if (pipe(c->pipe + 2 * i ) < 0)
+		if (pipe(c->pipe + 2 * i) < 0)
 			return (close_pipe(c, i - 2));
 		i++;
 	}
