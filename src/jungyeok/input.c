@@ -6,11 +6,25 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 04:57:47 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 15:51:57 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 20:27:47 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+#include <errno.h>
+
+int	_error_jungyeok(char *s)
+{
+	char	*se;
+
+	write(2, "bash: ", 6);
+	write(2, s, ft_strlen(s));
+	write(2, ": ", 2);
+	se = strerror(errno);
+	write(2, se, ft_strlen(se));
+	write(2, "\n", 1);
+	return (1);
+}
 
 int	_heredoc(char *s, t_mini *c)
 {
@@ -18,10 +32,10 @@ int	_heredoc(char *s, t_mini *c)
 
 	c->fd_in = open(".heredoc", O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (c->fd_in < 0)
-		return (1);
+		return (_error_jungyeok(s));
 	while (1)
 	{
-		line = readline("> ");
+		line = readline("heredoc> ");
 		if (!ft_strcmp(s, line))
 			break ;
 		write(c->fd_in, line, ft_strlen(line));
@@ -29,25 +43,17 @@ int	_heredoc(char *s, t_mini *c)
 		free(line);
 	}
 	dup2(c->fd_in, 0);
+	close(c->fd_in);
 	return (0);
 }
 
 int	_input(char *s, t_mini *c)
 {
-	char	*se;
-
 	c->fd_in = open(s, O_RDONLY);
 	if (c->fd_in < 0)
-	{
-		write(2, "bash: ", 6);
-		write(2, s, ft_strlen(s));
-		write(2, ": ", 2);
-		se = strerror(2);
-		write(2, se, ft_strlen(se));
-		write(2, "\n", 1);
-		return (1);
-	}
+		return (_error_jungyeok(s));
 	dup2(c->fd_in, 0);
+	close(c->fd_in);
 	return (0);
 }
 
@@ -64,7 +70,7 @@ int	open_fd(t_command *command, t_mini *c)
 			return (1);
 	}
 	else if (c->index != 0)
-		dup2(c->pipe[2 * c->index - 2], 0);
+		dup2(c->pipe[(c->index - 1) << 1], 0);
 	if (command[c->index].output)
 	{
 		if (_output(command[c->index].output, c))
@@ -76,7 +82,7 @@ int	open_fd(t_command *command, t_mini *c)
 			return (1);
 	}
 	else if (c->index != c->ncmd - 1)
-		dup2(c->pipe[2 * c->index + 1], 1);
+		dup2(c->pipe[(c->index << 1) + 1], 1);
 	return (0);
 }
 

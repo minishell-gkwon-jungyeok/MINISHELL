@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 17:27:52 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:51:03 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	_exe(t_command *command, t_mini *c)
 	if (command->built_in)
 		exe_builtin1(command[c->index].program[0], command, c);
 	else
+	{
 		if (execve(c->cmd, command[c->index].program, c->env) < 0)
 			exit(1);
+	}
 }
