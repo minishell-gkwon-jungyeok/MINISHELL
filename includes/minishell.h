@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/29 22:05:37 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/30 16:52:18 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ void	set_signal_handlers(void);
 
 char	*_pat(char **env);
 void	_(t_command **command, int ncmd, t_mini *c);
-void	_jungyeok(t_command **command, char **envp);
+int		_jungyeok(t_command *command, char **envp, int npipe);
 
 #endif
