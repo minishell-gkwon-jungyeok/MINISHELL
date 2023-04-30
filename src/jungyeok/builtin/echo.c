@@ -6,17 +6,18 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:34:07 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 21:08:05 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 16:10:38 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int	_echo(t_command *cmd)
+int	_echo(t_command *cmd, t_mini *c)
 {
 	int	i;
 	int	flag;
 
+	(void) c;
 	if (ft_strcmp(cmd->program[0], "echo"))
 		return (1);
 	flag = 1;

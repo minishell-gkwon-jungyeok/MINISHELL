@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 01:58:39 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:52:28 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	command_access(char **path, t_command *cmd, t_mini *c)
 		free(ret);
 		path++;
 	}
+	printf("bash: %s: command not found\n", cmd[c->index].program[0]);
 }
 
 void	_c_cmd(t_command *command, t_mini *c)
@@ -43,7 +44,7 @@ void	_c_cmd(t_command *command, t_mini *c)
 void    exe_builtin2(char *s, t_command *command, t_mini *c)
 {
 	if (!ft_strcmp(s, "echo"))
-		_echo(command + c->index);
+		_echo(command + c->index, c);
 	else if (!ft_strcmp(s, "cd"))
 		_cd(command + c->index);
 	else if (!ft_strcmp(s, "exit"))
@@ -69,5 +70,6 @@ void	_exe(t_command *command, t_mini *c)
 	if (command->built_in)
 		exe_builtin1(command[c->index].program[0], command, c);
 	else
-		execve(c->cmd, command[c->index].program, c->env);
+		if (execve(c->cmd, command[c->index].program, c->env) < 0)
+			exit(1);
 }

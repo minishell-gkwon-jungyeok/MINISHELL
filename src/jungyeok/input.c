@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 04:57:47 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 13:41:36 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:51:57 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,27 @@ int	open_fd(t_command *command, t_mini *c)
 	else if (c->index != c->ncmd - 1)
 		dup2(c->pipe[2 * c->index + 1], 1);
 	return (0);
+}
+
+void	fclose_pipe(t_mini *c, int index, int npip)
+{
+	int	save[2];
+	int	i;
+
+	save[0] = -1;
+	save[1] = -1;
+	if (index)
+		save[0] = index - 1;
+	if (index != npip)
+		save[1] = index;
+	i = 0;
+	while (i < npip)
+	{
+		if (i != save[0] && i != save[1])
+		{
+			close(c->pipe[i << 1]);
+			close(c->pipe[(i << 1) + 1]);
+		}
+		i++;
+	}
 }

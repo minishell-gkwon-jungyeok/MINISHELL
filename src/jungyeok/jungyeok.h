@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 18:06:55 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:35:14 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		_jungyeok(t_command *command, char **envp, int npipe);
 int		_heredoc(char *s, t_mini *c);
 int		_input(char *s, t_mini *c);
 int		open_fd(t_command *command, t_mini *c);
+void	fclose_pipe(t_mini *c, int index, int npip);
 
 /* output.c */
 int		_output(char *s, t_mini *c);
@@ -51,7 +52,7 @@ int		ft_strcmp(char *s1, char *s2);
 
 	/* builtin */
 /* echo.c */
-int		_echo(t_command *cmd);
+int		_echo(t_command *cmd, t_mini *c);
 
 /* cd.c */
 int		_cd(t_command *cmd);
