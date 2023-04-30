@@ -1,9 +1,9 @@
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra -g -fsanitize=address -g -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -g -fsanitize=address
 LDFLAGS		=	-lreadline -L/opt/homebrew/opt/readline/lib 
 CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
 
-SRCS = 	src/main_jungyeok.c\
+SRCS = 	src/main.c\
 		src/ft_split.c\
 		src/minishell_utils.c\
 		src/basic1.c src/basic2.c\
@@ -13,7 +13,7 @@ SRCS = 	src/main_jungyeok.c\
 		src/parse_quote.c\
 		src/parse_util.c\
 		src/signal.c\
-		#src/jungyeok/jungyeok.c src/jungyeok/err.c\
+		src/jungyeok/jungyeok.c src/jungyeok/err.c\
 		src/jungyeok/input.c\
 		src/jungyeok/output.c\
 		src/jungyeok/pipe.c src/jungyeok/command.c\

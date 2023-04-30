@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 16:41:28 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/30 16:46:47 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}t_list
+}t_list;
 
 typedef struct s_command
 {
