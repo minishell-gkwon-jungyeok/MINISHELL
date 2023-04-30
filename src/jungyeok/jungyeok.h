@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 07:13:06 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:35:14 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,28 @@
 # include "../../includes/struct.h"
 
 /* jungyeok.c */
-int		_jungyeok(t_command **command, char **envp);
+int		_jungyeok(t_command *command, char **envp, int npipe);
 
 /* input.c */
-int		_err_hd(char *s);
 int		_heredoc(char *s, t_mini *c);
+int		_input(char *s, t_mini *c);
+int		open_fd(t_command *command, t_mini *c);
+void	fclose_pipe(t_mini *c, int index, int npip);
+
+/* output.c */
+int		_output(char *s, t_mini *c);
+int		_output_append(char *s, t_mini *c);
+void	close_fd(t_command *command, t_mini *c);
 
 /* pipe.c */
 int		close_pipe(t_mini *c, int opened);
 int		open_pipe(t_mini *c, int npipe);
+void	_dup2(int i, int j);
 
 /* command.c */
-int		command_access(char **path, t_command *cmd, t_mini *c);
+void	command_access(char **path, t_command *cmd, t_mini *c);
+void	_c_cmd(t_command *command, t_mini *c);
+void    _exe(t_command *command, t_mini *c);
 
 /* err.c */
 int		_err(char *s);
@@ -42,22 +52,22 @@ int		ft_strcmp(char *s1, char *s2);
 
 	/* builtin */
 /* echo.c */
-int		_echo(t_command *cmd, int fd);
+int		_echo(t_command *cmd, t_mini *c);
 
 /* cd.c */
-int		_cd(t_command *cmd, int fd);
+int		_cd(t_command *cmd);
 
 /* pwd.c */
-int		_pwd(int fd);
+int		_pwd(void);
 
 /* export.c */
-int		_export(t_command *cmd, char ***env, int fd);
+int		_export(t_command *cmd, char ***env);
 
 /* unset.c */
 int		_unset(t_command *cmd, char ***env);
 
 /* env.c */
-int		_env(char **env, int fd);
+int		_env(char **env);
 
 /* exit.c */
 void	__exit(t_command *cmd);

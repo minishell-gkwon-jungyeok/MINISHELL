@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:40:20 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 01:50:40 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:46:44 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ void	ft_putstr_fd(char *s, int fd){
 }
 */
 
-int	_pwd(int fd)
+int	_pwd(void)
 {
 	char	*pwd;
 
 	pwd = getcwd(0, 0);
-	ft_putstr_fd(pwd, fd);
-	write(fd, "\n", 1);
+	write(1, pwd, ft_strlen(pwd));
+	write(1, "\n", 1);
 	free(pwd);
 	return (0);
 }
 
 /*
 int	main(){
-	_pwd(1);
+	_pwd();
 }
 */
