@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 15:35:14 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:38:05 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_char_fd(char c, int fd);
 
 /* basic.c */
 int		ft_strcmp(char *s1, char *s2);
+char	*strjoin_jungyeok(char *s1, char *s2);
 
 	/* builtin */
 /* echo.c */

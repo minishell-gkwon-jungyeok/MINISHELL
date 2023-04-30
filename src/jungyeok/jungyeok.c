@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 16:17:05 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 22:49:51 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,20 @@ char	*find_path(char **env)
 	return (*env + 5);
 }
 
-
 int	_run(t_command *command, t_mini *c)
 {
 	if (!c->pid)
 	{
+		command[c->index].built_in = false;
+		fclose_pipe(c, c->index, c->ncmd - 1);
 		if (open_fd(command, c))
 			exit(1);
 		_c_cmd(command, c);
-		fclose_pipe(c, c->index, c->ncmd - 1);
 		close_pipe(c, c->ncmd - 1);
 		close_fd(command, c);
 		_exe(command, c);
 		free(c->cmd);
+		exit(0);
 	}
 	return (0);
 }
@@ -49,15 +50,15 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 	while (++c->index < ncmd)
 	{
 		c->pid = fork();
-		if (_run(command, c))
-			return (1);
+		if (c->pid == 0)
+			_run(command, c);
 	}
 	if (c->pipe)
 	{
 		close_pipe(c, c->ncmd - 1);
 		close_fd(command, c);
 	}
-	waitpid(-1, NULL, 0);
+	while (waitpid(-1, NULL, 0) > 0);
 	return (0);
 }
 
