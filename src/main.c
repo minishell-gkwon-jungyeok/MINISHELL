@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/30 16:39:31 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/30 17:44:28 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 
 	i = -1;
 	nodes = ft_split(line, '|');
-	is_valid_quote(nodes);
+	//is_valid_quote(nodes);
 	if (!nodes[0])
 	{
 		free(nodes);
@@ -45,7 +45,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	return (0);
 }
 
-int	display(t_sys_info *info, char ***envp)
+int	display(t_sys_info *info, char **envp)
 {
 	t_command	**cmd;
 	char		*line;
@@ -67,7 +67,7 @@ int	display(t_sys_info *info, char ***envp)
 				cmd[i++] = ft_calloc(sizeof(t_command), 1);
 			tokenize(line, cmd, info);
 			add_history(line);
-			//_jungyeok(&command, envp);
+			//_jungyeok(*cmd, envp, info->cmd_cnt - 1);
 			ft_free_command(cmd, info);
 		}
 	}
@@ -80,7 +80,7 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 1)
 		return (1);
-	display(&info, &envp);
+	display(&info, envp);
 	(void)av;
 	return (0);
 }

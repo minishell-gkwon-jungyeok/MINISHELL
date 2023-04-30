@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/29 22:05:37 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/30 17:16:32 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ char	*ft_strdup(char *s);
 void	ft_free_command(t_command **cmd, t_sys_info *info);
 void	ft_exit(int return_val);
 char	**ft_split(char const *s, char c);
-void	init_cmd(char *node, t_command *cmd);
+int		init_cmd(char *node, t_command *cmd);
 void	builtin_check(t_command **cmd, t_sys_info *info);
 int		tokenize(char *line, t_command **cmd, t_sys_info *info);
-int		display(t_sys_info *info, char ***envp);
+int		display(t_sys_info *info, char **envp);
 int		parse_set_quotes(char line, int quotes);
 int		ft_line_quote(char *line);
 void	handle_signal(int signum);
@@ -59,6 +59,6 @@ void	set_signal_handlers(void);
 
 char	*_pat(char **env);
 void	_(t_command **command, int ncmd, t_mini *c);
-void	_jungyeok(t_command **command, char **envp);
+int		_jungyeok(t_command *command, char **envp, int npipe);
 
 #endif

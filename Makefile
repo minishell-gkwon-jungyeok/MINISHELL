@@ -5,8 +5,7 @@ CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
 
 SRCS = 	src/main.c\
 		src/ft_split.c\
-		src/minishell_utils.c\
-		src/basic1.c src/basic2.c\
+		src/basic1.c\
 		src/basic2.c\
 		src/ft_free.c\
 		src/init_cmd.c\
@@ -33,10 +32,10 @@ NAME	=	minishell
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
 
 %.o : %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 # colors
 

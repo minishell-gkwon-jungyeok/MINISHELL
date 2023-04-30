@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 16:46:47 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:45:00 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ typedef struct s_list
 typedef struct s_command
 {
 	bool	built_in;	//echo, cd, pwd, export, unset, env, exit
-	t_list	*program;
-	//char	*input;
-	//char	*output;
-	//char	*delimiter;
-	//char	*output_append;
+	char	**program;
+	char	*input;
+	char	*output;
+	char	*delimiter;
+	char	*output_append;
 	char	**info;
 }t_command;
 
