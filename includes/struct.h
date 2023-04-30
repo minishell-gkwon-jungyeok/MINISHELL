@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 15:59:05 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/30 16:41:28 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,15 @@ typedef struct s_command
 
 typedef struct s_mini
 {
+	pid_t	pid;
+	char	**env;
 	char	**path;
+	char	*cmd;
 	int		ncmd;
-	int		pipe[2];
+	int		*pipe;
+	int		fd_in;
+	int		fd_out;
+	int		index;
 }t_mini;
 
 #endif

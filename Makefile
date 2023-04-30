@@ -1,12 +1,12 @@
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -g -fsanitize=address -g -fsanitize=address
 LDFLAGS		=	-lreadline -L/opt/homebrew/opt/readline/lib 
 CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
 
-SRCS = 	src/main.c\
+SRCS = 	src/main_jungyeok.c\
 		src/ft_split.c\
 		src/minishell_utils.c\
-		src/basic1.c\
+		src/basic1.c src/basic2.c\
 		src/basic2.c\
 		src/ft_free.c\
 		src/init_cmd.c\
@@ -14,7 +14,18 @@ SRCS = 	src/main.c\
 		src/parse_util.c\
 		src/signal.c\
 		#src/jungyeok/jungyeok.c src/jungyeok/err.c\
-		
+		src/jungyeok/input.c\
+		src/jungyeok/output.c\
+		src/jungyeok/pipe.c src/jungyeok/command.c\
+		src/jungyeok/basic.c\
+		src/jungyeok/builtin/cd.c\
+		src/jungyeok/builtin/echo.c\
+		src/jungyeok/builtin/env.c\
+		src/jungyeok/builtin/exit.c\
+		src/jungyeok/builtin/export.c\
+		src/jungyeok/builtin/pwd.c\
+		src/jungyeok/builtin/unset.c\
+
 OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	minishell
@@ -22,10 +33,10 @@ NAME	=	minishell
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 # colors
 

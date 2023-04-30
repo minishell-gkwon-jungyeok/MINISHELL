@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   basic2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/28 18:51:01 by edwin            ###   ########.fr       */
+/*   Updated: 2023/04/30 16:42:18 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/minishell.h"
 #include "../includes/minishell.h"
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -19,14 +20,15 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		j;
 
 	ret = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
+	ret = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		ret[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2[j])
+	while (s2 && s2[j])
 	{
 		ret[i + j] = s2[j];
 		j++;

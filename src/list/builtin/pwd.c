@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 00:20:19 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 14:14:59 by jungyeok         ###   ########.fr       */
+/*   Created: 2023/04/24 17:40:20 by jungyeok          #+#    #+#             */
+/*   Updated: 2023/04/27 17:46:44 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include "../../../includes/minishell.h"
 
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <sys/stat.h>
-# include <signal.h>
-# include <dirent.h>
-# include <curses.h>
-# include <term.h>
-# include <sys/ioctl.h>
-# include <string.h>
+/*
+#include <unistd.h>
+#include <stdlib.h>
 
-#endif
+int	ft_strlen(char *s){
+	int	i = 0;
+	if (s)
+		while(s[i])
+			i++;
+	return (i);
+}
+
+void	ft_putstr_fd(char *s, int fd){
+	write(fd, s, ft_strlen(s));
+}
+*/
+
+int	_pwd(void)
+{
+	char	*pwd;
+
+	pwd = getcwd(0, 0);
+	write(1, pwd, ft_strlen(pwd));
+	write(1, "\n", 1);
+	free(pwd);
+	return (0);
+}
+
+/*
+int	main(){
+	_pwd();
+}
+*/

@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   err.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 21:47:40 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/30 16:42:34 by gkwon            ###   ########.fr       */
+/*   Created: 2023/04/21 17:22:31 by jungyeok          #+#    #+#             */
+/*   Updated: 2023/04/21 17:33:33 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-int	ft_lstsize(t_list *lst)
+int	_err(char *s)
 {
-	int	cnt;
-
-	cnt = 0;
-	while (lst)
-	{
-		cnt++;
-		lst = lst->next;
-	}
-	return (cnt);
+	write(2, s, ft_strlen(s));
+	write(2, "\n", 1);
+	return (1);
 }

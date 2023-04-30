@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 21:47:40 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/30 16:42:34 by gkwon            ###   ########.fr       */
+/*   Created: 2023/04/24 15:51:05 by jungyeok          #+#    #+#             */
+/*   Updated: 2023/04/27 17:41:54 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/minishell.h"
 
-int	ft_lstsize(t_list *lst)
+int	_env(char **env)
 {
-	int	cnt;
+	int	i;
 
-	cnt = 0;
-	while (lst)
+	i = 0;
+	while (env[i])
 	{
-		cnt++;
-		lst = lst->next;
+		write(1, env[i], ft_strlen(env[i]));
+		write(1, "\n", 1);
+		i++;
 	}
-	return (cnt);
+	return (0);
 }
