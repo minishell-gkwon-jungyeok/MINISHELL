@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:34:07 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 16:10:38 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:15:35 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	_echo(t_command *cmd, t_mini *c)
 	flag = 1;
 	if (cmd->program[1] && ft_strncmp(cmd->program[1], "-n\0", 3))
 		flag = 0;
-	i = flag + 1; 
+	i = flag + 1;
 	while (cmd->program[i])
 	{
 		write(1, cmd->program[i], ft_strlen(cmd->program[i]));

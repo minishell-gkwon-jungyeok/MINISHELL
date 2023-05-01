@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 22:49:51 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:15:11 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ int	_run(t_command *command, t_mini *c)
 	return (0);
 }
 
-
 int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 {
-	c->index = -1;
-	while (envp[++c->index]);
+	int	wait;
+
+	c->index = 0;
+	while (envp[c->index])
+		c->index++;
 	c->env = ft_calloc(8, c->index + 1);
 	c->index = -1;
 	while (envp[++c->index])
@@ -58,7 +60,9 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 		close_pipe(c, c->ncmd - 1);
 		close_fd(command, c);
 	}
-	while (waitpid(-1, NULL, 0) > 0);
+	wait = 1;
+	while (wait > 0)
+		wait = waitpid(-1, NULL, 0);
 	return (0);
 }
 
