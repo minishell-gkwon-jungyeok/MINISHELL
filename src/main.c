@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 02:03:30 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 02:05:46 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int	display(t_sys_info *info, char **envp)
 					cmd[i].output_append = cmd[i].info[3];
 			}
 			_jungyeok(cmd, envp, info->cmd_cnt - 1);
-			(void)envp;
 			ft_free_command(&cmd, info);
 		}
 	}
