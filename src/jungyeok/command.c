@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 02:11:06 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:38:27 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	command_access(char **path, t_command *cmd, t_mini *c)
 		free(ret);
 		path++;
 	}
-	printf("bash: %s: command not found\n", cmd[c->index].program[0]);
+	write(2, "bash: ", 6);
+	write(2, cmd[c->index].program[0], ft_strlen(cmd[c->index].program[0]));
+	write(2, ": command not found\n", 20);
 }
 
 void	_c_cmd(t_command *command, t_mini *c)

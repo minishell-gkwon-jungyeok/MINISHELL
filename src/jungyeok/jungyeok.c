@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 03:02:54 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:40:29 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,15 @@ char	*find_path(char **env)
 
 int	_run(t_command *command, t_mini *c)
 {
-	if (!c->pid)
-	{
-		fclose_pipe(c, c->index, c->ncmd - 1);
-		if (open_fd(command, c))
-			exit(1);
-		_c_cmd(command, c);
-		close_pipe(c, c->ncmd - 1);
-		close_fd(command, c);
-		_exe(command, c);
-		free(c->cmd);
-		exit(0);
-	}
+	fclose_pipe(c, c->index, c->ncmd - 1);
+	if (open_fd(command, c))
+		exit(1);
+	_c_cmd(command, c);
+	close_pipe(c, c->ncmd - 1);
+	close_fd(command, c);
+	_exe(command, c);
+	free(c->cmd);
+	exit(0);
 	return (0);
 }
 
@@ -50,15 +47,18 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 	c->index = -1;
 	while (++c->index < ncmd)
 	{
+		if (command[c->index].built_in)
+		{
+			printf("----\n");
+			exe_builtin(command[c->index].program[0], command, c);
+			continue ;
+		}
 		c->pid = fork();
-		if (c->pid == 0)
+		if (!c->pid)
 			_run(command, c);
 	}
 	if (c->pipe)
-	{
 		close_pipe(c, c->ncmd - 1);
-		close_fd(command, c);
-	}
 	wait = 1;
 	while (wait > 0)
 		wait = waitpid(-1, NULL, 0);

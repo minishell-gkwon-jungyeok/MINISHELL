@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:16:53 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/27 17:45:34 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:47:36 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,9 @@ int	_export(t_command *cmd, char ***env)
 	{
 		if ('0' <= cmd->program[i][0] && cmd->program[i][0] <= '9')
 		{
-			write(1, "bash: export: `", 15);
-			write(1, cmd->program[i], ft_strlen(cmd->program[i]));
-			write(1, "': not a valid identifier\n", 26);
+			write(2, "bash: export: `", 15);
+			write(2, cmd->program[i], ft_strlen(cmd->program[i]));
+			write(2, "': not a valid identifier\n", 26);
 			continue ;
 		}
 		j = -1;

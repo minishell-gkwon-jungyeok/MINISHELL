@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 05:58:08 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 06:03:23 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 		init_cmd(nodes[i], *cmd + i);
 	builtin_check(*cmd, info);
 	j = 0;
-	i = -1;
+/*	i = -1;
 	while (++i < info->cmd_cnt)
 	{
 		j = -1;
@@ -43,7 +43,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 		printf("del is : %s\n", (*cmd + i)->info[2]);
 		printf("output_append is : %s\n", (*cmd + i)->info[3]);
 	}
-	free(nodes);
+*/	free(nodes);
 	return (0);
 }
 
@@ -79,8 +79,8 @@ int	display(t_sys_info *info, char **envp)
 				if (cmd[i].info[3])
 					cmd[i].output_append = cmd[i].info[3];
 			}
-			//_jungyeok(cmd, envp, info->cmd_cnt - 1);
-			(void)envp;
+			_jungyeok(cmd, envp, info->cmd_cnt - 1);
+			//(void)envp;
 			ft_free_command(&cmd, info);
 		}
 		else
