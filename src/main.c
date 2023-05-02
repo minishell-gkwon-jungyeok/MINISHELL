@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/02 23:26:12 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 03:06:34 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	}
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
-	builtin_check(cmd, info);
+	builtin_check(*cmd, info);
 	i = -1;
 	while (++i < info->cmd_cnt)
 	{
@@ -70,13 +70,13 @@ int	display(t_sys_info *info, char **envp)
 			i = -1;
 			while (++i < info->cmd_cnt)
 			{
-				if (cmd[i].info[0][0])
+				if (cmd[i].info[0])
 					cmd[i].input = cmd[i].info[0];
-				if (cmd[i].info[1][0])
+				if (cmd[i].info[1])
 					cmd[i].output = cmd[i].info[1];
-				if (cmd[i].info[2][0])
+				if (cmd[i].info[2])
 					cmd[i].delimiter = cmd[i].info[2];
-				if (cmd[i].info[3][0])
+				if (cmd[i].info[3])
 					cmd[i].output_append = cmd[i].info[3];
 			}
 			_jungyeok(cmd, envp, info->cmd_cnt - 1);

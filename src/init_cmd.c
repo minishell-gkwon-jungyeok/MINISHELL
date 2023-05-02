@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/02 23:24:56 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 03:06:12 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_cmd(char *node, t_command *cmd)
 	i = -1;
 	cmd->info = ft_calloc(sizeof(char *), 4);
 	while (++i < 4)
-		cmd->info[i] = ft_calloc(sizeof(char), 1);
+		cmd->info[i] = ft_calloc(sizeof(char *), 1);
 	i = 0;
 	while (i < 4)
 	{
@@ -66,7 +66,8 @@ void	init_cmd(char *node, t_command *cmd)
 		}
 		else
 		{
-			cmd->info[i][0] = 0;
+			if (!cmd->info[i][0])
+				cmd->info[i] = NULL;
 			i++;
 		}
 	}
@@ -74,7 +75,7 @@ void	init_cmd(char *node, t_command *cmd)
 	free(node);
 }
 
-void	builtin_check(t_command **cmd, t_sys_info *info)
+void	builtin_check(t_command *cmd, t_sys_info *info)
 {
 	const static char	*string_table[] = {"cd", "echo",
 		"env", "exit", "export", "pwd", "unset"};
@@ -84,7 +85,7 @@ void	builtin_check(t_command **cmd, t_sys_info *info)
 	i = 0;
 	while (i < info->cmd_cnt)
 	{
-		if (!(*cmd + i)->program)
+		if (!(cmd + i)->program)
 		{
 			i++;
 			continue ;
@@ -92,10 +93,10 @@ void	builtin_check(t_command **cmd, t_sys_info *info)
 		j = 0;
 		while (j < 7)
 		{
-			if (ft_strnstr((*cmd + i)->program[0], string_table[j], ft_strlen((*cmd + i)
+			if (ft_strnstr((cmd + i)->program[0], string_table[j], ft_strlen((cmd + i)
 						->program[0])) > -1)
-						if (ft_strlen((*cmd + i)->program[0]) == ft_strlen((char *)string_table[j]))
-							(*cmd + i)->built_in = true;
+						if (ft_strlen((cmd + i)->program[0]) == ft_strlen((char *)string_table[j]))
+							(cmd + i)->built_in = true;
 			j++;
 		}
 		i++;
