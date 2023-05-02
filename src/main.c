@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/02 22:56:13 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 02:02:06 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	int		i;
 	int		j;
 
-	i = -1;
 	nodes = ft_split(line, '|');
 	if (!is_ended_quote(nodes))
 		exit(1);
@@ -27,9 +26,12 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 		free(nodes);
 		return (0);
 	}
+	i = -1;
 	while (++i < info->cmd_cnt)
-		init_cmd(nodes[i], cmd[i]);
+		init_cmd(nodes[i], (*cmd + i));
 	builtin_check(cmd, info);
+	j = 0;
+/*
 	i = -1;
 	while (++i < info->cmd_cnt)
 	{
@@ -42,6 +44,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 		printf("del is : %s\n", cmd[i]->info[2]);
 		printf("output_append is : %s\n", cmd[i]->info[3]);
 	}
+*/
 	free(nodes);
 	return (0);
 }
