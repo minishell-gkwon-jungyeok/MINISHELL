@@ -3,6 +3,8 @@
 		"__node_handle": "c",
 		"jungyeok.h": "c",
 		"header.h": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"minishell.h": "c",
+		"struct.h": "c"
 	}
 }

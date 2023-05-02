@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/02 21:45:57 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:55:31 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 
 	i = -1;
 	nodes = ft_split(line, '|');
-	is_valid_quote(nodes);
+	if (!is_ended_quote(nodes))
+		exit(1);
 	if (!nodes[0])
 	{
 		free(nodes);

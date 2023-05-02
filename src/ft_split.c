@@ -6,11 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:49:10 by gkwon             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/05/02 00:00:08 by gkwon            ###   ########.fr       */
-=======
-/*   Updated: 2023/05/01 21:39:51 by gkwon            ###   ########.fr       */
->>>>>>> f0bc649702635766042567da720e409fdcb20a14
+/*   Updated: 2023/05/02 21:38:04 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +14,10 @@
 
 static int	total_len(char const *str, char c)
 {
-	int	i;
-	int	count;
-	char quote;
-	int was_in;
+	int		i;
+	int		count;
+	char	quote;
+	int		was_in;
 
 	was_in = 0;
 	count = 0;
@@ -68,8 +64,8 @@ static char	*get_word(char const *str, int len)
 
 static int	word_count(char const *str, char c)
 {
-	int	len;
-	char quote;
+	int		len;
+	char	quote;
 
 	len = 0;
 	while (str[len])

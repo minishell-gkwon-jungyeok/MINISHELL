@@ -6,13 +6,13 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/01 22:52:34 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/02 21:59:10 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	init_cmd(char *node, t_command *cmd)
+void	init_cmd(char *node, t_command *cmd)
 {
 	const static char	*string_table[] = {"<", ">", "<<", ">>"};
 	int					i;
@@ -23,10 +23,7 @@ int	init_cmd(char *node, t_command *cmd)
 	char				*ret;
 
 	if (!node)
-	{
-		//ft_heardoc();
-		return (0);
-	}
+		exit(1);
 	i = -1;
 	cmd->info = ft_calloc(sizeof(char *), 4);
 	while (++i < 4)
@@ -72,8 +69,6 @@ int	init_cmd(char *node, t_command *cmd)
 	}
 	cmd->program = ft_split(node, ' ');
 	free(node);
-	//return (is_valid_quote(cmd->program));
-	return (0);
 }
 
 void	builtin_check(t_command **cmd, t_sys_info *info)

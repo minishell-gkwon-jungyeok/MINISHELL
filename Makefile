@@ -1,7 +1,7 @@
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra -g -fsanitize=address
-LDFLAGS		=	-lreadline -L/opt/homebrew/opt/readline/lib 
-CPPFLAGS	=	-I/opt/homebrew/opt/readline/include
+CFLAGS		=	-Wall -Werror -Wextra #-g -fsanitize=address
+LDFLAGS		=	-lreadline -L${HOME}/.brew/opt/readline/lib/
+CPPFLAGS	=	-I${HOME}/.brew/opt/readline/include/
 
 SRCS = 	src/main.c\
 		src/ft_split.c\

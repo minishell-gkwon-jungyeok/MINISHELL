@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/04/30 16:54:20 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/02 22:07:42 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_set_quotes(char line, int quotes)
 
 int	ft_line_quote(char *line)
 {
-	int at;
+	int	at;
 	int	quotes;
 
 	at = 0;
@@ -89,3 +89,38 @@ int	is_valid_quote(char **cmd)
 	return (1);
 }
 // 2 -> no quotes, 1 -> valid quotes, 0 -> invalid qutoes
+
+int	is_ended_quote(char **nodes)
+{
+	(void) nodes;
+	//int	i;
+	//int	j;
+	//int len;
+
+	//i = 0;
+	//while (nodes[i])
+	//{
+		//j = 0;
+		//while (nodes[i][j])
+		//{
+		//	while (nodes[i][j] == '\"' || nodes[i][j] == '\'')
+		//	{
+		//		was_in = 1;
+		//		quote = str[i++];
+		//	}
+		//	while (str[i] != quote)
+		//		i++;
+		//	i++;
+		//	}
+		//	if (nodes[i][j] == '"')
+		//		q2++;
+		//	else if (nodes[i][j] == '\'')
+		//		q1++;
+		//	j++;
+		//}
+		//if (q1 % 2 == 1 || q2 % 2 == 1)
+		//	return (0);
+		//i++;
+	//}
+	return (1);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:56:01 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/01 10:15:51 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/02 22:25:30 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define INDEX	0
 #define SIGN	1
 #define ABS		2
-#define RETURN	3
+#define RETURNN	3
 
 /*
 #include <unistd.h>
@@ -55,8 +55,8 @@ int	_atoi256(char *s)
 		i[ABS] = i[ABS] * 10 + s[i[INDEX]] - '0';
 		i[INDEX]++;
 	}
-	i[RETURN] = i[SIGN] * i[ABS];
-	ret = (unsigned char)i[RETURN];
+	i[RETURNN] = i[SIGN] * i[ABS];
+	ret = (unsigned char)i[RETURNN];
 	return ((int)ret);
 }
 
