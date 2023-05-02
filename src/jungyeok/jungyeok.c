@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/02 23:09:19 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 03:02:54 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	_run(t_command *command, t_mini *c)
 {
 	if (!c->pid)
 	{
-		command[c->index].built_in = false;
 		fclose_pipe(c, c->index, c->ncmd - 1);
 		if (open_fd(command, c))
 			exit(1);
@@ -55,7 +54,6 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 		if (c->pid == 0)
 			_run(command, c);
 	}
-	
 	if (c->pipe)
 	{
 		close_pipe(c, c->ncmd - 1);
@@ -87,8 +85,8 @@ int	_jungyeok(t_command *command, char **envp, int npipe)
 
 	ft_memset(&c, 0, sizeof(t_mini));
 	c.ncmd = npipe + 1;
-	if (c.ncmd > 200)
-		return (_err("no more than 200 pipes"));
+	if (c.ncmd > 20)
+		return (_err("no more than 20 pipes"));
 	pat = find_path(envp);
 	c.path = ft_split(pat, ':');
 	if (open_pipe(&c, npipe))
