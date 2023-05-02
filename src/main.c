@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/02 21:42:23 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:45:57 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	return (0);
 }
 
-int	display(t_sys_info *info, char ***envp)
+int	display(t_sys_info *info, char **envp)
 {
 	t_command	**cmd;
 	char		*line;
@@ -80,7 +80,7 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 1)
 		return (1);
-	display(&info, &envp);
+	display(&info, envp);
 	(void)av;
 	return (0);
 }
