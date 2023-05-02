@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 05:21:27 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:40:29 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,14 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 	c->index = -1;
 	while (++c->index < ncmd)
 	{
+		if (command[c->index].built_in)
+		{
+			printf("----\n");
+			exe_builtin(command[c->index].program[0], command, c);
+			continue ;
+		}
 		c->pid = fork();
-		if (c->pid == 0)
+		if (!c->pid)
 			_run(command, c);
 	}
 	if (c->pipe)
