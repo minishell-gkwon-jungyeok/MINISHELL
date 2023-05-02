@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/04/30 16:39:31 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/02 21:39:32 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	display(t_sys_info *info, char ***envp)
 	char		*line;
 	int			i;
 
-	(void)envp;
 	set_signal_handlers();
 	while (1)
 	{
@@ -67,6 +66,7 @@ int	display(t_sys_info *info, char ***envp)
 				cmd[i++] = ft_calloc(sizeof(t_command), 1);
 			tokenize(line, cmd, info);
 			add_history(line);
+			(void) envp;
 			//_jungyeok(&command, envp);
 			ft_free_command(cmd, info);
 		}
