@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/02 22:47:21 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/02 23:24:56 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	builtin_check(t_command **cmd, t_sys_info *info)
 	i = 0;
 	while (i < info->cmd_cnt)
 	{
-		if (!cmd[i]->program)
+		if (!(*cmd + i)->program)
 		{
 			i++;
 			continue ;
@@ -92,10 +92,10 @@ void	builtin_check(t_command **cmd, t_sys_info *info)
 		j = 0;
 		while (j < 7)
 		{
-			if (ft_strnstr(cmd[i]->program[0], string_table[j], ft_strlen(cmd[i]
+			if (ft_strnstr((*cmd + i)->program[0], string_table[j], ft_strlen((*cmd + i)
 						->program[0])) > -1)
-						if (ft_strlen(cmd[i]->program[0]) == ft_strlen((char *)string_table[j]))
-							cmd[i]->built_in = true;
+						if (ft_strlen((*cmd + i)->program[0]) == ft_strlen((char *)string_table[j]))
+							(*cmd + i)->built_in = true;
 			j++;
 		}
 		i++;
