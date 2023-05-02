@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/03 03:12:18 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 04:09:11 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_cmd(char *node, t_command *cmd)
 	if (!node)
 		exit(1);
 	i = -1;
-	cmd->info = ft_calloc(sizeof(char *), 4);
+	cmd->info = ft_calloc(sizeof(char *), 5);
 	while (++i < 4)
 		cmd->info[i] = ft_calloc(sizeof(char *), 1);
 	i = 0;
@@ -49,7 +49,7 @@ void	init_cmd(char *node, t_command *cmd)
 			if (cmd->info[i][0])
 			{
 				ret = malloc(len + 2);
-				ret[len] = 0;
+				ret[len + 1] = '\0';
 				ret[0] = ' ';
 				ft_memmove(ret + 1, node + end, len);
 				cmd->info[i] = ft_strjoin(cmd->info[i], ret);
@@ -57,12 +57,17 @@ void	init_cmd(char *node, t_command *cmd)
 			else
 			{
 				cmd->info[i] = ft_calloc(len + 1, 1);
-				cmd->info[i][len] = 0;
 				ft_memmove(cmd->info[i], node + end, len);
 			}
-			tmp = ft_strlen(&node[len]);
-			ft_strlcpy(node + at, node + end + len, tmp);
-			node[at] = 0;
+			tmp = ft_strlen(&node[len + 1]);
+			//ft_strlcpy(node + at, node + end + len, tmp);
+			int num;
+			num =  end - at + len;
+			while (num)
+			{
+				node[at + num - 1] = ' ';
+				num--;
+			}
 		}
 		else
 		{

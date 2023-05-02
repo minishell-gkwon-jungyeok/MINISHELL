@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 01:48:49 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 04:08:08 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	ret = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
 	ret = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
 	while (s1 && s1[i])
