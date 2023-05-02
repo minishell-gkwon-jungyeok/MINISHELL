@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/03 02:15:26 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 02:55:25 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	init_cmd(char *node, t_command *cmd)
 		}
 		else
 		{
-			cmd->info[i][0] = 0;
+			cmd->info[i] = NULL;
 			i++;
 		}
 	}
