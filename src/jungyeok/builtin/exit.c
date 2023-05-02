@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:56:01 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 07:13:02 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:15:51 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ void	__exit(t_command *cmd)
 	if (cmd->program[2])
 	{
 		write(1, "bash: exit: too many arguments\n", 31);
-		//$? 했을 때 1이 나와야하는데 return으로 정상종료 시킨거라 0이 나옴
-		//글로벌 변수를 이용해서  $?를 해결하는 것에 대해 생각해봐야할듯
 		return ;
 	}
 	exit(_atoi256(cmd->program[1]));
