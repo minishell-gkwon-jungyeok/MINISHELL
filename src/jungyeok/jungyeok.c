@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jungyeok.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/02 21:46:09 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:09:19 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 		if (c->pid == 0)
 			_run(command, c);
 	}
+	
 	if (c->pipe)
 	{
 		close_pipe(c, c->ncmd - 1);

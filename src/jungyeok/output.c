@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 05:23:43 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/29 19:44:37 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:14:01 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,18 @@ int	_output_append(char *s, t_mini *c)
 
 void	close_fd(t_command *command, t_mini *c)
 {
-	if (command[c->index].delimiter)
-		close(c->fd_in);
-	else if (command[c->index].input)
-		close(c->fd_in);
-	if (command[c->index].output)
-		close(c->fd_out);
-	else if (command[c->index].output_append)
-		close(c->fd_out);
+	int	i;
+
+	i = -1;
+	while (++i < c->ncmd)
+	{
+		if (command[i].delimiter)
+			close(c->fd_in);
+		else if (command[i].input)
+			close(c->fd_in);
+		if (command[i].output)
+			close(c->fd_out);
+		else if (command[i].output_append)
+			close(c->fd_out);
+	}
 }
