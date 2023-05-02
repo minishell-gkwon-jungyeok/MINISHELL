@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 05:23:43 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/02 23:14:01 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 05:10:29 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	close_fd(t_command *command, t_mini *c)
 	i = -1;
 	while (++i < c->ncmd)
 	{
+		close(c->fd_in);
+		close(c->fd_out);
 		if (command[i].delimiter)
 			close(c->fd_in);
 		else if (command[i].input)

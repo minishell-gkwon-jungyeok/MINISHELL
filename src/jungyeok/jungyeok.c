@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 04:46:11 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:12:07 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 			_run(command, c);
 	}
 	if (c->pipe)
-	{
 		close_pipe(c, c->ncmd - 1);
-		close_fd(command, c);
-	}
 	wait = 1;
 	while (wait > 0)
 		wait = waitpid(-1, NULL, 0);
@@ -83,10 +80,6 @@ int	_jungyeok(t_command *command, char **envp, int npipe)
 	char	*pat;
 	t_mini	c;
 
-	printf("input = %s\n", command[0].input);
-	printf("ouput = %s\n", command[0].output);
-	printf("delim = %s\n", command[0].delimiter);
-	printf("oup_a = %s\n", command[0].output_append);
 	ft_memset(&c, 0, sizeof(t_mini));
 	c.ncmd = npipe + 1;
 	if (c.ncmd > 20)

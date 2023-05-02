@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 04:10:35 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 04:50:38 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	display(t_sys_info *info, char **envp)
 	int			i;
 
 	set_signal_handlers();
-	//while (1)
-	//{
+	while (1)
+	{
 		line = readline("bash-3.3$ ");
 		if (ft_strncmp(line, "\0", 1))
 		{
@@ -80,11 +80,11 @@ int	display(t_sys_info *info, char **envp)
 				if (cmd[i].info[3])
 					cmd[i].output_append = cmd[i].info[3];
 			}
-			//_jungyeok(cmd, envp, info->cmd_cnt - 1);
-			(void)envp;
+			_jungyeok(cmd, envp, info->cmd_cnt - 1);
+			//(void)envp;
 			ft_free_command(&cmd, info);
 		}
-	//}
+	}
 	return (0);
 }
 
