@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/04/30 15:37:27 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/30 16:54:20 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int	ft_line_quote(char *line)
 	return (0);
 }
 
-int check_quote(char **cmd)
-{
+//int check_quote(char **cmd)
+//{
 
-}
+//}
 
 int	is_valid_quote(char **cmd)
 {

@@ -6,11 +6,10 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 16:42:18 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/04/30 17:12:18 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
 #include "../includes/minishell.h"
 
 char	*ft_strjoin(char *s1, char *s2)

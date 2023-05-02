@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 16:50:43 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:41:59 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_command
 {
 	bool	built_in;
 	t_list	*program;
+	bool	built_in;	//echo, cd, pwd, export, unset, env, exit
+	char	**program;
 	char	*input;
 	char	*output;
 	char	*delimiter;

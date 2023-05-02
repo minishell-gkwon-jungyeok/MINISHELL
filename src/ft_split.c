@@ -6,7 +6,11 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:49:10 by gkwon             #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2023/05/02 00:00:08 by gkwon            ###   ########.fr       */
+=======
 /*   Updated: 2023/05/01 21:39:51 by gkwon            ###   ########.fr       */
+>>>>>>> f0bc649702635766042567da720e409fdcb20a14
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +20,27 @@ static int	total_len(char const *str, char c)
 {
 	int	i;
 	int	count;
-	int	single_open;
-	int	double_open;
+	char quote;
+	int was_in;
 
-	single_open = 0;
-	double_open = 0;
+	was_in = 0;
 	count = 0;
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '\"')
-			double_open++;
-		else if (str[i] == '\'')
-			single_open++;
+		while (str[i] == '\"' || str[i] == '\'')
+		{
+			was_in = 1;
+			quote = str[i++];
+			while (str[i] != quote)
+				i++;
+			i++;
+		}
+		if (was_in)
+			count++;
 		while (str[i] && str[i] == c)
 			i++;
-		if (str[i] && !(single_open % 2) && !(double_open % 2))
+		if (str[i])
 			count++;
 		while (str[i] && str[i] != c)
 			i++;
@@ -60,10 +69,22 @@ static char	*get_word(char const *str, int len)
 static int	word_count(char const *str, char c)
 {
 	int	len;
+	char quote;
 
 	len = 0;
-	while (str[len] != c && str[len])
-		len++;
+	while (str[len])
+	{
+		if (str[len] == '\"' || str[len] == '\'')
+		{
+			quote = str[len++];
+			while (str[len] != quote)
+				len++;
+		}
+		if (str[len] != c)
+			len++;
+		else
+			break ;
+	}
 	return (len);
 }
 
