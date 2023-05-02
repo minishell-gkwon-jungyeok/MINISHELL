@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/02 21:59:10 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/02 22:47:21 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void	init_cmd(char *node, t_command *cmd)
 			node[at] = 0;
 		}
 		else
+		{
+			cmd->info[i][0] = 0;
 			i++;
+		}
 	}
 	cmd->program = ft_split(node, ' ');
 	free(node);

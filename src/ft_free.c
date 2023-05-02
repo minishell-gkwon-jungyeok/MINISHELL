@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:58:35 by edwin             #+#    #+#             */
-/*   Updated: 2023/04/29 22:04:57 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/02 22:42:35 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_free_command(t_command **cmd, t_sys_info *info)
 		free(cmd[i]->info);
 		i++;
 	}
-	free(cmd);
+	free(*cmd);
 }
 
 void	ft_exit(int return_val)
