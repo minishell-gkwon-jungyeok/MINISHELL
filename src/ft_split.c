@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:49:10 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/02 21:38:04 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 05:50:38 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	**ft_split(char const *s, char c)
 	ret = (char **)malloc(sizeof(char *) * (t_len + 1));
 	if (!ret)
 		return (0);
-	ret[t_len] = 0;
+	ret[t_len] = NULL;
 	while (*s && i < t_len)
 	{
 		while (*s && *s == c)

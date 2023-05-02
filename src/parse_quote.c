@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/02 22:07:42 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 06:01:40 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,35 +92,32 @@ int	is_valid_quote(char **cmd)
 
 int	is_ended_quote(char **nodes)
 {
-	(void) nodes;
-	//int	i;
-	//int	j;
-	//int len;
+	int	i;
+	int	j;
+	char quote;
 
-	//i = 0;
-	//while (nodes[i])
-	//{
-		//j = 0;
-		//while (nodes[i][j])
-		//{
-		//	while (nodes[i][j] == '\"' || nodes[i][j] == '\'')
-		//	{
-		//		was_in = 1;
-		//		quote = str[i++];
-		//	}
-		//	while (str[i] != quote)
-		//		i++;
-		//	i++;
-		//	}
-		//	if (nodes[i][j] == '"')
-		//		q2++;
-		//	else if (nodes[i][j] == '\'')
-		//		q1++;
-		//	j++;
-		//}
-		//if (q1 % 2 == 1 || q2 % 2 == 1)
-		//	return (0);
-		//i++;
-	//}
+	i = 0;
+	while (!strcmp(nodes[i], ""))
+	{
+		j = 0;
+		while (nodes[i][j])
+		{
+			if (nodes[i][j] == '\"' || nodes[i][j] == '\'')
+			{
+				while (nodes[i][j] == '\"' || nodes[i][j] == '\'')
+				{
+					quote = nodes[i][j++];
+					if (!nodes[i][j])
+						return (0);
+					while (nodes[i][j++] != quote)
+						if (!nodes[i][j])
+							return (0);
+				}
+			}
+			else
+				j++;
+		}
+		i++;
+	}
 	return (1);
 }

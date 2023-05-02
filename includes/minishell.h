@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 01:51:20 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 05:59:40 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		ft_line_quote(char *line);
 void	handle_signal(int signum);
 void	set_signal_handlers(void);
 int		is_ended_quote(char **nodes);
+void	terminal(int signum);
 
 /* ===============../src/jungyeok=============== */
 

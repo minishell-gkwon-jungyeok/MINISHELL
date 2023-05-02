@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 04:10:35 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 05:58:08 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	int		j;
 
 	nodes = ft_split(line, '|');
-	if (!is_ended_quote(nodes))
+	if (!is_ended_quote(&nodes))
 		exit(1);
 	if (!nodes[0])
 	{
@@ -53,9 +53,8 @@ int	display(t_sys_info *info, char **envp)
 	char		*line;
 	int			i;
 
-	set_signal_handlers();
-	//while (1)
-	//{
+	while (1)
+	{
 		line = readline("bash-3.3$ ");
 		if (ft_strncmp(line, "\0", 1))
 		{
@@ -84,7 +83,9 @@ int	display(t_sys_info *info, char **envp)
 			(void)envp;
 			ft_free_command(&cmd, info);
 		}
-	//}
+		else
+			exit(0);
+	}
 	return (0);
 }
 
@@ -123,6 +124,7 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 1)
 		return (1);
+	set_signal_handlers();
 	display(&info, envp);
 	(void)av;
 	return (0);

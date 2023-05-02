@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/03 04:09:11 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 04:32:04 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,8 @@ void	init_cmd(char *node, t_command *cmd)
 				ft_memmove(cmd->info[i], node + end, len);
 			}
 			tmp = ft_strlen(&node[len + 1]);
-			//ft_strlcpy(node + at, node + end + len, tmp);
-			int num;
-			num =  end - at + len;
-			while (num)
-			{
-				node[at + num - 1] = ' ';
-				num--;
-			}
+			while (end - at + len)
+				node[end + len-- - 1] = ' ';
 		}
 		else
 		{
