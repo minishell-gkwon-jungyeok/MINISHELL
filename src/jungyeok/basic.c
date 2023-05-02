@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:51:55 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 17:27:40 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:45:38 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*strjoin_jungyeok(char *s1, char *s2)
 		i++;
 	}
 	j = 0;
-	while (s2 && s2[i])
+	while (s2 && s2[j])
 	{
 		ret[i + j] = s2[j];
 		j++;

@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 16:17:05 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:15:11 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,31 @@ char	*find_path(char **env)
 	return (*env + 5);
 }
 
-
 int	_run(t_command *command, t_mini *c)
 {
 	if (!c->pid)
 	{
+		command[c->index].built_in = false;
+		fclose_pipe(c, c->index, c->ncmd - 1);
 		if (open_fd(command, c))
 			exit(1);
 		_c_cmd(command, c);
-		fclose_pipe(c, c->index, c->ncmd - 1);
 		close_pipe(c, c->ncmd - 1);
 		close_fd(command, c);
 		_exe(command, c);
 		free(c->cmd);
+		exit(0);
 	}
 	return (0);
 }
 
-
 int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 {
-	c->index = -1;
-	while (envp[++c->index]);
+	int	wait;
+
+	c->index = 0;
+	while (envp[c->index])
+		c->index++;
 	c->env = ft_calloc(8, c->index + 1);
 	c->index = -1;
 	while (envp[++c->index])
@@ -49,15 +52,17 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
 	while (++c->index < ncmd)
 	{
 		c->pid = fork();
-		if (_run(command, c))
-			return (1);
+		if (c->pid == 0)
+			_run(command, c);
 	}
 	if (c->pipe)
 	{
 		close_pipe(c, c->ncmd - 1);
 		close_fd(command, c);
 	}
-	waitpid(-1, NULL, 0);
+	wait = 1;
+	while (wait > 0)
+		wait = waitpid(-1, NULL, 0);
 	return (0);
 }
 
