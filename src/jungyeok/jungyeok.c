@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 05:40:29 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 06:21:45 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,15 @@ int	_run(t_command *command, t_mini *c)
 	return (0);
 }
 
-int	_run_cmd(t_command *command, int ncmd, t_mini *c, char **envp)
+int	_run_cmd(t_command *command, int ncmd, t_mini *c)
 {
 	int	wait;
 
-	c->index = 0;
-	while (envp[c->index])
-		c->index++;
-	c->env = ft_calloc(8, c->index + 1);
-	c->index = -1;
-	while (envp[++c->index])
-		c->env[c->index] = ft_strdup(envp[c->index]);
 	c->index = -1;
 	while (++c->index < ncmd)
 	{
 		if (command[c->index].built_in)
 		{
-			printf("----\n");
 			exe_builtin(command[c->index].program[0], command, c);
 			continue ;
 		}
@@ -71,28 +63,22 @@ void	free_jungyeok(t_mini *c)
 	while (c->path[++c->index])
 		free(c->path[c->index]);
 	free(c->path);
-	c->index = -1;
-	while (c->env[++c->index])
-		free(c->env[c->index]);
-	free(c->env);
 	free(c->pipe);
 }
 
-int	_jungyeok(t_command *command, char **envp, int npipe)
+int	_jungyeok(t_command *command, t_mini *c, int npipe)
 {
 	char	*pat;
-	t_mini	c;
 
-	ft_memset(&c, 0, sizeof(t_mini));
-	c.ncmd = npipe + 1;
-	if (c.ncmd > 20)
+	c->ncmd = npipe + 1;
+	if (c->ncmd > 20)
 		return (_err("no more than 20 pipes"));
-	pat = find_path(envp);
-	c.path = ft_split(pat, ':');
-	if (open_pipe(&c, npipe))
+	pat = find_path(c->env);
+	c->path = ft_split(pat, ':');
+	if (open_pipe(c, npipe))
 		return (1);
-	if (_run_cmd(command, c.ncmd, &c, envp))
+	if (_run_cmd(command, c->ncmd, c))
 		return (1);
-	free_jungyeok(&c);
+	free_jungyeok(c);
 	return (0);
 }

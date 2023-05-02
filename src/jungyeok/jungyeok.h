@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 05:34:27 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 06:18:43 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../../includes/struct.h"
 
 /* jungyeok.c */
-int		_jungyeok(t_command *command, char **envp, int npipe);
+int		_jungyeok(t_command *command, t_mini *c, int npipe);
 
 /* input.c */
 int		_heredoc(char *s, t_mini *c);

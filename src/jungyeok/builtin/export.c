@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:16:53 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 05:47:36 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 06:07:18 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ char	*ft_strdup(char *s){
 
 int	ft_strcmp(char *s1, char *s2){
 	return (strcmp(s1, s2));
+}
+
+int	ft_strlen(char *s){
+	return (strlen(s));
 }
 */
 

@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 05:59:40 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 06:22:08 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**ft_split(char const *s, char c);
 void		init_cmd(char *node, t_command *cmd);
 void	builtin_check(t_command *cmd, t_sys_info *info);
 int		tokenize(char *line, t_command **cmd, t_sys_info *info);
-int		display(t_sys_info *info, char **envp);
+int		display(t_sys_info *info, t_mini *c);
 int		parse_set_quotes(char line, int quotes);
 int		ft_line_quote(char *line);
 void	handle_signal(int signum);
@@ -59,6 +59,6 @@ void	terminal(int signum);
 
 /* ===============../src/jungyeok=============== */
 
-int		_jungyeok(t_command *command, char **envp, int npipe);
+int		_jungyeok(t_command *command, t_mini *c, int npipe);
 
 #endif

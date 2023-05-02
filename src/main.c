@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 06:03:23 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 06:21:59 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	int		j;
 
 	nodes = ft_split(line, '|');
-	if (!is_ended_quote(&nodes))
+	if (!is_ended_quote(nodes))
 		exit(1);
 	if (!nodes[0])
 	{
@@ -47,7 +47,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	return (0);
 }
 
-int	display(t_sys_info *info, char **envp)
+int	display(t_sys_info *info, t_mini *c)
 {
 	t_command	*cmd;
 	char		*line;
@@ -79,8 +79,7 @@ int	display(t_sys_info *info, char **envp)
 				if (cmd[i].info[3])
 					cmd[i].output_append = cmd[i].info[3];
 			}
-			_jungyeok(cmd, envp, info->cmd_cnt - 1);
-			//(void)envp;
+			_jungyeok(cmd, c, info->cmd_cnt - 1);
 			ft_free_command(&cmd, info);
 		}
 		else
@@ -121,11 +120,24 @@ int	display(t_sys_info *info, char **envp)
 int	main(int ac, char **av, char **envp)
 {
 	t_sys_info	info;
+	t_mini		c;
 
 	if (ac != 1)
 		return (1);
+	ft_memset(&c, 0, sizeof(t_mini));
+	c.index = 0;
+	while (envp[c.index])
+		c.index++;
+	c.env = ft_calloc(8, c.index + 1);
+	c.index = -1;
+	while (envp[++c.index])
+		c.env[c.index] = ft_strdup(envp[c.index]);
 	set_signal_handlers();
-	display(&info, envp);
+	display(&info, &c);
 	(void)av;
+	c.index = -1;
+	while (c.env[++c.index])
+		free(c.env[c.index]);
+	free(c.env);
 	return (0);
 }
