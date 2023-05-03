@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 06:13:30 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:43:06 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 
 typedef struct s_sys_info
 {
-	int	cmd_cnt;
+	void	*gkwon;
+	void	*jungyeok;
+	void	*minishell;
+	void	*plese_give_us_pass;
+	int		cmd_cnt;
 	//so on..
 }t_sys_info;
 
@@ -49,6 +53,7 @@ typedef struct s_mini
 	int		fd_in;
 	int		fd_out;
 	int		index;
+	int		hered;
 }t_mini;
 
 #endif

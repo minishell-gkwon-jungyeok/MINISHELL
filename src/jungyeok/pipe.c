@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:33:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/30 22:09:23 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:56:53 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,4 @@ int	open_pipe(t_mini *c, int npipe)
 		i++;
 	}
 	return (0);
-}
-
-void	_dup2(int i, int j)
-{
-	dup2(i, 0);
-	dup2(j, 1);
 }

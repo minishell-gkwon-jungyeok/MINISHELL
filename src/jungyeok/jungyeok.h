@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 06:18:43 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:56:35 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	close_fd(t_command *command, t_mini *c);
 /* pipe.c */
 int		close_pipe(t_mini *c, int opened);
 int		open_pipe(t_mini *c, int npipe);
-void	_dup2(int i, int j);
 
 /* command.c */
 void	command_access(char **path, t_command *cmd, t_mini *c);
@@ -43,10 +42,6 @@ void    _exe(t_command *command, t_mini *c);
 
 /* err.c */
 int		_err(char *s);
-
-/* ft_fd.c */
-void	ft_putstr_fd(char *s, int fd);
-void	ft_char_fd(char c, int fd);
 
 /* basic.c */
 int		ft_strcmp(char *s1, char *s2);

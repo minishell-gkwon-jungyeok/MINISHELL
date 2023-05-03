@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 04:57:47 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 05:10:05 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:36:26 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	_heredoc(char *s, t_mini *c)
 {
 	char	*line;
 
+	c->hered = 1;
 	c->fd_in = open(".heredoc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (c->fd_in < 0)
 		return (_error_jungyeok(s));
