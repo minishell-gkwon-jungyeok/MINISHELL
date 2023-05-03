@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:56:01 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/02 22:25:30 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/03 13:31:49 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,30 @@ bool	_alpha(char *s)
 	return (false);
 }
 
-void	__exit(t_command *cmd)
+void	__exit(t_command *cmd, t_mini *c)
 {
 	write(1, "exit\n", 5);
 	if (!cmd->program[1])
+	{
+		c->dollar = 0;
 		exit(0);
+	}
 	if (_alpha(cmd->program[1]))
 	{
-		write(1, "bash: exit: ", 12);
-		write(1, cmd->program[1], ft_strlen(cmd->program[1]));
-		write(1, ": numeric argument required\n", 28);
+		write(2, "bash: exit: ", 12);
+		write(2, cmd->program[1], ft_strlen(cmd->program[1]));
+		write(2, ": numeric argument required\n", 28);
+		c->dollar = 255;
 		exit(255);
 	}
 	if (cmd->program[2])
 	{
-		write(1, "bash: exit: too many arguments\n", 31);
+		c->dollar = 1;
+		write(2, "bash: exit: too many arguments\n", 31);
 		return ;
 	}
-	exit(_atoi256(cmd->program[1]));
+	c->dollar = _atoi256(cmd->program[1]);
+	exit(c->dollar);
 }
 
 /*

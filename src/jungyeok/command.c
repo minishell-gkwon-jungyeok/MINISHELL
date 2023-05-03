@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 12:48:38 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:30:29 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	exe_builtin(char *s, t_command *command, t_mini *c)
 	else if (!ft_strcmp(s, "cd"))
 		_cd(command + c->index);
 	else if (!ft_strcmp(s, "exit"))
-		__exit(command + c->index);
+		__exit(command + c->index, c);
 }
 
 void	_exe(t_command *command, t_mini *c)

@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 12:43:06 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:29:45 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_mini
 	int		fd_in;
 	int		fd_out;
 	int		index;
+	int		dollar;
 	int		hered;
 }t_mini;
 

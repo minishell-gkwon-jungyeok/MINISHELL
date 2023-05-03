@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 12:33:34 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:34:02 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	display(t_sys_info *info, t_mini *c)
 		line = readline("bash-3.3$ ");
 		if (ft_strncmp(line, "\0", 1))
 		{
-			if (!ft_strncmp(line, "exit", 4))
-				ft_exit(0);
+//			if (!ft_strncmp(line, "exit", 4))
+//				ft_exit(0);
 			info->cmd_cnt = pipe_cnt(line) + 1;
 			cmd = ft_calloc(sizeof(t_command), info->cmd_cnt);
 			i = -1;

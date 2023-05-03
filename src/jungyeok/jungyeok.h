@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 12:56:35 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:30:04 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int		_unset(t_command *cmd, char ***env);
 int		_env(char **env);
 
 /* exit.c */
-void	__exit(t_command *cmd);
+void	__exit(t_command *cmd, t_mini *c);
 
 #endif
