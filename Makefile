@@ -15,7 +15,9 @@ SRCS = 	src/main.c\
 		src/jungyeok/jungyeok.c src/jungyeok/err.c\
 		src/jungyeok/input.c\
 		src/jungyeok/output.c\
-		src/jungyeok/pipe.c src/jungyeok/command.c\
+		src/jungyeok/pipe.c\
+		src/jungyeok/command.c\
+		src/jungyeok/_cmd_env.c\
 		src/jungyeok/basic.c\
 		src/jungyeok/builtin/cd.c\
 		src/jungyeok/builtin/echo.c\
@@ -33,8 +35,11 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
+	@echo "${YELLOW}All files are compiled !!${DEF_COLOR}"
+	@echo "✅ ${GREEN}Minishell executable file made !${DEF_COLOR}"
 
 %.o : %.c
+	@echo "${GRAY}compiling $<...${DEF_COLOR}"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 # colors

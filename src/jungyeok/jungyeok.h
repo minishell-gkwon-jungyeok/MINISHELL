@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 13:30:04 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:43:28 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ int		_err(char *s);
 /* basic.c */
 int		ft_strcmp(char *s1, char *s2);
 char	*strjoin_jungyeok(char *s1, char *s2);
+
+/* _cmd_env.c */
+void	_cmd_env(t_command *command, char **env, t_mini *c);
 
 	/* builtin */
 /* echo.c */
