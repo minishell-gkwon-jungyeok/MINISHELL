@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 05:23:43 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 05:17:27 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:59:14 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 
 int	_output(char *s, t_mini *c)
 {
+	char	*se;
+
 	c->fd_out = open(s, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (c->fd_out < 0)
 	{
 		write(2, "bash: ", 6);
 		write(2, s, ft_strlen(s));
-		write(2, ": Permission denied\n", 20);
+		write(2, ": ", 2);
+		se = strerror(errno);
+		write(2, se, ft_strlen(se));
+		write(2, "\n", 1);
 		return (1);
 	}
 	dup2(c->fd_out, 1);
