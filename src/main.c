@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 19:25:07 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/04 22:10:00 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	i = -1;
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
-	doller_parse_with_del_quot(*cmd, info);
+	//doller_parse_with_del_quot(*cmd, info);
 	builtin_check(*cmd, info);
 	j = 0;
 	// i = -1;
@@ -44,6 +44,31 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	// 	printf("del is : %s\n", (*cmd + i)->info[2]);
 	// 	printf("output_append is : %s\n", (*cmd + i)->info[3]);
 	// }
+	i = -1;
+	while (++i < info->cmd_cnt)
+	{
+		if ((*cmd)[i].info[0])
+			(*cmd)[i].input = (*cmd)[i].info[0];
+		if ((*cmd)[i].info[1])
+			(*cmd)[i].output = (*cmd)[i].info[1];
+		if ((*cmd)[i].info[2])
+			(*cmd)[i].delimiter = (*cmd)[i].info[2];
+		if ((*cmd)[i].info[3])
+			(*cmd)[i].output_append = (*cmd)[i].info[3];
+	}
+	i = -1;
+	while (++i < info->cmd_cnt)
+	{
+		j = -1;
+		while ((*cmd + i)->program[++j])
+			printf("program is : %s\n", (*cmd + i)->program[j]);
+		printf("is builtin : %d\n", (*cmd + i)->built_in);
+		printf("input is : %s\n", (*cmd + i)->info[0]);
+		printf("output is : %s\n", (*cmd + i)->info[1]);
+		printf("del is : %s\n", (*cmd + i)->info[2]);
+		printf("output_append is : %s\n", (*cmd + i)->info[3]);
+	}
+>>>>>>> 30b14892163afd871c03f94f2d4b9fef657c9a7f
 	free(nodes);
 	return (0);
 }
@@ -57,8 +82,7 @@ int	display(t_sys_info *info, t_mini *c)
 	line = NULL;
 	while (1)
 	{
-		//ft_memset(line, 0, ft_strlen(line));
-		line = readline("🚨🚨🚨🚨🚨🚨애애애애애앵‼️‼️‼️‼️‼️‼️🚨🚨🚨🚨🚨🚨📢📢📢📢📢📢📢긴급상황‼️‼️‼️긴급상황‼️‼️‼️‼️‼️📢📢📢📢📢📢📢🔊🔊🔊🔊🔊🔊‼️‼️‼️🔊🔊🔊🔊🔊🔊🔊🔊🔊🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🛎🛎🛎🛎🛎🛎🛎모두주목해주세요땡땡땡땡땡🛎🛎🛎🛎🛎🎤🎤🎤🎤아아-마이크테스트-!마이크테스트-!🎤🎤🎤🎤🎙🎙🎙🎙🎙마이크테스트— 들린다면 응답하라—-🎙🎙🎙🎙🎙📣📣📣📣📣📣📣 ");
+		line = readline("jungkwon$ ");
 		if (!line)
 			break ;
 		if (*line != '\0')
@@ -70,18 +94,6 @@ int	display(t_sys_info *info, t_mini *c)
 			while (++i < info->cmd_cnt)
 				ft_memset(cmd + i, 0, sizeof(t_command));
 			tokenize(line, &cmd, info);
-			i = -1;
-			while (++i < info->cmd_cnt)
-			{
-				if (cmd[i].info[0])
-					cmd[i].input = cmd[i].info[0];
-				if (cmd[i].info[1])
-					cmd[i].output = cmd[i].info[1];
-				if (cmd[i].info[2])
-					cmd[i].delimiter = cmd[i].info[2];
-				if (cmd[i].info[3])
-					cmd[i].output_append = cmd[i].info[3];
-			}
 			_jungyeok(cmd, c, info->cmd_cnt - 1);
 			ft_free_command(&cmd, info);
 		}
@@ -105,8 +117,8 @@ void	main_init(int argc, char *argv[])
 
 int	main(int ac, char **av, char **envp)
 {
-	t_sys_info	info;
-	t_mini		c;
+	t_sys_info		info;
+	t_mini			c;
 	struct termios	term;
 
 	tcgetattr(STDIN_FILENO, &term);
