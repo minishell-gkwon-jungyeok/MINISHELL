@@ -1,0 +1,448 @@
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 44855 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 44855 gkwon  txt    REG    1,9   162912             2325910 /Users/gkwon/Desktop/minishell/minishell
+minishell 44855 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 44855 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 44855 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 44855 gkwon    0u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44855 gkwon    1u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44855 gkwon    2u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44855 gkwon    3u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44855 gkwon    4u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44855 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 44855 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 44855 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 44861 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 44861 gkwon  txt    REG    1,9   162912             2325910 /Users/gkwon/Desktop/minishell/minishell
+minishell 44861 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 44861 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 44861 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 44861 gkwon    0u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44861 gkwon    1u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44861 gkwon    2u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44861 gkwon    3u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44861 gkwon    4u   CHR   16,0  0t88829                 715 /dev/ttys000
+minishell 44861 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 44861 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 44861 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 44855 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 44855 gkwon  txt    REG    1,9   162912             2325910 /Users/gkwon/Desktop/minishell/minishell
+minishell 44855 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 44855 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 44855 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 44855 gkwon    0u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44855 gkwon    1u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44855 gkwon    2u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44855 gkwon    3u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44855 gkwon    4u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44855 gkwon    5u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44855 gkwon    6u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44855 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 44855 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 44855 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 44873 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 44873 gkwon  txt    REG    1,9   162912             2325910 /Users/gkwon/Desktop/minishell/minishell
+minishell 44873 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 44873 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 44873 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 44873 gkwon    0u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44873 gkwon    1u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44873 gkwon    2u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44873 gkwon    3u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44873 gkwon    4u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44873 gkwon    5u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44873 gkwon    6u   CHR   16,0  0t89060                 715 /dev/ttys000
+minishell 44873 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 44873 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 44873 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 45289 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 45289 gkwon  txt    REG    1,9   162912             2325947 /Users/gkwon/Desktop/minishell/minishell
+minishell 45289 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 45289 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 45289 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 45289 gkwon    0u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45289 gkwon    1u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45289 gkwon    2u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45289 gkwon    3u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45289 gkwon    4u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45289 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 45289 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 45289 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 45290 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 45290 gkwon  txt    REG    1,9   162912             2325947 /Users/gkwon/Desktop/minishell/minishell
+minishell 45290 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 45290 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 45290 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 45290 gkwon    0u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45290 gkwon    1u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45290 gkwon    2u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45290 gkwon    3u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45290 gkwon    4u   CHR   16,0  0t90853                 715 /dev/ttys000
+minishell 45290 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 45290 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 45290 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 45289 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 45289 gkwon  txt    REG    1,9   162912             2325947 /Users/gkwon/Desktop/minishell/minishell
+minishell 45289 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 45289 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 45289 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 45289 gkwon    0u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45289 gkwon    1u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45289 gkwon    2u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45289 gkwon    3u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45289 gkwon    4u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45289 gkwon    5u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45289 gkwon    6u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45289 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 45289 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 45289 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 45299 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 45299 gkwon  txt    REG    1,9   162912             2325947 /Users/gkwon/Desktop/minishell/minishell
+minishell 45299 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 45299 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 45299 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 45299 gkwon    0u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45299 gkwon    1u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45299 gkwon    2u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45299 gkwon    3u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45299 gkwon    4u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45299 gkwon    5u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45299 gkwon    6u   CHR   16,0  0t91077                 715 /dev/ttys000
+minishell 45299 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 45299 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 45299 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 45504 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 45504 gkwon  txt    REG    1,9   162912             2325969 /Users/gkwon/Desktop/minishell/minishell
+minishell 45504 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 45504 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 45504 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 45504 gkwon    0u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45504 gkwon    1u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45504 gkwon    2u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45504 gkwon    3u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45504 gkwon    4u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45504 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 45504 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 45504 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 45514 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 45514 gkwon  txt    REG    1,9   162912             2325969 /Users/gkwon/Desktop/minishell/minishell
+minishell 45514 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 45514 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 45514 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 45514 gkwon    0u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45514 gkwon    1u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45514 gkwon    2u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45514 gkwon    3u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45514 gkwon    4u   CHR   16,0  0t91928                 715 /dev/ttys000
+minishell 45514 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 45514 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 45514 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 46054 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 46054 gkwon  txt    REG    1,9   162912             2326330 /Users/gkwon/Desktop/minishell/minishell
+minishell 46054 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 46054 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 46054 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 46054 gkwon    0u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46054 gkwon    1u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46054 gkwon    2u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46054 gkwon    3u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46054 gkwon    4u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46054 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 46054 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 46054 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 46056 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 46056 gkwon  txt    REG    1,9   162912             2326330 /Users/gkwon/Desktop/minishell/minishell
+minishell 46056 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 46056 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 46056 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 46056 gkwon    0u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46056 gkwon    1u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46056 gkwon    2u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46056 gkwon    3u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46056 gkwon    4u   CHR   16,0  0t93388                 715 /dev/ttys000
+minishell 46056 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 46056 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 46056 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 46105 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 46105 gkwon  txt    REG    1,9   162912             2326330 /Users/gkwon/Desktop/minishell/minishell
+minishell 46105 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 46105 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 46105 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 46105 gkwon    0u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46105 gkwon    1u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46105 gkwon    2u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46105 gkwon    3u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46105 gkwon    4u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46105 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 46105 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 46105 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 46109 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 46109 gkwon  txt    REG    1,9   162912             2326330 /Users/gkwon/Desktop/minishell/minishell
+minishell 46109 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 46109 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 46109 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 46109 gkwon    0u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46109 gkwon    1u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46109 gkwon    2u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46109 gkwon    3u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46109 gkwon    4u   CHR   16,0 0t100039                 715 /dev/ttys000
+minishell 46109 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 46109 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 46109 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 46105 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 46105 gkwon  txt    REG    1,9   162912             2326330 /Users/gkwon/Desktop/minishell/minishell
+minishell 46105 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 46105 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 46105 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 46105 gkwon    0u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46105 gkwon    1u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46105 gkwon    2u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46105 gkwon    3u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46105 gkwon    4u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46105 gkwon    5u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46105 gkwon    6u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46105 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 46105 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 46105 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 46124 gkwon  cwd    DIR    1,9      272             2205696 /Users/gkwon/Desktop/minishell
+minishell 46124 gkwon  txt    REG    1,9   162912             2326330 /Users/gkwon/Desktop/minishell/minishell
+minishell 46124 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 46124 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 46124 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 46124 gkwon    0u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46124 gkwon    1u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46124 gkwon    2u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46124 gkwon    3u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46124 gkwon    4u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46124 gkwon    5u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46124 gkwon    6u   CHR   16,0 0t100290                 715 /dev/ttys000
+minishell 46124 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 46124 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 46124 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 47167 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 47167 gkwon  txt    REG    1,9   163712             2326493 /Users/gkwon/Desktop/minishell/minishell
+minishell 47167 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 47167 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 47167 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 47167 gkwon    0u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47167 gkwon    1u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47167 gkwon    2u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47167 gkwon    3u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47167 gkwon    4u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47167 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 47167 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 47167 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 47167 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 47167 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+minishell 47170 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 47170 gkwon  txt    REG    1,9   163712             2326493 /Users/gkwon/Desktop/minishell/minishell
+minishell 47170 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 47170 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 47170 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 47170 gkwon    0u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47170 gkwon    1u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47170 gkwon    2u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47170 gkwon    3u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47170 gkwon    4u   CHR   16,3   0t1325                 745 /dev/ttys003
+minishell 47170 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 47170 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 47170 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 47170 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 47170 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 47167 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 47167 gkwon  txt    REG    1,9   163712             2326493 /Users/gkwon/Desktop/minishell/minishell
+minishell 47167 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 47167 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 47167 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 47167 gkwon    0u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47167 gkwon    1u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47167 gkwon    2u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47167 gkwon    3u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47167 gkwon    4u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47167 gkwon    5u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47167 gkwon    6u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47167 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 47167 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 47167 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 47167 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 47167 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+minishell 47186 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 47186 gkwon  txt    REG    1,9   163712             2326493 /Users/gkwon/Desktop/minishell/minishell
+minishell 47186 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 47186 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 47186 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 47186 gkwon    0u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47186 gkwon    1u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47186 gkwon    2u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47186 gkwon    3u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47186 gkwon    4u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47186 gkwon    5u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47186 gkwon    6u   CHR   16,3   0t1490                 745 /dev/ttys003
+minishell 47186 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 47186 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 47186 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 47186 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 47186 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+COMMAND     PID  USER   FD   TYPE DEVICE   SIZE/OFF                NODE NAME
+minishell 49184 gkwon  cwd    DIR    1,9        306             2205696 /Users/gkwon/Desktop/minishell
+minishell 49184 gkwon  txt    REG    1,9     163712             2326648 /Users/gkwon/Desktop/minishell/minishell
+minishell 49184 gkwon  txt    REG    1,4    1568368 1152921500311885630 /usr/lib/dyld
+minishell 49184 gkwon  txt    REG    1,4     275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 49184 gkwon  txt    REG    1,4    3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 49184 gkwon  txt    REG    1,4 2089435136             2061296 /private/var/db/dyld/dyld_shared_cache_x86_64h
+minishell 49184 gkwon    0r   CHR   16,3        0t5                 745 /dev/ttys003
+minishell 49184 gkwon    1w   CHR   16,3      0t127                 745 /dev/ttys003
+minishell 49184 gkwon    2w   CHR   16,3       0t30                 745 /dev/ttys003
+minishell 49184 gkwon    3r   CHR   16,3        0t5                 745 /dev/ttys003
+minishell 49184 gkwon    4w   CHR   16,3      0t127                 745 /dev/ttys003
+minishell 49190 gkwon  cwd    DIR    1,9        306             2205696 /Users/gkwon/Desktop/minishell
+minishell 49190 gkwon  txt    REG    1,9     163712             2326648 /Users/gkwon/Desktop/minishell/minishell
+minishell 49190 gkwon  txt    REG    1,4    1568368 1152921500311885630 /usr/lib/dyld
+minishell 49190 gkwon  txt    REG    1,4     275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 49190 gkwon  txt    REG    1,4    3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 49190 gkwon  txt    REG    1,4 2089435136             2061296 /private/var/db/dyld/dyld_shared_cache_x86_64h
+minishell 49190 gkwon    0r   CHR   16,3        0t5                 745 /dev/ttys003
+minishell 49190 gkwon    1w   CHR   16,3      0t127                 745 /dev/ttys003
+minishell 49190 gkwon    2w   CHR   16,3       0t30                 745 /dev/ttys003
+minishell 49190 gkwon    3r   CHR   16,3        0t5                 745 /dev/ttys003
+minishell 49190 gkwon    4w   CHR   16,3      0t127                 745 /dev/ttys003
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 50365 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 50365 gkwon  txt    REG    1,9   163712             2326721 /Users/gkwon/Desktop/minishell/minishell
+minishell 50365 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 50365 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 50365 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 50365 gkwon    0u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50365 gkwon    1u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50365 gkwon    2u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50365 gkwon    3u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50365 gkwon    4u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50365 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 50365 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 50365 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 50365 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 50365 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+minishell 50369 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 50369 gkwon  txt    REG    1,9   163712             2326721 /Users/gkwon/Desktop/minishell/minishell
+minishell 50369 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 50369 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 50369 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 50369 gkwon    0u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50369 gkwon    1u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50369 gkwon    2u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50369 gkwon    3u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50369 gkwon    4u   CHR   16,3  0t62623                 745 /dev/ttys003
+minishell 50369 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 50369 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 50369 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 50369 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 50369 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 50417 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 50417 gkwon  txt    REG    1,9   163712             2326721 /Users/gkwon/Desktop/minishell/minishell
+minishell 50417 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 50417 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 50417 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 50417 gkwon    0u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50417 gkwon    1u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50417 gkwon    2u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50417 gkwon    3u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50417 gkwon    4u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50417 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 50417 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 50417 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 50417 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 50417 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+minishell 50422 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 50422 gkwon  txt    REG    1,9   163712             2326721 /Users/gkwon/Desktop/minishell/minishell
+minishell 50422 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 50422 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 50422 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 50422 gkwon    0u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50422 gkwon    1u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50422 gkwon    2u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50422 gkwon    3u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50422 gkwon    4u   CHR   16,3  0t63087                 745 /dev/ttys003
+minishell 50422 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 50422 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 50422 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 50422 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 50422 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 50417 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 50417 gkwon  txt    REG    1,9   163712             2326721 /Users/gkwon/Desktop/minishell/minishell
+minishell 50417 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 50417 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 50417 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 50417 gkwon    0u   CHR   16,3  0t63236                 745 /dev/ttys003
+minishell 50417 gkwon    1u   CHR   16,3  0t63236                 745 /dev/ttys003
+minishell 50417 gkwon    2u   CHR   16,3  0t63236                 745 /dev/ttys003
+minishell 50417 gkwon    3u   CHR   16,3  0t63236                 745 /dev/ttys003
+minishell 50417 gkwon    4u   CHR   16,3  0t63236                 745 /dev/ttys003
+minishell 50417 gkwon    5u   CHR   16,3  0t63236                 745 /dev/ttys003
+minishell 50417 gkwon    6u   CHR   16,3  0t63236                 745 /dev/ttys003
+minishell 50417 gkwon    7u   CHR   16,3  0t63236                 745 /dev/ttys003
+minishell 50417 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 50417 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 50417 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 50417 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 50417 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 50678 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 50678 gkwon  txt    REG    1,9   163712             2326733 /Users/gkwon/Desktop/minishell/minishell
+minishell 50678 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 50678 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 50678 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 50678 gkwon    0u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50678 gkwon    1u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50678 gkwon    2u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50678 gkwon    3u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50678 gkwon    4u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50678 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 50678 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 50678 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 50678 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 50678 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+minishell 50680 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 50680 gkwon  txt    REG    1,9   163712             2326733 /Users/gkwon/Desktop/minishell/minishell
+minishell 50680 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 50680 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 50680 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 50680 gkwon    0u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50680 gkwon    1u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50680 gkwon    2u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50680 gkwon    3u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50680 gkwon    4u   CHR   16,3  0t64194                 745 /dev/ttys003
+minishell 50680 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 50680 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 50680 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 50680 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 50680 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx
+COMMAND     PID  USER   FD   TYPE DEVICE SIZE/OFF                NODE NAME
+minishell 50678 gkwon  cwd    DIR    1,9      306             2205696 /Users/gkwon/Desktop/minishell
+minishell 50678 gkwon  txt    REG    1,9   163712             2326733 /Users/gkwon/Desktop/minishell/minishell
+minishell 50678 gkwon  txt    REG    1,4   275776 1152921500312916985 /goinfre/gkwon/.brew/Cellar/readline/8.2.1/lib/libreadline.8.2.dylib
+minishell 50678 gkwon  txt    REG    1,4  3157888             1152590 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
+minishell 50678 gkwon  txt    REG    1,4  1568368 1152921500311885630 /usr/lib/dyld
+minishell 50678 gkwon    0u   CHR   16,3  0t64343                 745 /dev/ttys003
+minishell 50678 gkwon    1u   CHR   16,3  0t64343                 745 /dev/ttys003
+minishell 50678 gkwon    2u   CHR   16,3  0t64343                 745 /dev/ttys003
+minishell 50678 gkwon    3u   CHR   16,3  0t64343                 745 /dev/ttys003
+minishell 50678 gkwon    4u   CHR   16,3  0t64343                 745 /dev/ttys003
+minishell 50678 gkwon    5u   CHR   16,3  0t64343                 745 /dev/ttys003
+minishell 50678 gkwon    6u   CHR   16,3  0t64343                 745 /dev/ttys003
+minishell 50678 gkwon    7u   CHR   16,3  0t64343                 745 /dev/ttys003
+minishell 50678 gkwon   12r   REG    1,4   730696             2075728 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+minishell 50678 gkwon   25w   REG    1,9      271             2317684 /Users/gkwon/Library/Application Support/Code/logs/20230504T215727/ptyhost.log
+minishell 50678 gkwon   26u   CHR   15,0 0t124676                 579 /dev/ptmx
+minishell 50678 gkwon   27r   REG    1,4 17615311             2074485 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+minishell 50678 gkwon   28u   CHR   15,1   0t9937                 579 /dev/ptmx

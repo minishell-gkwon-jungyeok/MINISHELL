@@ -6,13 +6,13 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/04 22:35:05 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 02:12:17 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	tokenize(char *line, t_command **cmd, t_sys_info *info)
+int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 {
 	char	**nodes;
 	int		i;
@@ -30,20 +30,8 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	}
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
-	//doller_parse_with_del_quot(*cmd, info);
+	doller_parse_with_del_quot(*cmd, info, env);
 	builtin_check(*cmd, info);
-	// i = -1;
-	// while (++i < info->cmd_cnt)
-	// {
-	// 	j = -1;
-	// 	while ((*cmd + i)->program[++j])
-	// 		printf("program is : %s\n", (*cmd + i)->program[j]);
-	// 	printf("is builtin : %d\n", (*cmd + i)->built_in);
-	// 	printf("input is : %s\n", (*cmd + i)->info[0]);
-	// 	printf("output is : %s\n", (*cmd + i)->info[1]);
-	// 	printf("del is : %s\n", (*cmd + i)->info[2]);
-	// 	printf("output_append is : %s\n", (*cmd + i)->info[3]);
-	// }
 	i = -1;
 	while (++i < info->cmd_cnt)
 	{
@@ -72,7 +60,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	return (0);
 }
 
-int	display(t_sys_info *info, t_mini *c)
+int	display(t_sys_info *info, t_mini *c, char **env)
 {
 	t_command	*cmd;
 	char		*line;
@@ -92,7 +80,7 @@ int	display(t_sys_info *info, t_mini *c)
 			i = -1;
 			while (++i < info->cmd_cnt)
 				ft_memset(cmd + i, 0, sizeof(t_command));
-			tokenize(line, &cmd, info);
+			tokenize(line, &cmd, info, env);
 			_jungyeok(cmd, c, info->cmd_cnt - 1);
 			ft_free_command(&cmd, info);
 		}
@@ -114,7 +102,7 @@ void	main_init(int argc, char *argv[])
 	(void)argv;
 }
 
-int	main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **env)
 {
 	t_sys_info		info;
 	t_mini			c;
@@ -124,13 +112,13 @@ int	main(int ac, char **av, char **envp)
 	main_init(ac, av);
 	ft_memset(&c, 0, sizeof(t_mini));
 	c.index = 0;
-	while (envp[c.index])
+	while (env[c.index])
 		c.index++;
 	c.env = ft_calloc(8, c.index + 1);
 	c.index = -1;
-	while (envp[++c.index])
-		c.env[c.index] = ft_strdup(envp[c.index]);
-	display(&info, &c);
+	while (env[++c.index])
+		c.env[c.index] = ft_strdup(env[c.index]);
+	display(&info, &c, env);
 	(void)av;
 	c.index = -1;
 	while (c.env[++c.index])

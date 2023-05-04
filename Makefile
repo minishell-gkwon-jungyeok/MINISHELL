@@ -12,6 +12,7 @@ SRCS = 	src/main.c\
 		src/parse_quote.c\
 		src/parse_util.c\
 		src/signal.c\
+		src/standard_split.c\
 		src/jungyeok/jungyeok.c src/jungyeok/err.c\
 		src/jungyeok/input.c\
 		src/jungyeok/output.c\
