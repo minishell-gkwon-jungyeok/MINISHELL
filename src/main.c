@@ -32,18 +32,18 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	doller_parse_with_del_quot(*cmd, info);
 	builtin_check(*cmd, info);
 	j = 0;
-	i = -1;
-	while (++i < info->cmd_cnt)
-	{
-		j = -1;
-		while ((*cmd + i)->program[++j])
-			printf("program is : %s\n", (*cmd + i)->program[j]);
-		printf("is builtin : %d\n", (*cmd + i)->built_in);
-		printf("input is : %s\n", (*cmd + i)->info[0]);
-		printf("output is : %s\n", (*cmd + i)->info[1]);
-		printf("del is : %s\n", (*cmd + i)->info[2]);
-		printf("output_append is : %s\n", (*cmd + i)->info[3]);
-	}
+	// i = -1;
+	// while (++i < info->cmd_cnt)
+	// {
+	// 	j = -1;
+	// 	while ((*cmd + i)->program[++j])
+	// 		printf("program is : %s\n", (*cmd + i)->program[j]);
+	// 	printf("is builtin : %d\n", (*cmd + i)->built_in);
+	// 	printf("input is : %s\n", (*cmd + i)->info[0]);
+	// 	printf("output is : %s\n", (*cmd + i)->info[1]);
+	// 	printf("del is : %s\n", (*cmd + i)->info[2]);
+	// 	printf("output_append is : %s\n", (*cmd + i)->info[3]);
+	// }
 	free(nodes);
 	return (0);
 }
@@ -58,7 +58,7 @@ int	display(t_sys_info *info, t_mini *c)
 	while (1)
 	{
 		//ft_memset(line, 0, ft_strlen(line));
-		line = readline("bash-3.3$ ");
+		line = readline("🚨🚨🚨🚨🚨🚨애애애애애앵‼️‼️‼️‼️‼️‼️🚨🚨🚨🚨🚨🚨📢📢📢📢📢📢📢긴급상황‼️‼️‼️긴급상황‼️‼️‼️‼️‼️📢📢📢📢📢📢📢🔊🔊🔊🔊🔊🔊‼️‼️‼️🔊🔊🔊🔊🔊🔊🔊🔊🔊🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🛎🛎🛎🛎🛎🛎🛎모두주목해주세요땡땡땡땡땡🛎🛎🛎🛎🛎🎤🎤🎤🎤아아-마이크테스트-!마이크테스트-!🎤🎤🎤🎤🎙🎙🎙🎙🎙마이크테스트— 들린다면 응답하라—-🎙🎙🎙🎙🎙📣📣📣📣📣📣📣 ");
 		if (!line)
 			break ;
 		if (*line != '\0')

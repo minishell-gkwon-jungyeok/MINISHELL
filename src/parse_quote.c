@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/03 20:03:18 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/04 16:24:16 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,15 +115,15 @@ void parse(char *line)
 	char	*str = NULL;
 	int		quotes = 0;
 	int		index = 0;
-	int		space = 1;
-	int		pipe = 0;
+//	int		space = 1;
+//	int		pipe = 0;
 	int		i  =0 ;
-	char	*tmp;
+	char	*tmp = NULL;
 
 	while (*line)
 	{
 		quotes = parse_set_quotes(*line, quotes); // line 이 \' 혹은 \" 일때 예외 처리를 위해 구분
-		if (quotes == 2 && quotes == 0 && *line == '$')
+		if ((quotes == 2 || quotes == 0) && *line == '$')
 		{
 			while (line[i + 1] != '$' || line[i + 1] || line[i + 1] != ' ')
 				i++;

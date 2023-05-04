@@ -35,7 +35,7 @@ int	open_pipe(t_mini *c, int npipe)
 	i = 0;
 	while (i < npipe)
 	{
-		if (pipe(c->pipe + 2 * i) < 0)
+		if (pipe(c->pipe + (i << 1)) < 0)
 			return (close_pipe(c, i - 2));
 		i++;
 	}

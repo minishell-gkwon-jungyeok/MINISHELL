@@ -62,6 +62,7 @@ int	_input(char *s, t_mini *c)
 
 int	open_fd(t_command *command, t_mini *c)
 {
+	// dprintf(2, " ------------------------------------------------------index = %d\n", c->index);
 	if (command[c->index].delimiter)
 	{
 		if (_heredoc(command[c->index].delimiter, c))
@@ -73,7 +74,7 @@ int	open_fd(t_command *command, t_mini *c)
 			return (1);
 	}
 	else if (c->index != 0)
-		dup2(c->pipe[(c->index - 1) << 1], 0);
+		dprintf(2, "<<<<<<<<<<<< dup2 = %d\n", dup2(c->pipe[(c->index - 1) << 1], 0));
 	if (command[c->index].output)
 	{
 		if (_output(command[c->index].output, c))
@@ -85,7 +86,7 @@ int	open_fd(t_command *command, t_mini *c)
 			return (1);
 	}
 	else if (c->index != c->ncmd - 1)
-		dup2(c->pipe[(c->index << 1) + 1], 1);
+		dprintf(2, ">>>>>>>>> dup2 = %d\n", dup2(c->pipe[(c->index << 1) + 1], 1));
 	return (0);
 }
 

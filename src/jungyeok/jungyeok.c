@@ -25,10 +25,14 @@ int	_run(t_command *command, t_mini *c)
 	if (open_fd(command, c))
 		exit(1);
 	_c_cmd(command, c);
-	close_pipe(c, c->ncmd - 1);
-	close_fd(command, c);
+	// close_pipe(c, c->ncmd - 1);
+	// close_fd(command, c);
+	// dprintf(2,"%d------------\n", c->index);
+	system("lsof -c minishell >> log");
 	_exe(command, c);
+	close_pipe(c, c->ncmd - 1);
 	free(c->cmd);
+	// while (1);
 	exit(0);
 }
 
@@ -44,19 +48,24 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c)
 	{
 		if (command[c->index].built_in)
 		{
+			old_fd[1] = dup(1);
 			fclose_pipe(c, c->index, c->ncmd - 1);
 			if (open_fd(command, c))
 				exit(1);
-//			while (1) ;
+			system("lsof -c minishell >> log");
 			exe_builtin(command[c->index].program[0], command, c);
+			dup2(old_fd[1], 1);
 			// close_pipe(c, c->ncmd - 1);
-			close_fd(command, c);
+			// close_fd(command, c);
 			free(c->cmd);
 			continue ;
 		}
-		c->pid = fork();
-		if (!c->pid)
-			_run(command, c);
+		else
+		{
+			c->pid = fork();
+			if (!c->pid)
+				_run(command, c);
+		}
 	}
 	dup2(old_fd[0], 0);
 	dup2(old_fd[1], 1);
@@ -81,7 +90,7 @@ int	_jungyeok(t_command *command, t_mini *c, int npipe)
 {
 	char	*pat;
 
-	c->ncmd = npipe + 1;
+	c->ncmd = npipe + 1; 
 	if (c->ncmd > 20)
 		return (_err("no more than 20 pipes"));
 //	_cmd_env(command, c->env, c);	$USER >> jungyeok 바꾸고, $? >> c->collar 바꾸기
