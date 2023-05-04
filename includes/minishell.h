@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/05 02:27:13 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 05:04:50 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	parse(char **line, char **env);
 int		doller_parse_with_del_quot(t_command *cmd, t_sys_info *info,
 			char **env);
 char	**std_split(char const *s, char c);
+bool	get_env_val(char **s, char **env);
+char	*ft_substr(char *s, int start, int len);
+bool	bool_strncmp(const char *s1, const char *s2, size_t n);
+char	*replace_middle(char *s1, int start, int len, char *s2);
 
 /* ===============../src/jungyeok=============== */
 

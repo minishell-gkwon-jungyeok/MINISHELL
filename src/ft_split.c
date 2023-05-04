@@ -6,22 +6,18 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:49:10 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 05:50:38 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 05:27:08 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int	total_len(char const *str, char c)
+static int	total_len(char const *str, char c, int i, int count)
 {
-	int		i;
-	int		count;
 	char	quote;
 	int		was_in;
 
 	was_in = 0;
-	count = 0;
-	i = 0;
 	while (str[i])
 	{
 		while (str[i] == '\"' || str[i] == '\'')
@@ -100,7 +96,7 @@ char	**ft_split(char const *s, char c)
 	int		count;
 
 	i = 0;
-	t_len = total_len(s, c);
+	t_len = total_len(s, c, i, i);
 	ret = (char **)malloc(sizeof(char *) * (t_len + 1));
 	if (!ret)
 		return (0);

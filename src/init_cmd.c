@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/04 21:51:54 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 06:13:29 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	cut_and_paste(char **node, int i, int at, t_command *cmd)
 	len = 0;
 	while ((*node)[end] == ' ')
 		end++;
-	while ((*node)[end + len] != ' ' && (*node)[end + len] != 0 \
-		&& (*node)[end + len] != '<' && (*node)[end + len] != '>')
+	while ((*node)[end + len] != ' ' && (*node)[end + len] != 0 && (*node)[end
+		+ len] != '<' && (*node)[end + len] != '>')
 		len++;
 	if (cmd->info[i][0])
 	{
@@ -43,9 +43,9 @@ void	cut_and_paste(char **node, int i, int at, t_command *cmd)
 
 void	init_cmd(char *node, t_command *cmd)
 {
-	const static char	*string_table[] = {"<", ">", "<<", ">>"};
-	int					i;
-	int					at;
+	static char	*string_table[] = {"<", ">", "<<", ">>"};
+	int			i;
+	int			at;
 
 	if (!node)
 		exit(1);
@@ -57,12 +57,13 @@ void	init_cmd(char *node, t_command *cmd)
 	while (i < 4)
 	{
 		at = ft_strnstr(node, string_table[i], ft_strlen(node));
-		if (at != -1 && node[at
-				+ ft_strlen((char *)string_table[i])] != string_table[i][0])
+		if (at != -1
+			&& node[at + ft_strlen(string_table[i])] != string_table[i][0]
+			&& (node[at - 1] != '"' && node[at - 1] != '\'')
+			&& (node[at + 1] != '"' && node[at + 1] != '\''))
 			cut_and_paste(&node, i, at, cmd);
-		else
-			if (!cmd->info[i][0])
-				cmd->info[i++] = NULL;
+		else if (!cmd->info[i++][0])
+			cmd->info[i - 1] = NULL;
 	}
 	cmd->program = ft_split(node, ' ');
 	free(node);
@@ -70,15 +71,15 @@ void	init_cmd(char *node, t_command *cmd)
 
 void	builtin_check(t_command *cmd, t_sys_info *info)
 {
-	const static char	*string_table[] = \
-	{"cd", "echo", "env", "exit", "export", "pwd", "unset"};
-	int					i;
-	int					j;
+	int			i;
+	int			j;
+	static char	*string_table[] = {
+		"cd", "echo", "env", "exit", "export", "pwd", "unset"};
 
 	i = 0;
 	while (i < info->cmd_cnt)
 	{
-		if (!(cmd + i)->program)
+		if (!(cmd + i)->program || (cmd + i)->program[0] == 0)
 		{
 			i++;
 			continue ;
@@ -88,8 +89,8 @@ void	builtin_check(t_command *cmd, t_sys_info *info)
 		{
 			if (ft_strnstr((cmd + i)->program[0], string_table[j],
 					ft_strlen((cmd + i)->program[0])) > -1)
-				if (ft_strlen((cmd + i)->program[0]) == \
-				ft_strlen((char *)string_table[j]))
+				if (ft_strlen((cmd + i)->program[0]) ==
+					ft_strlen((char *)string_table[j]))
 					(cmd + i)->built_in = true;
 			j++;
 		}

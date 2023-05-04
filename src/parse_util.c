@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:57:52 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/03 04:48:29 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 05:41:26 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	pipe_cnt(char *line)
 		{
 			quote = *line;
 			line++;
+			if (!*line)
+				ft_err("not ended quotes");
 			while (*line != quote)
 				line++;
 			line++;
@@ -35,4 +37,96 @@ int	pipe_cnt(char *line)
 		line++;
 	}
 	return (cnt);
+}
+
+bool	get_env_val(char **s, char **env)
+{
+	int		i;
+	char	*tmp;
+
+	i = -1;
+	while (env[++i])
+	{
+		if (bool_strncmp(env[i], *s, ft_strlen(*s)))
+		{
+			tmp = *s;
+			free(tmp);
+			tmp = ft_strchr(env[i], (int) '=');
+			tmp++;
+			*s = ft_strdup(tmp);
+			return (true);
+		}
+	}
+	return (false);
+}
+
+char	*ft_substr(char *s, int start, int len)
+{
+	char	*ret;
+
+	if (len == 0 || *s == 0 || ft_strlen(s) <= start)
+		return (ft_strdup(""));
+	if (ft_strlen(s) <= len + start)
+		len = ft_strlen(s) - start;
+	ret = (char *)malloc(len + 1);
+	if (!ret)
+		return (0);
+	ft_memmove(ret, s + start, len);
+	ret[len] = '\0';
+	return (ret);
+}
+
+bool	bool_strncmp(const char *s1, const char *s2, size_t n)
+{
+	if (n == 0)
+		return (0);
+	while (*s1 && *s2)
+	{
+		if ((unsigned char)*s1 != (unsigned char)*s2)
+		{
+			if ((unsigned char)*s1 > (unsigned char)*s2)
+				return (false);
+			else if ((unsigned char)*s1 < (unsigned char)*s2)
+				return (false);
+		}
+		s1++;
+		s2++;
+		n--;
+		if (n == 0)
+			return (true);
+	}
+	if ((unsigned char)*s1 > (unsigned char)*s2)
+		return (false);
+	else if ((unsigned char)*s1 < (unsigned char)*s2)
+		return (false);
+	return (true);
+}
+
+char	*replace_middle(char *s1, int start, int len, char *s2)
+{
+	char	*fnt;
+	char	*mid;
+	char	*end;
+	char	*ret;
+
+	fnt = (char *)malloc(start + 1);
+	fnt[start] = 0;
+	ft_memmove(fnt, s1, start);
+	mid = (char *)malloc(len + 1);
+	mid[len] = 0;
+	ft_memmove(mid, s2, len);
+	end = (char *)malloc(ft_strlen(s1) - (start + len) + 1);
+	end[ft_strlen(s1) - (start + len)] = 0;
+	ft_memmove(end, &s1[start + len], ft_strlen(s1) - (len + start));
+	ret = (char *)malloc(ft_strlen(fnt) + ft_strlen(mid) + ft_strlen(end) + 1);
+	ft_memmove(ret, fnt, ft_strlen(fnt));
+	ft_memmove(ret + ft_strlen(fnt), mid, ft_strlen(mid));
+	ft_memmove(ret + ft_strlen(fnt) + ft_strlen(mid), end, ft_strlen(end));
+	ret[ft_strlen(fnt) + ft_strlen(mid) + ft_strlen(end)] = 0;
+	free(fnt);
+	free(mid);
+	free(end);
+	free(s1);
+	free(s2);
+	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/05 02:12:17 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 05:56:59 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	display(t_sys_info *info, t_mini *c, char **env)
 			while (++i < info->cmd_cnt)
 				ft_memset(cmd + i, 0, sizeof(t_command));
 			tokenize(line, &cmd, info, env);
-			_jungyeok(cmd, c, info->cmd_cnt - 1);
+			//_jungyeok(cmd, c, info->cmd_cnt - 1);
+			(void)c;
 			ft_free_command(&cmd, info);
 		}
 	}

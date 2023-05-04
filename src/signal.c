@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:59:32 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/04 22:26:12 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 05:05:18 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	handle_signal(int signum)
 	{
 		printf("\n");
 		rl_on_new_line();
-		rl_replace_line("", 0);
+		//rl_replace_line("", 0);
 		rl_redisplay();
 	}
 	else if (signum == SIGQUIT)
@@ -28,7 +28,7 @@ void	handle_signal(int signum)
 	}
 }
 
-void	set_signal_handlers()
+void	set_signal_handlers(void)
 {
 	signal(SIGINT, handle_signal);
 	signal(SIGQUIT, handle_signal);
