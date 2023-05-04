@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/04 22:10:34 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:35:05 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	int		i;
 	int		j;
 
+	i = -1;
+	j = -1;
 	nodes = ft_split(line, '|');
-	if (!is_ended_quote(nodes))
+	if (!is_ended_quote(nodes, i, j))
 		exit(1);
 	if (!nodes[0])
 	{
 		free(nodes);
 		return (0);
 	}
-	i = -1;
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
 	//doller_parse_with_del_quot(*cmd, info);
 	builtin_check(*cmd, info);
-	j = 0;
 	// i = -1;
 	// while (++i < info->cmd_cnt)
 	// {

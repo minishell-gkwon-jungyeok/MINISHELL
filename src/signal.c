@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:59:32 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/04 21:31:44 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/04 22:26:12 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	handle_signal(int signum)
 	{
 		printf("\n");
 		rl_on_new_line();
-		//rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		rl_redisplay();
 	}
 	else if (signum == SIGQUIT)
 	{
-		//if (is_in_heardoc)
-		write(1, "^\\Quit: 3\n", 10);
+		rl_on_new_line();
+		rl_redisplay();
 	}
 }
 
-void	set_signal_handlers(void)
+void	set_signal_handlers()
 {
 	signal(SIGINT, handle_signal);
 	signal(SIGQUIT, handle_signal);
