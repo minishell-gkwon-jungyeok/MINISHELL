@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 15:24:31 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:41:25 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	_jungyeok(t_command *command, t_mini *c, int npipe)
 	c->ncmd = npipe + 1; 
 	if (c->ncmd > 20)
 		return (_err("no more than 20 pipes"));
-//	_cmd_env(command, c->env, c);	$USER >> jungyeok 바꾸고, $? >> c->collar 바꾸기
+	_cmd_env(command, c->env, c);
 	pat = find_path(c->env);
 	c->path = ft_split(pat, ':');
 	if (open_pipe(c, npipe))
