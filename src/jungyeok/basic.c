@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:51:55 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/04 23:07:18 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:11:02 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,19 +86,30 @@ char	*ft_itoa(int n)
 		ret[0] = '0';
 	while (n)
 	{
-		d[(s < 0) + --l] = ft_abs(n % 10);
+		ret[(s < 0) + --l] = ft_abs(n % 10);
 		n /= 10;
 	}
 	return (ret);
 }
 
-int	ft_strlenc(char *s, char c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
 	i = 0;
-	if (s)
-		while (s[i] && s[i] != c)
+	if (!s)
+		return (NULL);
+	if (!c)
+	{
+		while (s[i])
 			i++;
-	return (i);
+		return (s + i);
+	}
+	while (s[i])
+	{
+		if (s[i] == (unsigned char)c)
+			return (s + i);
+		i++;
+	}
+	return (NULL);
 }
