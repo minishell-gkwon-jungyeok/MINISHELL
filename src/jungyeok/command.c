@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 13:30:29 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:02:38 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	command_access(char **path, t_command *cmd, t_mini *c)
 	char	*d;
 	char	*ret;
 
+	if (!access(cmd->program[0], 0))
+	{
+		c->cmd = ft_strdup(cmd->program[0]);
+		return ;
+	}
 	while (*path)
 	{
 		d = strjoin_jungyeok(*path, "/");
@@ -63,14 +68,15 @@ void	exe_builtin(char *s, t_command *command, t_mini *c)
 
 void	_exe(t_command *command, t_mini *c)
 {
-	if (command[c->index].built_in)
+/*	if (command[c->index].built_in)
 	{
 		exe_builtin(command[c->index].program[0], command, c);
 		exit(0);
 	}
 	else
 	{
-		if (execve(c->cmd, command[c->index].program, c->env) < 0)
+*/		if (execve(c->cmd, command[c->index].program, c->env) < 0)
 			exit(1);
-	}
+		exit(0);
+//	}
 }

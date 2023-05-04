@@ -53,8 +53,10 @@ int	display(t_sys_info *info, t_mini *c)
 	char		*line;
 	int			i;
 
+	line = NULL;
 	while (1)
 	{
+		//ft_memset(line, 0, ft_strlen(line));
 		line = readline("bash-3.3$ ");
 		if (ft_strncmp(line, "\0", 1))
 		{

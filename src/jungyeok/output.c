@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 05:23:43 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 12:59:14 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:58:02 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	_output(char *s, t_mini *c)
 		return (1);
 	}
 	dup2(c->fd_out, 1);
+	close(c->fd_out);
 	return (0);
 }
 
@@ -48,6 +49,7 @@ int	_output_append(char *s, t_mini *c)
 		return (1);
 	}
 	dup2(c->fd_out, 1);
+	close(c->fd_out);
 	return (0);
 }
 
