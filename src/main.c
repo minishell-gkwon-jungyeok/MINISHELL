@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 19:25:07 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/04 21:53:03 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	i = -1;
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
-	doller_parse_with_del_quot(*cmd, info);
+	//doller_parse_with_del_quot(*cmd, info);
 	builtin_check(*cmd, info);
 	j = 0;
 	i = -1;
@@ -103,8 +103,8 @@ void	main_init(int argc, char *argv[])
 
 int	main(int ac, char **av, char **envp)
 {
-	t_sys_info	info;
-	t_mini		c;
+	t_sys_info		info;
+	t_mini			c;
 	struct termios	term;
 
 	tcgetattr(STDIN_FILENO, &term);
