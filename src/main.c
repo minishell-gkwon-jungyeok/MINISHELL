@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/04 22:10:00 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:10:34 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 		printf("del is : %s\n", (*cmd + i)->info[2]);
 		printf("output_append is : %s\n", (*cmd + i)->info[3]);
 	}
->>>>>>> 30b14892163afd871c03f94f2d4b9fef657c9a7f
 	free(nodes);
 	return (0);
 }
