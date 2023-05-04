@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:38:40 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/04 23:07:23 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 00:04:49 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	cmd_env__(char **s, char **env)
 	i = -1;
 	while (env[++i])
 	{
-		if (!ft_strncmp(env[i], (*s) + 1, ft_strlen((*s) + 1)))
+		if (!ft_strncmp(env[i], (*s) + 1, ft_strlen((*s) + 1) + 1))
 		{
 			tmp = (*s);
 			free(tmp);
@@ -56,5 +56,13 @@ void	_cmd_env(t_command *command, char **env, t_mini *c)
 			else if (command[i].program[j][0] == '$')
 				cmd_env__(command[i].program + j, env);
 		}
+		if (command[i].delimiter && command[i].delimiter[0] == '$')
+			cmd_env__(&command[i].delimiter, env);
+		if (command[i].input && command[i].input[0] == '$')
+			cmd_env__(&command[i].input, env);
+		if (command[i].output && command[i].output[0] == '$')
+			cmd_env__(&command[i].output, env);
+		if (command[i].output_append && command[i].output_append[0] == '$')
+			cmd_env__(&command[i].output_append, env);
 	}
 }
