@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 13:34:02 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:25:07 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 	i = -1;
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
+	doller_parse_with_del_quot(*cmd, info);
 	builtin_check(*cmd, info);
 	j = 0;
-/*	i = -1;
+	i = -1;
 	while (++i < info->cmd_cnt)
 	{
 		j = -1;
@@ -43,7 +44,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info)
 		printf("del is : %s\n", (*cmd + i)->info[2]);
 		printf("output_append is : %s\n", (*cmd + i)->info[3]);
 	}
-*/	free(nodes);
+	free(nodes);
 	return (0);
 }
 
@@ -58,17 +59,17 @@ int	display(t_sys_info *info, t_mini *c)
 	{
 		//ft_memset(line, 0, ft_strlen(line));
 		line = readline("bash-3.3$ ");
-		if (ft_strncmp(line, "\0", 1))
+		if (!line)
+			break ;
+		if (*line != '\0')
 		{
-//			if (!ft_strncmp(line, "exit", 4))
-//				ft_exit(0);
+			add_history(line);
 			info->cmd_cnt = pipe_cnt(line) + 1;
 			cmd = ft_calloc(sizeof(t_command), info->cmd_cnt);
 			i = -1;
 			while (++i < info->cmd_cnt)
 				ft_memset(cmd + i, 0, sizeof(t_command));
 			tokenize(line, &cmd, info);
-			add_history(line);
 			i = -1;
 			while (++i < info->cmd_cnt)
 			{
@@ -84,48 +85,32 @@ int	display(t_sys_info *info, t_mini *c)
 			_jungyeok(cmd, c, info->cmd_cnt - 1);
 			ft_free_command(&cmd, info);
 		}
-		else
-			exit(0);
 	}
 	return (0);
 }
 
-//int	display(t_sys_info *info, char **envp)
-//{
-//	t_command	**cmd;
-//	char		*line;
-//	int			i;
+void	main_init(int argc, char *argv[])
+{
+	struct termios	term;
 
-//	set_signal_handlers();
-//	while (1)
-//	{
-//		line = readline("bash-3.3$ ");
-//		if (ft_strncmp(line, "\0", 1))
-//		{
-//			if (!ft_strncmp(line, "exit", 4))
-//				ft_exit(0);
-//			info->cmd_cnt = pipe_cnt(line) + 1;
-//			cmd = ft_calloc(sizeof(t_command *), info->cmd_cnt);
-//			i = 0;
-//			while (i < info->cmd_cnt)
-//				cmd[i++] = ft_calloc(sizeof(t_command), 1);
-//			tokenize(line, cmd, info);
-//			add_history(line);
-//			(void) envp;
-//			//_jungyeok(&command, envp);
-//			ft_free_command(cmd, info);
-//		}
-//	}
-//	return (0);
-//}
+	if (argc != 1)
+		exit(1);
+	tcgetattr(STDIN_FILENO, &term);
+	term.c_lflag &= ~(ECHOCTL);
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+	set_signal_handlers();
+	(void)argc;
+	(void)argv;
+}
 
 int	main(int ac, char **av, char **envp)
 {
 	t_sys_info	info;
 	t_mini		c;
+	struct termios	term;
 
-	if (ac != 1)
-		return (1);
+	tcgetattr(STDIN_FILENO, &term);
+	main_init(ac, av);
 	ft_memset(&c, 0, sizeof(t_mini));
 	c.index = 0;
 	while (envp[c.index])
@@ -134,12 +119,12 @@ int	main(int ac, char **av, char **envp)
 	c.index = -1;
 	while (envp[++c.index])
 		c.env[c.index] = ft_strdup(envp[c.index]);
-	set_signal_handlers();
 	display(&info, &c);
 	(void)av;
 	c.index = -1;
 	while (c.env[++c.index])
 		free(c.env[c.index]);
 	free(c.env);
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	return (0);
 }

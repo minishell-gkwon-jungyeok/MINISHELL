@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/03 06:22:08 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:29:18 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_strdup(char *s);
 void	ft_free_command(t_command **cmd, t_sys_info *info);
 void	ft_exit(int return_val);
 char	**ft_split(char const *s, char c);
-void		init_cmd(char *node, t_command *cmd);
+void	init_cmd(char *node, t_command *cmd);
 void	builtin_check(t_command *cmd, t_sys_info *info);
 int		tokenize(char *line, t_command **cmd, t_sys_info *info);
 int		display(t_sys_info *info, t_mini *c);
@@ -55,7 +55,10 @@ int		ft_line_quote(char *line);
 void	handle_signal(int signum);
 void	set_signal_handlers(void);
 int		is_ended_quote(char **nodes);
-void	terminal(int signum);
+char	*ft_strjoin_char(char const *s1, char s2);
+int		parse_set_quotes(char line, int quotes);
+void 	parse(char *line);
+int		doller_parse_with_del_quot(t_command *cmd, t_sys_info *info);
 
 /* ===============../src/jungyeok=============== */
 
