@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 04:57:47 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 13:56:42 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:12:13 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	_heredoc(char *s, t_mini *c)
 	close(c->fd_in);
 	c->fd_in = open(".heredoc", O_RDONLY);
 	dup2(c->fd_in, 0);
+	c->hered = 0;
 	return (0);
 }
 
@@ -62,7 +63,6 @@ int	_input(char *s, t_mini *c)
 
 int	open_fd(t_command *command, t_mini *c)
 {
-	// dprintf(2, " ------------------------------------------------------index = %d\n", c->index);
 	if (command[c->index].delimiter)
 	{
 		if (_heredoc(command[c->index].delimiter, c))
@@ -74,7 +74,7 @@ int	open_fd(t_command *command, t_mini *c)
 			return (1);
 	}
 	else if (c->index != 0)
-		dprintf(2, "<<<<<<<<<<<< dup2 = %d\n", dup2(c->pipe[(c->index - 1) << 1], 0));
+		dprintf(2, "dup2 in openfd ~ 0 = %d\n", dup2(c->pipe[(c->index - 1) << 1], 0));
 	if (command[c->index].output)
 	{
 		if (_output(command[c->index].output, c))
@@ -86,7 +86,7 @@ int	open_fd(t_command *command, t_mini *c)
 			return (1);
 	}
 	else if (c->index != c->ncmd - 1)
-		dprintf(2, ">>>>>>>>> dup2 = %d\n", dup2(c->pipe[(c->index << 1) + 1], 1));
+		dprintf(2, "dup2 in openfd ~ 1 = %d\n", dup2(c->pipe[(c->index << 1) + 1], 1));
 	return (0);
 }
 
