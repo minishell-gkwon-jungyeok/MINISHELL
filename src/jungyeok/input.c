@@ -74,7 +74,7 @@ int	open_fd(t_command *command, t_mini *c)
 			return (1);
 	}
 	else if (c->index != 0)
-		dprintf(2, "dup2 in openfd ~ 0 = %d\n", dup2(c->pipe[(c->index - 1) << 1], 0));
+		dup2(c->pipe[(c->index - 1) << 1], 0);
 	if (command[c->index].output)
 	{
 		if (_output(command[c->index].output, c))
@@ -86,7 +86,7 @@ int	open_fd(t_command *command, t_mini *c)
 			return (1);
 	}
 	else if (c->index != c->ncmd - 1)
-		dprintf(2, "dup2 in openfd ~ 1 = %d\n", dup2(c->pipe[(c->index << 1) + 1], 1));
+		dup2(c->pipe[(c->index << 1) + 1], 1);
 	return (0);
 }
 

@@ -25,50 +25,36 @@ int	_run(t_command *command, t_mini *c)
 	if (open_fd(command, c))
 		exit(1);
 	_c_cmd(command, c);
-	// close_pipe(c, c->ncmd - 1);
-	// close_fd(command, c);
-	// dprintf(2,"%d------------\n", c->index);
-	system("lsof -c minishell >> log");
-	_exe(command, c);
 	close_pipe(c, c->ncmd - 1);
+	close_fd(command, c);
+	_exe(command, c);
 	free(c->cmd);
-	// while (1);
 	exit(0);
 }
 
 int	_run_cmd(t_command *command, int ncmd, t_mini *c)
 {
 	int	wait;
-	int	old_fd[2];
 
 	c->index = -1;
-	old_fd[0] = dup(0);
-	old_fd[1] = dup(1);
 	while (++c->index < ncmd)
 	{
-		if (command[c->index].built_in)
+		if (!ft_strncmp(command[c->index].program[0], "export", 7) ||
+			!ft_strncmp(command[c->index].program[0], "exit", 5) ||
+			!ft_strncmp(command[c->index].program[0], "cd", 3) ||
+			!ft_strncmp(command[c->index].program[0], "unset", 6))
 		{
-			old_fd[1] = dup(1);
 			fclose_pipe(c, c->index, c->ncmd - 1);
-			if (open_fd(command, c))
-				exit(1);
-			system("lsof -c minishell >> log");
+			open_fd(command, c);
 			exe_builtin(command[c->index].program[0], command, c);
-			dup2(old_fd[1], 1);
-			// close_pipe(c, c->ncmd - 1);
-			// close_fd(command, c);
-			free(c->cmd);
+			close_pipe(c, c->ncmd - 1);
+			close_fd(command, c);
 			continue ;
 		}
-		else
-		{
-			c->pid = fork();
-			if (!c->pid)
-				_run(command, c);
-		}
+		c->pid = fork();
+		if (!c->pid)
+			_run(command, c);
 	}
-	dup2(old_fd[0], 0);
-	dup2(old_fd[1], 1);
 	if (c->pipe)
 		close_pipe(c, c->ncmd - 1);
 	wait = 1;

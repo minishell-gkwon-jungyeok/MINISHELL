@@ -68,15 +68,15 @@ void	exe_builtin(char *s, t_command *command, t_mini *c)
 
 void	_exe(t_command *command, t_mini *c)
 {
-/*	if (command[c->index].built_in)
+	if (command[c->index].built_in)
 	{
 		exe_builtin(command[c->index].program[0], command, c);
 		exit(0);
 	}
 	else
 	{
-*/		if (execve(c->cmd, command[c->index].program, c->env) < 0)
+		if (execve(c->cmd, command[c->index].program, c->env) < 0)
 			exit(1);
 		exit(0);
-//	}
+	}
 }
