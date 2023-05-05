@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:16:53 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 06:07:18 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:56:21 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void	_env_change(char *s, char ***env, int size)
 	char	**ret;
 	int		i;
 
+	while ((*env)[size])
+		size++;
 	ret = ft_calloc(8, size + 2);
 	i = -1;
 	while ((*env)[++i])
@@ -121,13 +123,9 @@ int	_export(t_command *cmd, char ***env)
 {
 	int	i;
 	int	j;
-	int	size;
 
 	if (!cmd->program[1])
 		return (_sorted_env(env));
-	size = 0;
-	while ((*env)[size])
-		size++;
 	i = 0;
 	while (cmd->program[++i])
 	{
@@ -141,7 +139,7 @@ int	_export(t_command *cmd, char ***env)
 		j = -1;
 		while (cmd->program[i][++j])
 			if (cmd->program[i][j] == '=')
-				_env_change(cmd->program[i], env, size);
+				_env_change(cmd->program[i], env, 0);
 	}
 	return (0);
 }

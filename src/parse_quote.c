@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/05 05:23:52 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 16:50:33 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_ended_quote(char **nodes, int i, int j)
 {
 	char	quote;
 
-	i = -1;
+//	i = -1;		인자 들어올 때 -1로 세팅되어서 들어옴
 	while (!strcmp(nodes[++i], ""))
 	{
 		j = 0;

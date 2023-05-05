@@ -6,28 +6,42 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/05 05:56:59 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/05 16:50:34 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+void	_print(t_command **cmd, t_sys_info *info) {
+	for (int i = 0; i < info->cmd_cnt; i++){
+		for (int j = 0; (*cmd + i)->program[j]; j++)
+			printf("cmd[%d].program[%d] is : %s\n", i, j, (*cmd + i)->program[j]);
+		printf("is builtin : %d\n", (*cmd + i)->built_in);
+		printf("input is : %s\n", (*cmd + i)->info[0]);
+		printf("output is : %s\n", (*cmd + i)->info[1]);
+		printf("del is : %s\n", (*cmd + i)->info[2]);
+		printf("output_append is : %s\n", (*cmd + i)->info[3]);
+	}
+}
+
 int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 {
 	char	**nodes;
 	int		i;
-	int		j;
+//	int		j;
 
-	i = -1;
-	j = -1;
+//	i = -1;
+//	j = -1;
 	nodes = ft_split(line, '|');
-	if (!is_ended_quote(nodes, i, j))
+	if (!is_ended_quote(nodes, -1, 0))
+//		return (1);
 		exit(1);
 	if (!nodes[0])
 	{
 		free(nodes);
 		return (0);
 	}
+	i = -1;
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
 	doller_parse_with_del_quot(*cmd, info, env);
@@ -44,18 +58,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 		if ((*cmd)[i].info[3])
 			(*cmd)[i].output_append = (*cmd)[i].info[3];
 	}
-	i = -1;
-	while (++i < info->cmd_cnt)
-	{
-		j = -1;
-		while ((*cmd + i)->program[++j])
-			printf("program is : %s\n", (*cmd + i)->program[j]);
-		printf("is builtin : %d\n", (*cmd + i)->built_in);
-		printf("input is : %s\n", (*cmd + i)->info[0]);
-		printf("output is : %s\n", (*cmd + i)->info[1]);
-		printf("del is : %s\n", (*cmd + i)->info[2]);
-		printf("output_append is : %s\n", (*cmd + i)->info[3]);
-	}
+	_print(cmd, info);
 	free(nodes);
 	return (0);
 }
@@ -64,7 +67,7 @@ int	display(t_sys_info *info, t_mini *c, char **env)
 {
 	t_command	*cmd;
 	char		*line;
-	int			i;
+//	int			i;
 
 	line = NULL;
 	while (1)
@@ -77,12 +80,14 @@ int	display(t_sys_info *info, t_mini *c, char **env)
 			add_history(line);
 			info->cmd_cnt = pipe_cnt(line) + 1;
 			cmd = ft_calloc(sizeof(t_command), info->cmd_cnt);
-			i = -1;
-			while (++i < info->cmd_cnt)
-				ft_memset(cmd + i, 0, sizeof(t_command));
+//			calloc 한거라서 memset으로 안 밀어도 됨
+//			i = -1;
+//			while (++i < info->cmd_cnt)
+//				ft_memset(cmd + i, 0, sizeof(t_command));
 			tokenize(line, &cmd, info, env);
-			//_jungyeok(cmd, c, info->cmd_cnt - 1);
-			(void)c;
+//				continue ;
+			_jungyeok(cmd, c, info->cmd_cnt - 1);
+			//(void)c;
 			ft_free_command(&cmd, info);
 		}
 	}
