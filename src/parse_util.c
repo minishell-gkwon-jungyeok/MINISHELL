@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:57:52 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/05 05:41:26 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/07 04:54:34 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,24 @@ int	pipe_cnt(char *line)
 	return (cnt);
 }
 
-bool	get_env_val(char **s, char **env)
+bool	get_env_val(char **s, char **env, char **target_val)
 {
 	int		i;
-	char	*tmp;
+	int		find_idx;
 
 	i = -1;
 	while (env[++i])
 	{
 		if (bool_strncmp(env[i], *s, ft_strlen(*s)))
 		{
-			tmp = *s;
-			free(tmp);
-			tmp = ft_strchr(env[i], (int) '=');
-			tmp++;
-			*s = ft_strdup(tmp);
+			free(*s);
+			find_idx = ft_getindex(env[i], (int) '=');
+			find_idx++;
+			*target_val = ft_strdup(&env[i][find_idx]);
 			return (true);
 		}
 	}
+	free(*s);
 	return (false);
 }
 
@@ -108,13 +108,15 @@ char	*replace_middle(char *s1, int start, int len, char *s2)
 	char	*mid;
 	char	*end;
 	char	*ret;
+	int		s2_len;
 
+	s2_len = ft_strlen(s2);
 	fnt = (char *)malloc(start + 1);
 	fnt[start] = 0;
 	ft_memmove(fnt, s1, start);
-	mid = (char *)malloc(len + 1);
-	mid[len] = 0;
-	ft_memmove(mid, s2, len);
+	mid = (char *)malloc(s2_len + 1);
+	mid[s2_len] = 0;
+	ft_memmove(mid, s2, s2_len);
 	end = (char *)malloc(ft_strlen(s1) - (start + len) + 1);
 	end[ft_strlen(s1) - (start + len)] = 0;
 	ft_memmove(end, &s1[start + len], ft_strlen(s1) - (len + start));

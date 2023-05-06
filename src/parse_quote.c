@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/07 04:01:18 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/07 04:53:40 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	parse(char **line, char **env)
 	int			i;
 	char		*target_env;
 	int			len;
+	char		*target_val;
 
 	i = -1;
 	if (*line)
@@ -104,9 +105,9 @@ void	parse(char **line, char **env)
 				while ((*line)[i + len + 1] && ((*line)[i + len + 1] != '$'
 						|| (*line)[i + len + 1] != ' '))
 					len++;
-				target_env = ft_substr((*line), i + 1, len - 1);
-				if (get_env_val(&target_env, env))
-					(*line) = replace_middle((*line), i, len + 1, target_env);
+				target_env = ft_substr((*line), i + 1, len);
+				if (get_env_val(&target_env, env, &target_val))
+					(*line) = replace_middle((*line), i, len +1, target_val);
 				else
 					ft_err("no env exsist");
 			}

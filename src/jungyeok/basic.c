@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:51:55 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/05 22:55:15 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/07 04:46:15 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,4 +135,20 @@ char	*ft_strchr(char *s, int c)
 		i++;
 	}
 	return (NULL);
+}
+
+int	ft_getindex(char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+	{
+		if (s[i] == (unsigned char)c)
+			return (i);
+		i++;
+	}
+	return (0);
 }

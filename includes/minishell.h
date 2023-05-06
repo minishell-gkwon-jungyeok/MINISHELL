@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/07 04:14:27 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/07 04:47:04 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	parse(char **line, char **env);
 int		doller_parse_with_del_quot(t_command *cmd, t_sys_info *info,
 			char **env);
 char	**std_split(char const *s, char c);
-bool	get_env_val(char **s, char **env);
+bool	get_env_val(char **s, char **env, char **target_val);
 char	*ft_substr(char *s, int start, int len);
 bool	bool_strncmp(const char *s1, const char *s2, size_t n);
 char	*replace_middle(char *s1, int start, int len, char *s2);
 int		bool_strcmp(char *s1, char *s2);
-
+int		ft_getindex(char *s, int c);
 /* ===============../src/jungyeok=============== */
 
 int		_jungyeok(t_command *command, t_mini *c, int npipe);
