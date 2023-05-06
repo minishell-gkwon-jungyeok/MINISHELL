@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jungyeok.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/04 23:41:25 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c)
 	c->index = -1;
 	while (++c->index < ncmd)
 	{
-		if (!ft_strncmp(command[c->index].program[0], "export", 7) ||
-			!ft_strncmp(command[c->index].program[0], "exit", 5) ||
-			!ft_strncmp(command[c->index].program[0], "cd", 3) ||
-			!ft_strncmp(command[c->index].program[0], "unset", 6))
+		if (!ft_strncmp(command[c->index].cmd[0], "export", 7) ||
+			!ft_strncmp(command[c->index].cmd[0], "exit", 5) ||
+			!ft_strncmp(command[c->index].cmd[0], "cd", 3) ||
+			!ft_strncmp(command[c->index].cmd[0], "unset", 6))
 		{
 			fclose_pipe(c, c->index, c->ncmd - 1);
 			open_fd(command, c);
-			exe_builtin(command[c->index].program[0], command, c);
+			exe_builtin(command[c->index].cmd[0], command, c);
 			close_pipe(c, c->ncmd - 1);
 			close_fd(command, c);
 			continue ;

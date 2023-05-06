@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   basic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:51:55 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/04 23:11:02 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:55:15 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int	bool_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	if (s1 && s2)
+	{
+		while (s1[i])
+		{
+			if (s1[i] != s2[i])
+				return (true);
+			i++;
+		}
+	}
+	else if (!s2 && s1)
+		return (true);
+	else if (!s1 && s2)
+		return (true);
+	else
+		return (false);
+	return (true);
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {

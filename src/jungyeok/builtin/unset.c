@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:54:34 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/25 10:06:04 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdbool.h>
 
 typedef struct s_command{
-	char **program;
+	char **cmd;
 }t_command;
 
 int	ft_strlen(char *s){
@@ -108,9 +108,9 @@ int	_unset(t_command *cmd, char ***env)
 	while ((*env)[i])
 	{
 		j = 1;
-		while (cmd->program[j])
+		while (cmd->cmd[j])
 		{
-			if (_is_s((*env)[i], cmd->program[j]))
+			if (_is_s((*env)[i], cmd->cmd[j]))
 				_kill_envi(env, i);
 			j++;
 		}
@@ -127,12 +127,12 @@ int	main(int size, char **av, char **env){
 	t_command c;
 	ft_memset(&c, 0, sizeof(t_command));
 	
-	c.program = ft_calloc(8, size + 1);
+	c.cmd = ft_calloc(8, size + 1);
 	for (int i = 0; i < size; i++)
-		c.program[i] = ft_strdup(av[i]);
+		c.cmd[i] = ft_strdup(av[i]);
 	
-	for (int i = 0; c.program[i]; i++)
-		printf("c.program[%d] = %s\n", i, c.program[i]);
+	for (int i = 0; c.cmd[i]; i++)
+		printf("c.cmd[%d] = %s\n", i, c.cmd[i]);
 
 	size = 0;
 	while (env[size])

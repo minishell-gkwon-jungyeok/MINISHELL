@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_quote.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/05 16:50:33 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/07 04:01:18 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	is_ended_quote(char **nodes, int i, int j)
 {
 	char	quote;
 
-//	i = -1;		인자 들어올 때 -1로 세팅되어서 들어옴
+	// if (!bool_strcmp(nodes[0], ""))
+	// 	return (0);
+	if (*nodes == 0)
+		return (1);
 	while (!strcmp(nodes[++i], ""))
 	{
 		j = 0;
@@ -90,25 +93,28 @@ void	parse(char **line, char **env)
 	int			len;
 
 	i = -1;
-	while ((*line)[++i])
+	if (*line)
 	{
-		len = 0;
-		quotes = parse_set_quotes(&(*line)[i], quotes);
-		if ((quotes == 2 || quotes == 0) && (*line)[i] == '$')
+		while ((*line)[++i])
 		{
-			while ((*line)[i + len + 1] && ((*line)[i + len + 1] != '$'
-					|| (*line)[i + len + 1] != ' '))
-				len++;
-			target_env = ft_substr((*line), i + 1, len - 1);
-			if (get_env_val(&target_env, env))
-				(*line) = replace_middle((*line), i, len + 1, target_env);
-			else
-				ft_err("no env exsist");
+			len = 0;
+			quotes = parse_set_quotes(&(*line)[i], quotes);
+			if ((quotes == 2 || quotes == 0) && (*line)[i] == '$')
+			{
+				while ((*line)[i + len + 1] && ((*line)[i + len + 1] != '$'
+						|| (*line)[i + len + 1] != ' '))
+					len++;
+				target_env = ft_substr((*line), i + 1, len - 1);
+				if (get_env_val(&target_env, env))
+					(*line) = replace_middle((*line), i, len + 1, target_env);
+				else
+					ft_err("no env exsist");
+			}
+			else if (((*line)[i] == ';' || (*line)[i] == '\\') && quotes == 0)
+				ft_err("not allowed character used");
 		}
-		else if (((*line)[i] == ';' || (*line)[i] == '\\') && quotes == 0)
-			ft_err("not allowed character used");
+		*line = *std_split(*line, 7);
 	}
-	*line = *std_split(*line, 7);
 }
 
 int	doller_parse_with_del_quot(t_command *cmd, t_sys_info *info, char **env)
@@ -120,8 +126,8 @@ int	doller_parse_with_del_quot(t_command *cmd, t_sys_info *info, char **env)
 	while (++i < info->cmd_cnt)
 	{
 		j = -1;
-		while (cmd[i].program[++j])
-			parse(&cmd[i].program[j], env);
+		while (cmd[i].cmd[++j])
+			parse(&cmd[i].cmd[j], env);
 		j = -1;
 		while (++j < 4)
 			if (cmd[i].info[j])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:16:53 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/05 16:56:21 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <stdbool.h>
 
 typedef struct s_command{
-	char **program;
+	char **cmd;
 }t_command;
 
 void	*ft_calloc(int i, int j){
@@ -124,22 +124,22 @@ int	_export(t_command *cmd, char ***env)
 	int	i;
 	int	j;
 
-	if (!cmd->program[1])
+	if (!cmd->cmd[1])
 		return (_sorted_env(env));
 	i = 0;
-	while (cmd->program[++i])
+	while (cmd->cmd[++i])
 	{
-		if ('0' <= cmd->program[i][0] && cmd->program[i][0] <= '9')
+		if ('0' <= cmd->cmd[i][0] && cmd->cmd[i][0] <= '9')
 		{
 			write(2, "bash: export: `", 15);
-			write(2, cmd->program[i], ft_strlen(cmd->program[i]));
+			write(2, cmd->cmd[i], ft_strlen(cmd->cmd[i]));
 			write(2, "': not a valid identifier\n", 26);
 			continue ;
 		}
 		j = -1;
-		while (cmd->program[i][++j])
-			if (cmd->program[i][j] == '=')
-				_env_change(cmd->program[i], env, 0);
+		while (cmd->cmd[i][++j])
+			if (cmd->cmd[i][j] == '=')
+				_env_change(cmd->cmd[i], env, 0);
 	}
 	return (0);
 }
@@ -159,9 +159,9 @@ int main(int ac, char **av, char **env){
 
 	t_command c;
 	memset(&c, 0, sizeof(t_command));
-	c.program = calloc(8, ac + 1);
+	c.cmd = calloc(8, ac + 1);
 	for (int i = 0; i < ac; i++)
-		c.program[i] = av[i];
+		c.cmd[i] = av[i];
 
 	_export(&c, &d);
 

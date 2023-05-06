@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/05 06:13:29 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/07 03:50:43 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,43 +57,39 @@ void	init_cmd(char *node, t_command *cmd)
 	while (i < 4)
 	{
 		at = ft_strnstr(node, string_table[i], ft_strlen(node));
-		if (at != -1
-			&& node[at + ft_strlen(string_table[i])] != string_table[i][0]
-			&& (node[at - 1] != '"' && node[at - 1] != '\'')
-			&& (node[at + 1] != '"' && node[at + 1] != '\''))
+		if (at != -1 && node[at
+				+ ft_strlen(string_table[i])] != string_table[i][0] && (node[at
+				- 1] != '"' && node[at - 1] != '\'') && (node[at + 1] != '"'
+				&& node[at + 1] != '\''))
 			cut_and_paste(&node, i, at, cmd);
 		else if (!cmd->info[i++][0])
 			cmd->info[i - 1] = NULL;
 	}
-	cmd->program = ft_split(node, ' ');
+	cmd->cmd = ft_split(node, ' ');
 	free(node);
 }
 
-void	builtin_check(t_command *cmd, t_sys_info *info)
+void	builtin_check(t_command *cmd, int cmd_cnt)
 {
 	int			i;
 	int			j;
-	static char	*string_table[] = {
+	static char	*st[] = {
 		"cd", "echo", "env", "exit", "export", "pwd", "unset"};
 
 	i = 0;
-	while (i < info->cmd_cnt)
+	while (i < cmd_cnt)
 	{
-		if (!(cmd + i)->program || (cmd + i)->program[0] == 0)
+		if (!(cmd + i)->cmd || (cmd + i)->cmd[0] == 0)
 		{
 			i++;
 			continue ;
 		}
-		j = 0;
-		while (j < 7)
-		{
-			if (ft_strnstr((cmd + i)->program[0], string_table[j],
-					ft_strlen((cmd + i)->program[0])) > -1)
-				if (ft_strlen((cmd + i)->program[0]) ==
-					ft_strlen((char *)string_table[j]))
+		j = -1;
+		while (++j < 7)
+			if (ft_strnstr((cmd + i)->cmd[0], st[j], ft_strlen((cmd
+							+ i)->cmd[0])) > -1)
+				if (ft_strlen((cmd + i)->cmd[0]) == ft_strlen(st[j]))
 					(cmd + i)->built_in = true;
-			j++;
-		}
 		i++;
 	}
 }

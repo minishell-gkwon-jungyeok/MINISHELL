@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:56:01 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 13:31:49 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #include <stdbool.h>
 
 typedef struct s_command{
-	char **program;
+	char **cmd;
 }t_command;
 
 int	ft_strlen(char *s){
@@ -79,26 +79,26 @@ bool	_alpha(char *s)
 void	__exit(t_command *cmd, t_mini *c)
 {
 	write(1, "exit\n", 5);
-	if (!cmd->program[1])
+	if (!cmd->cmd[1])
 	{
 		c->dollar = 0;
 		exit(0);
 	}
-	if (_alpha(cmd->program[1]))
+	if (_alpha(cmd->cmd[1]))
 	{
 		write(2, "bash: exit: ", 12);
-		write(2, cmd->program[1], ft_strlen(cmd->program[1]));
+		write(2, cmd->cmd[1], ft_strlen(cmd->cmd[1]));
 		write(2, ": numeric argument required\n", 28);
 		c->dollar = 255;
 		exit(255);
 	}
-	if (cmd->program[2])
+	if (cmd->cmd[2])
 	{
 		c->dollar = 1;
 		write(2, "bash: exit: too many arguments\n", 31);
 		return ;
 	}
-	c->dollar = _atoi256(cmd->program[1]);
+	c->dollar = _atoi256(cmd->cmd[1]);
 	exit(c->dollar);
 }
 
@@ -107,14 +107,14 @@ int	main(int ac, char **av){
 	t_command c;
 	memset(&c, 0, sizeof(t_command));
 	
-	c.program = calloc(8, ac + 1);
+	c.cmd = calloc(8, ac + 1);
 	for (int i = 0; i < ac; i++)
-		c.program[i] = strdup(av[i]);
+		c.cmd[i] = strdup(av[i]);
 
 	__exit(&c);
 
 	for (int i = 0; i < ac; i++)
-		free(c.program[i]);
-	free(c.program);
+		free(c.cmd[i]);
+	free(c.cmd);
 }
 */

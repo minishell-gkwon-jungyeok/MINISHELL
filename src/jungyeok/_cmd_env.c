@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _cmd_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:38:40 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/05 00:04:49 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	_cmd_env(t_command *command, char **env, t_mini *c)
 	while (++i < c->ncmd)
 	{
 		j = -1;
-		while (command[i].program[++j])
+		while (command[i].cmd[++j])
 		{
-			if (!ft_strncmp(command[i].program[j], "$?", 3))
-				cmd_env_(command[i].program + j, c->dollar);
-			else if (command[i].program[j][0] == '$')
-				cmd_env__(command[i].program + j, env);
+			if (!ft_strncmp(command[i].cmd[j], "$?", 3))
+				cmd_env_(command[i].cmd + j, c->dollar);
+			else if (command[i].cmd[j][0] == '$')
+				cmd_env__(command[i].cmd + j, env);
 		}
 		if (command[i].delimiter && command[i].delimiter[0] == '$')
 			cmd_env__(&command[i].delimiter, env);

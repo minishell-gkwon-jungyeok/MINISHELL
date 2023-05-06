@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:34:07 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 02:36:49 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,20 @@ int	_echo(t_command *cmd, t_mini *c)
 	int	j;
 	int	flag;
 
-	if (ft_strcmp(cmd->program[0], "echo"))
+	if (ft_strcmp(cmd->cmd[0], "echo"))
 		return (1);
 	flag = 0;
-	if (cmd->program[1] && !ft_strncmp(cmd->program[1], "-n", 3))
+	if (cmd->cmd[1] && !ft_strncmp(cmd->cmd[1], "-n", 3))
 		flag = 1;
 	i = flag + 1;
-	while (cmd->program[i])
+	while (cmd->cmd[i])
 	{
 		j = 0;
-		if (_env_echo(cmd->program[i] + 1, c->env, &j))
-			_env_write(ft_strlen(cmd->program[i] + 1) + 1, c->env[j]);
+		if (_env_echo(cmd->cmd[i] + 1, c->env, &j))
+			_env_write(ft_strlen(cmd->cmd[i] + 1) + 1, c->env[j]);
 		else
-			write(1, cmd->program[i], ft_strlen(cmd->program[i]));
-		if (cmd->program[i + 1])
+			write(1, cmd->cmd[i], ft_strlen(cmd->cmd[i]));
+		if (cmd->cmd[i + 1])
 			write(1, " ", 1);
 		i++;
 	}

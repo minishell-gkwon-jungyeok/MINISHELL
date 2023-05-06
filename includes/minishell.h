@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/05 05:04:50 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/07 04:14:27 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_free_command(t_command **cmd, t_sys_info *info);
 void	ft_exit(int return_val);
 char	**ft_split(char const *s, char c);
 void	init_cmd(char *node, t_command *cmd);
-void	builtin_check(t_command *cmd, t_sys_info *info);
+void	builtin_check(t_command *cmd, int cmd_cnt);
 int		tokenize(char *line, t_command **cmd, t_sys_info *info, char **env);
 int		display(t_sys_info *info, t_mini *c, char **env);
 void	handle_signal(int signum);
@@ -63,6 +63,7 @@ bool	get_env_val(char **s, char **env);
 char	*ft_substr(char *s, int start, int len);
 bool	bool_strncmp(const char *s1, const char *s2, size_t n);
 char	*replace_middle(char *s1, int start, int len, char *s2);
+int		bool_strcmp(char *s1, char *s2);
 
 /* ===============../src/jungyeok=============== */
 

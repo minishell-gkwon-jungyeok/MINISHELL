@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 21:13:15 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 14:02:38 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	command_access(char **path, t_command *cmd, t_mini *c)
 	char	*d;
 	char	*ret;
 
-	if (!access(cmd->program[0], 0))
+	if (!access(cmd->cmd[0], 0))
 	{
-		c->cmd = ft_strdup(cmd->program[0]);
+		c->cmd = ft_strdup(cmd->cmd[0]);
 		return ;
 	}
 	while (*path)
 	{
 		d = strjoin_jungyeok(*path, "/");
-		ret = strjoin_jungyeok(d, cmd->program[0]);
+		ret = strjoin_jungyeok(d, cmd->cmd[0]);
 		free(d);
 		if (!access(ret, 0))
 		{
@@ -36,7 +36,7 @@ void	command_access(char **path, t_command *cmd, t_mini *c)
 		path++;
 	}
 	write(2, "bash: ", 6);
-	write(2, cmd[c->index].program[0], ft_strlen(cmd[c->index].program[0]));
+	write(2, cmd[c->index].cmd[0], ft_strlen(cmd[c->index].cmd[0]));
 	write(2, ": command not found\n", 20);
 }
 
@@ -45,7 +45,7 @@ void	_c_cmd(t_command *command, t_mini *c)
 	if (!command[c->index].built_in)
 		command_access(c->path, &command[c->index], c);
 	else if (command[c->index].built_in)
-		c->cmd = ft_strdup(command[c->index].program[0]);
+		c->cmd = ft_strdup(command[c->index].cmd[0]);
 }
 
 void	exe_builtin(char *s, t_command *command, t_mini *c)
@@ -70,12 +70,12 @@ void	_exe(t_command *command, t_mini *c)
 {
 	if (command[c->index].built_in)
 	{
-		exe_builtin(command[c->index].program[0], command, c);
+		exe_builtin(command[c->index].cmd[0], command, c);
 		exit(0);
 	}
 	else
 	{
-		if (execve(c->cmd, command[c->index].program, c->env) < 0)
+		if (execve(c->cmd, command[c->index].cmd, c->env) < 0)
 			exit(1);
 		exit(0);
 	}

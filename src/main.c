@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/05 17:01:49 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/07 04:13:31 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	_print(t_command **cmd, t_sys_info *info) {
 	for (int i = 0; i < info->cmd_cnt; i++){
-		for (int j = 0; (*cmd + i)->program[j]; j++)
-			printf("cmd[%d].program[%d] is : %s\n", i, j, (*cmd + i)->program[j]);
+		for (int j = 0; (*cmd + i)->cmd[j]; j++)
+			printf("cmd[%d].cmd[%d] is : %s\n", i, j, (*cmd + i)->cmd[j]);
 		printf("is builtin : %d\n", (*cmd + i)->built_in);
 		printf("input is : %s\n", (*cmd + i)->info[0]);
 		printf("output is : %s\n", (*cmd + i)->info[1]);
@@ -24,29 +24,11 @@ void	_print(t_command **cmd, t_sys_info *info) {
 	}
 }
 
-int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
+void	init_cmd_info(t_command **cmd, t_sys_info *info)
 {
-	char	**nodes;
-	int		i;
-//	int		j;
+	int i;
 
-//	i = -1;
-//	j = -1;
-	nodes = ft_split(line, '|');
-	if (!is_ended_quote(nodes, -1, 0))
-//		return (1);
-		exit(1);
-	if (!nodes[0])
-	{
-		free(nodes);
-		return (0);
-	}
-	i = -1;
-	while (++i < info->cmd_cnt)
-		init_cmd(nodes[i], *cmd + i);
-	doller_parse_with_del_quot(*cmd, info, env);
-	builtin_check(*cmd, info);
-	i = -1;
+	i = 0;
 	while (++i < info->cmd_cnt)
 	{
 		if ((*cmd)[i].info[0])
@@ -58,7 +40,26 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 		if ((*cmd)[i].info[3])
 			(*cmd)[i].output_append = (*cmd)[i].info[3];
 	}
-//	_print(cmd, info);
+}
+
+int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
+{
+	char	**nodes;
+	int		i;
+
+	nodes = ft_split(line, '|');
+	if (!nodes[0] || !is_ended_quote(nodes, -1, 0))
+	{
+		free(nodes);
+		return (1);
+	}
+	i = -1;
+	while (++i < info->cmd_cnt)
+		init_cmd(nodes[i], *cmd + i);
+	doller_parse_with_del_quot(*cmd, info, env);
+	builtin_check(*cmd, info->cmd_cnt);
+	init_cmd_info(cmd, info);
+	_print(cmd, info);
 	free(nodes);
 	return (0);
 }
@@ -67,7 +68,6 @@ int	display(t_sys_info *info, t_mini *c, char **env)
 {
 	t_command	*cmd;
 	char		*line;
-//	int			i;
 
 	line = NULL;
 	while (1)
@@ -78,16 +78,16 @@ int	display(t_sys_info *info, t_mini *c, char **env)
 		if (*line != '\0')
 		{
 			add_history(line);
+			if (!is_ended_quote(&line, -1, 0))
+				ft_err("invalid quotes");
 			info->cmd_cnt = pipe_cnt(line) + 1;
 			cmd = ft_calloc(sizeof(t_command), info->cmd_cnt);
-//			calloc 한거라서 memset으로 안 밀어도 됨
-//			i = -1;
-//			while (++i < info->cmd_cnt)
-//				ft_memset(cmd + i, 0, sizeof(t_command));
-			tokenize(line, &cmd, info, env);
-//				continue ;
+			if (tokenize(line, &cmd, info, env))
+			{
+				ft_free_command(&cmd, info);
+				continue ;
+			}
 			_jungyeok(cmd, c, info->cmd_cnt - 1);
-			//(void)c;
 			ft_free_command(&cmd, info);
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 20:30:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/04/27 17:39:52 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdio.h>
 
 typedef struct s_command{
-	char **program;
+	char **cmd;
 }t_command;
 
 char	*ft_strdup(char *s){
@@ -37,21 +37,21 @@ int	_cd(t_command *cmd)
 	int	ret;
 
 	flag = 0;
-	if (!cmd->program[1])
+	if (!cmd->cmd[1])
 	{
 		flag = 1;
-		cmd->program[1] = ft_strdup("/Users/jungyeok");
+		cmd->cmd[1] = ft_strdup("/Users/jungyeok");
 	}
-	ret = chdir(cmd->program[1]);
+	ret = chdir(cmd->cmd[1]);
 	if (ret)
 	{
 		write(1, "bash: cd: ", 10);
-		write(1, cmd->program[1], ft_strlen(cmd->program[1]));
+		write(1, cmd->cmd[1], ft_strlen(cmd->cmd[1]));
 		write(1, ": No such file or directory\n", 28);
 		return (1);
 	}
 	if (flag)
-		free(cmd->program[1]);
+		free(cmd->cmd[1]);
 	return (0);
 }
 
@@ -64,9 +64,9 @@ int main(int ac, char **av){
 	t_command c;
 	memset(&c, 0, sizeof(t_command));
 
-	c.program = calloc(8, (ac + 1));
+	c.cmd = calloc(8, (ac + 1));
 	for (int i = 0; i < ac; i++)
-		c.program[i] = strdup(av[i]);
+		c.cmd[i] = strdup(av[i]);
 
 	_cd(&c);
 
@@ -75,7 +75,7 @@ int main(int ac, char **av){
 	free(pwd);
 
 	for (int i = 0; i < ac; i++)
-		free(c.program[i]);
-	free(c.program);
+		free(c.cmd[i]);
+	free(c.cmd);
 }
 */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/03 13:29:45 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:47:32 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,7 @@
 
 typedef struct s_sys_info
 {
-	void	*gkwon;
-	void	*jungyeok;
-	void	*minishell;
-	void	*plese_give_us_pass;
 	int		cmd_cnt;
-	//so on..
 }t_sys_info;
 
 typedef struct s_list
@@ -34,7 +29,7 @@ typedef struct s_list
 typedef struct s_command
 {
 	bool	built_in;
-	char	**program;
+	char	**cmd;
 	char	*input;
 	char	*output;
 	char	*delimiter;

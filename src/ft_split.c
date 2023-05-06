@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:49:10 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/05 05:27:08 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/07 03:58:50 by edwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static int	total_len(char const *str, char c, int i, int count)
 			count++;
 		while (str[i] && str[i] == c)
 			i++;
+		if (c == ' ' && (str[i] == '\"' || str[i] == '\''))
+			continue ;
 		if (str[i])
 			count++;
 		while (str[i] && str[i] != c)
