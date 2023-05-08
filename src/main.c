@@ -6,12 +6,14 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 00:26:50 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 07:27:59 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+/* 14dd
+ *
 void	_print(t_command **cmd, t_sys_info *info) {
 	for (int i = 0; i < info->cmd_cnt; i++){
 		for (int j = 0; (*cmd + i)->cmd[j]; j++)
@@ -23,10 +25,11 @@ void	_print(t_command **cmd, t_sys_info *info) {
 		printf("output_append is : %s\n", (*cmd + i)->info[3]);
 	}
 }
+*/
 
 void	init_cmd_info(t_command **cmd, t_sys_info *info)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < info->cmd_cnt)
@@ -64,7 +67,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 	return (0);
 }
 
-int	display(t_sys_info *info, t_mini *c, char **env)
+void	display(t_sys_info *info, t_mini *c, char **env)
 {
 	t_command	*cmd;
 	char		*line;
@@ -91,7 +94,6 @@ int	display(t_sys_info *info, t_mini *c, char **env)
 			ft_free_command(&cmd, info);
 		}
 	}
-	return (0);
 }
 
 void	main_init(int argc, char *argv[])
