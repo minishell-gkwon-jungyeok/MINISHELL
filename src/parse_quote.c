@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/08 20:14:47 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/09 07:33:32 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	replace_env(char **line, char **env, int i)
 void	parse(char **line, char **env)
 {
 	int	quotes;
-	int len;
-	int i;
+	int	len;
+	int	i;
 
 	len = 0;
 	quotes = 0;
@@ -122,6 +122,9 @@ void	parse(char **line, char **env)
 	}
 }
 
+/*
+ * 	함수 5개 제한 때문에
+ *	src/parse_quote_util.c로 옮겼어요
 int	doller_parse_with_del_quot(t_command *cmd, t_sys_info *info, char **env)
 {
 	int	i;
@@ -140,3 +143,4 @@ int	doller_parse_with_del_quot(t_command *cmd, t_sys_info *info, char **env)
 	}
 	return (1);
 }
+*/

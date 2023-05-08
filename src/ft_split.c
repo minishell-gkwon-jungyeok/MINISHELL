@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 19:49:10 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/07 03:58:50 by edwin            ###   ########.fr       */
+/*   Created: 2023/05/09 07:54:10 by gkwon             #+#    #+#             */
+/*   Updated: 2023/05/09 07:56:35 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+/*
+ *	" is 34, ' is 39
+ * */
 
 static int	total_len(char const *str, char c, int i, int count)
 {
@@ -20,7 +24,7 @@ static int	total_len(char const *str, char c, int i, int count)
 	was_in = 0;
 	while (str[i])
 	{
-		while (str[i] == '\"' || str[i] == '\'')
+		while (str[i] == 34 || str[i] == 39)
 		{
 			was_in = 1;
 			quote = str[i++];
@@ -32,7 +36,7 @@ static int	total_len(char const *str, char c, int i, int count)
 			count++;
 		while (str[i] && str[i] == c)
 			i++;
-		if (c == ' ' && (str[i] == '\"' || str[i] == '\''))
+		if (c == ' ' && (str[i] == 34 || str[i] == 39))
 			continue ;
 		if (str[i])
 			count++;

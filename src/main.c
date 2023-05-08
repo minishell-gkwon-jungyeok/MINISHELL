@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 07:27:59 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 08:05:28 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 	return (0);
 }
 
-void	display(t_sys_info *info, t_mini *c, char **env)
+void	display(t_sys_info *info, t_mini *c)
 {
 	t_command	*cmd;
 	char		*line;
@@ -85,7 +85,7 @@ void	display(t_sys_info *info, t_mini *c, char **env)
 				ft_err("invalid quotes");
 			info->cmd_cnt = pipe_cnt(line) + 1;
 			cmd = ft_calloc(sizeof(t_command), info->cmd_cnt);
-			if (tokenize(line, &cmd, info, env))
+			if (tokenize(line, &cmd, info, c->env))
 			{
 				ft_free_command(&cmd, info);
 				continue ;
@@ -126,7 +126,7 @@ int	main(int ac, char **av, char **env)
 	c.index = -1;
 	while (env[++c.index])
 		c.env[c.index] = ft_strdup(env[c.index]);
-	display(&info, &c, env);
+	display(&info, &c);
 	(void)av;
 	c.index = -1;
 	while (c.env[++c.index])

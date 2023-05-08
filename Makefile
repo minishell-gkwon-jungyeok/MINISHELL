@@ -10,6 +10,7 @@ SRCS = 	src/main.c\
 		src/ft_free.c\
 		src/init_cmd.c\
 		src/parse_quote.c\
+		src/parse_quote_util.c\
 		src/parse_util.c\
 		src/signal.c\
 		src/standard_split.c\
