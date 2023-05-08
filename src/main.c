@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/07 04:13:31 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/09 00:26:50 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	_print(t_command **cmd, t_sys_info *info) {
 	for (int i = 0; i < info->cmd_cnt; i++){
 		for (int j = 0; (*cmd + i)->cmd[j]; j++)
 			printf("cmd[%d].cmd[%d] is : %s\n", i, j, (*cmd + i)->cmd[j]);
-		printf("is builtin : %d\n", (*cmd + i)->built_in);
+		printf("builtin is : %d\n", (*cmd + i)->built_in);
 		printf("input is : %s\n", (*cmd + i)->info[0]);
 		printf("output is : %s\n", (*cmd + i)->info[1]);
 		printf("del is : %s\n", (*cmd + i)->info[2]);
@@ -28,7 +28,7 @@ void	init_cmd_info(t_command **cmd, t_sys_info *info)
 {
 	int i;
 
-	i = 0;
+	i = -1;
 	while (++i < info->cmd_cnt)
 	{
 		if ((*cmd)[i].info[0])
@@ -59,7 +59,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 	doller_parse_with_del_quot(*cmd, info, env);
 	builtin_check(*cmd, info->cmd_cnt);
 	init_cmd_info(cmd, info);
-	_print(cmd, info);
+//	_print(cmd, info);
 	free(nodes);
 	return (0);
 }

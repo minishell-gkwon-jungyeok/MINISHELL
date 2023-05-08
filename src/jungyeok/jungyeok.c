@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/09 00:26:57 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,23 @@ void	free_jungyeok(t_mini *c)
 	free(c->pipe);
 }
 
+void    _(t_command *cmd, int npipe) {
+	for (int i = 0; i <= npipe; i++){
+		for (int j = 0; cmd[i].cmd[j]; j++)
+			dprintf(2, "cmd[%d].cmd[%d] : %s\n", i, j, cmd[i].cmd[j]);
+		dprintf(2, "bul : %d\n", cmd[i].built_in);
+		dprintf(2, "inp is : %s\n", cmd[i].input);
+		dprintf(2, "oup is : %s\n", cmd[i].output);
+		dprintf(2, "del is : %s\n", cmd[i].delimiter);
+		dprintf(2, "oap is : %s\n", cmd[i].output_append);
+	}
+}
+
 int	_jungyeok(t_command *command, t_mini *c, int npipe)
 {
 	char	*pat;
 
+//	_(command, npipe);
 	c->ncmd = npipe + 1; 
 	if (c->ncmd > 20)
 		return (_err("no more than 20 pipes"));
