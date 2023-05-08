@@ -20,6 +20,7 @@ SRCS = 	src/main.c\
 		src/jungyeok/command.c\
 		src/jungyeok/_cmd_env.c\
 		src/jungyeok/basic.c\
+		src/jungyeok/basicc.c\
 		src/jungyeok/builtin/cd.c\
 		src/jungyeok/builtin/echo.c\
 		src/jungyeok/builtin/env.c\

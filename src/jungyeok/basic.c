@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 05:51:55 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/07 04:46:15 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/09 07:16:00 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,42 +113,4 @@ char	*ft_itoa(int n)
 		n /= 10;
 	}
 	return (ret);
-}
-
-char	*ft_strchr(char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	if (!c)
-	{
-		while (s[i])
-			i++;
-		return (s + i);
-	}
-	while (s[i])
-	{
-		if (s[i] == (unsigned char)c)
-			return (s + i);
-		i++;
-	}
-	return (NULL);
-}
-
-int	ft_getindex(char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-	{
-		if (s[i] == (unsigned char)c)
-			return (i);
-		i++;
-	}
-	return (0);
 }

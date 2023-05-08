@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jungyeok.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 22:57:18 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 00:26:57 by jungyeok         ###   ########.fr       */
+/*   Created: 2023/05/09 07:11:06 by jungyeok          #+#    #+#             */
+/*   Updated: 2023/05/09 07:18:30 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ int	_run_cmd(t_command *command, int ncmd, t_mini *c)
 	c->index = -1;
 	while (++c->index < ncmd)
 	{
-		if (!ft_strncmp(command[c->index].cmd[0], "export", 7) ||
-			!ft_strncmp(command[c->index].cmd[0], "exit", 5) ||
-			!ft_strncmp(command[c->index].cmd[0], "cd", 3) ||
-			!ft_strncmp(command[c->index].cmd[0], "unset", 6))
+		if (ft_cmd(command, c))
 		{
 			fclose_pipe(c, c->index, c->ncmd - 1);
 			open_fd(command, c);
@@ -72,24 +69,11 @@ void	free_jungyeok(t_mini *c)
 	free(c->pipe);
 }
 
-void    _(t_command *cmd, int npipe) {
-	for (int i = 0; i <= npipe; i++){
-		for (int j = 0; cmd[i].cmd[j]; j++)
-			dprintf(2, "cmd[%d].cmd[%d] : %s\n", i, j, cmd[i].cmd[j]);
-		dprintf(2, "bul : %d\n", cmd[i].built_in);
-		dprintf(2, "inp is : %s\n", cmd[i].input);
-		dprintf(2, "oup is : %s\n", cmd[i].output);
-		dprintf(2, "del is : %s\n", cmd[i].delimiter);
-		dprintf(2, "oap is : %s\n", cmd[i].output_append);
-	}
-}
-
 int	_jungyeok(t_command *command, t_mini *c, int npipe)
 {
 	char	*pat;
 
-//	_(command, npipe);
-	c->ncmd = npipe + 1; 
+	c->ncmd = npipe + 1;
 	if (c->ncmd > 20)
 		return (_err("no more than 20 pipes"));
 	_cmd_env(command, c->env, c);
