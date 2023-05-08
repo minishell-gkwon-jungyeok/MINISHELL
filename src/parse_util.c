@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:57:52 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/07 04:54:34 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/08 19:54:19 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,15 +108,13 @@ char	*replace_middle(char *s1, int start, int len, char *s2)
 	char	*mid;
 	char	*end;
 	char	*ret;
-	int		s2_len;
 
-	s2_len = ft_strlen(s2);
 	fnt = (char *)malloc(start + 1);
 	fnt[start] = 0;
 	ft_memmove(fnt, s1, start);
-	mid = (char *)malloc(s2_len + 1);
-	mid[s2_len] = 0;
-	ft_memmove(mid, s2, s2_len);
+	mid = (char *)malloc(ft_strlen(s2) + 1);
+	mid[ft_strlen(s2)] = 0;
+	ft_memmove(mid, s2, ft_strlen(s2));
 	end = (char *)malloc(ft_strlen(s1) - (start + len) + 1);
 	end[ft_strlen(s1) - (start + len)] = 0;
 	ft_memmove(end, &s1[start + len], ft_strlen(s1) - (len + start));
