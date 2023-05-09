@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/09 17:32:15 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 17:52:06 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,6 @@ void	parse(char **line, char **env)
 			else if (((*line)[i] == ';' || (*line)[i] == '\\') && quotes == 0)
 				ft_err("not allowed character used");
 		}
-		*line = *std_split(*line, 7);
+		//*line = *std_split(*line, 7);
 	}
 }

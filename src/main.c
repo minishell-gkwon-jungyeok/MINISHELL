@@ -6,14 +6,12 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 17:32:19 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 17:51:09 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* 14dd
- *
 void	_print(t_command **cmd, t_sys_info *info) {
 	for (int i = 0; i < info->cmd_cnt; i++){
 		for (int j = 0; (*cmd + i)->cmd[j]; j++)
@@ -25,7 +23,6 @@ void	_print(t_command **cmd, t_sys_info *info) {
 		printf("output_append is : %s\n", (*cmd + i)->info[3]);
 	}
 }
-*/
 
 void	init_cmd_info(t_command **cmd, t_sys_info *info, int i)
 {
@@ -53,13 +50,13 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 		free(nodes);
 		return (1);
 	}
+	doller_parse_with_del_quot(&nodes, info, env);
 	i = -1;
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
-	doller_parse_with_del_quot(*cmd, info, env);
 	builtin_check(*cmd, info->cmd_cnt);
 	init_cmd_info(cmd, info, -1);
-//	_print(cmd, info);
+	_print(cmd, info);
 	free(nodes);
 	return (0);
 }
@@ -97,7 +94,6 @@ void	display(t_sys_info *info, t_mini *c)
 				continue ;
 			}
 			_jungyeok(cmd, c, info->cmd_cnt - 1);
-			system("leaks minishell");
 			ft_free_command(&cmd, info);
 		}
 	}
@@ -115,12 +111,18 @@ void	main_init(int argc)
 	set_signal_handlers();
 }
 
+void a(void)
+{
+	system("leaks minishell");
+}
+
 int	main(int ac, char **av, char **env)
 {
 	t_sys_info		info;
 	t_mini			c;
 	struct termios	term;
 
+	//atexit(a);
 	(void)av;
 	tcgetattr(STDIN_FILENO, &term);
 	main_init(ac);
@@ -140,4 +142,3 @@ int	main(int ac, char **av, char **env)
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	return (0);
 }
-//system("leaks minishell");

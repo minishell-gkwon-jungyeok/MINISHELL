@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 16:36:15 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/09 17:45:43 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		parse_set_quotes(char *line, int quotes);
 void	parse(char **line, char **env);
 
 /* src/parse_quote_util.c */
-int		doller_parse_with_del_quot(t_command *cmd, t_sys_info *info,
+int		doller_parse_with_del_quot(char ***nodes, t_sys_info *info,
 			char **env);
 
 /* standard_split.c */
