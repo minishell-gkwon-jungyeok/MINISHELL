@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/09 16:35:59 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/09 17:32:15 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	is_ended_quote(char **nodes, int i, int j)
 
 	if (*nodes == 0)
 		return (1);
-	while (!strcmp(nodes[++i], ""))
+	while (!ft_strcmp(nodes[++i], ""))
 	{
 		j = 0;
 		while (nodes[i][j])
@@ -119,33 +119,6 @@ void	parse(char **line, char **env)
 			else if (((*line)[i] == ';' || (*line)[i] == '\\') && quotes == 0)
 				ft_err("not allowed character used");
 		}
-		spl = std_split(*line, 32);
-		*line = ft_strdup(spl[0]);
-		for (int j=0; spl[j]; j++)
-			free(spl[j]);
-		free(spl);
+		*line = *std_split(*line, 7);
 	}
 }
-
-/*
- * 	함수 5개 제한 때문에
- *	src/parse_quote_util.c로 옮겼어요
-int	doller_parse_with_del_quot(t_command *cmd, t_sys_info *info, char **env)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < info->cmd_cnt)
-	{
-		j = -1;
-		while (cmd[i].cmd[++j])
-			parse(&cmd[i].cmd[j], env);
-		j = -1;
-		while (++j < 4)
-			if (cmd[i].info[j])
-				parse(&cmd[i].info[j], env);
-	}
-	return (1);
-}
-*/

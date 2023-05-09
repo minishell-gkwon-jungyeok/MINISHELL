@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 07:11:06 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 15:26:17 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 17:17:39 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	_run(t_command *command, t_mini *c)
 	_c_cmd(command, c);
 	close_pipe(c, c->ncmd - 1);
 	close_fd(command, c);
-//	_exe(command, c);
+	_exe(command, c);
 	free(c->cmd);
 	exit(0);
 }

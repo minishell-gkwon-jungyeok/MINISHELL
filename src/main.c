@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 16:33:53 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/09 17:32:19 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 	return (0);
 }
 
+/*
+ *	1. | split
+ *	2. $ transform
+ *	3. ' " >> 7
+ *	4. < > >> <<
+ *	5. 32 split
+ *	6. realloc
+ * */
+
 void	display(t_sys_info *info, t_mini *c)
 {
 	t_command	*cmd;
@@ -94,7 +103,7 @@ void	display(t_sys_info *info, t_mini *c)
 	}
 }
 
-void	main_init(int argc, char *argv[])
+void	main_init(int argc)
 {
 	struct termios	term;
 
@@ -104,8 +113,6 @@ void	main_init(int argc, char *argv[])
 	term.c_lflag &= ~(ECHOCTL);
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	set_signal_handlers();
-	(void)argc;
-	(void)argv;
 }
 
 int	main(int ac, char **av, char **env)
@@ -116,7 +123,7 @@ int	main(int ac, char **av, char **env)
 
 	(void)av;
 	tcgetattr(STDIN_FILENO, &term);
-	main_init(ac, av);
+	main_init(ac);
 	ft_memset(&c, 0, sizeof(t_mini));
 	c.index = 0;
 	while (env[c.index])
