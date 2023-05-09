@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/08 20:14:40 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/08 20:21:37 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**ft_split(char const *s, char c);
 void	init_cmd(char *node, t_command *cmd);
 void	builtin_check(t_command *cmd, int cmd_cnt);
 int		tokenize(char *line, t_command **cmd, t_sys_info *info, char **env);
-int		display(t_sys_info *info, t_mini *c, char **env);
+void	display(t_sys_info *info, t_mini *c, char **env);
 void	handle_signal(int signum);
 void	set_signal_handlers(void);
 int		is_ended_quote(char **nodes, int i, int j);

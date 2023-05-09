@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/08 20:14:47 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/08 20:20:34 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	replace_env(char **line, char **env, int i)
 void	parse(char **line, char **env)
 {
 	int	quotes;
-	int len;
-	int i;
+	int	len;
+	int	i;
 
 	len = 0;
 	quotes = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/07 04:13:31 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/08 20:21:29 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	_print(t_command **cmd, t_sys_info *info) {
 
 void	init_cmd_info(t_command **cmd, t_sys_info *info)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (++i < info->cmd_cnt)
@@ -64,7 +64,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 	return (0);
 }
 
-int	display(t_sys_info *info, t_mini *c, char **env)
+void	display(t_sys_info *info, t_mini *c, char **env)
 {
 	t_command	*cmd;
 	char		*line;
@@ -91,7 +91,6 @@ int	display(t_sys_info *info, t_mini *c, char **env)
 			ft_free_command(&cmd, info);
 		}
 	}
-	return (0);
 }
 
 void	main_init(int argc, char *argv[])
