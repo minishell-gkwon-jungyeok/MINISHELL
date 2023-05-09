@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 17:51:09 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/09 18:08:48 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,24 @@ void	init_cmd_info(t_command **cmd, t_sys_info *info, int i)
 	}
 }
 
+void del_quotes(t_command **cmd, t_sys_info *info)
+{
+	int i;
+	int	j;
+
+	i = -1;
+	while (++i < info->cmd_cnt)
+	{
+		j = -1;
+		while (cmd[i]->cmd[++j])
+			cmd[i]->cmd[j] = ft_realloc_c(cmd[i]->cmd[j], 7);
+		j = -1;
+		while (++j < 4)
+			if (cmd[i]->info[j])
+				cmd[i]->info[j] = ft_realloc_c(cmd[i]->info[j], 7);
+	}
+}
+
 int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 {
 	char	**nodes;
@@ -54,6 +72,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 	i = -1;
 	while (++i < info->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
+	del_quotes(cmd, info);
 	builtin_check(*cmd, info->cmd_cnt);
 	init_cmd_info(cmd, info, -1);
 	_print(cmd, info);

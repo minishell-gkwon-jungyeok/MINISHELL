@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 17:45:43 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/09 17:57:32 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@
 # define DFL 1
 # define IGN 2
 
+/* FOR BASIC3 */
+# define	IN	0
+# define	JN	1
+# define	LEN	2
+# define	NC	3
+
 /* ===============../src=============== */
 
 /* main.c */
@@ -49,6 +55,9 @@ int		ft_strncmp(char *s1, char *s2, int n);
 int		ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	*ft_memmove(void *dst, void *src, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
+/* basic3.c */
+char	*ft_realloc_c(char *s, int c);
 
 /* ft_free.c */
 void	ft_free_command(t_command **cmd, t_sys_info *info);

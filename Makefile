@@ -1,5 +1,5 @@
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -g #-fsanitize=address
 LDFLAGS		=	-lreadline -L${HOME}/.brew/opt/readline/lib/
 CPPFLAGS	=	-I${HOME}/.brew/opt/readline/include/
 
@@ -7,6 +7,7 @@ SRCS = 	src/main.c\
 		src/ft_split.c\
 		src/basic1.c\
 		src/basic2.c\
+		src/basic3.c\
 		src/ft_free.c\
 		src/init_cmd.c\
 		src/parse_quote.c\
