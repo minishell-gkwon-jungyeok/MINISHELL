@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 17:55:57 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 18:09:26 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	display(t_sys_info *info, t_mini *c)
 		if (*line != '\0')
 		{
 			add_history(line);
-			if (!is_ended_quote(&line, -1, 0))
+			/*if (!is_ended_quote(&line, -1, 0))
 				ft_err("invalid quotes");
 			info->cmd_cnt = pipe_cnt(line) + 1;
 			cmd = ft_calloc(sizeof(t_command), info->cmd_cnt);
@@ -95,10 +95,11 @@ void	display(t_sys_info *info, t_mini *c)
 			{
 				ft_free_command(&cmd, info);
 				continue ;
-			}
+			}*/
+
 			_jungyeok(cmd, c, info->cmd_cnt - 1);
-			system("leaks minishell");
-			ft_free_command(&cmd, info);
+
+			//ft_free_command(&cmd, info);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 17:55:53 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 18:09:32 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 /* basic3.c */
 char	*ft_realloc_c(char *s, int c);
+char	**split_jungyeok(char *s, int c);
 
 /* ft_free.c */
 void	ft_free_command(t_command **cmd, t_sys_info *info);
