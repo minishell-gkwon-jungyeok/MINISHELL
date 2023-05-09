@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/10 02:12:14 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 02:13:14 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 	del_quotes(cmd, info);
 	builtin_check(*cmd, info->cmd_cnt);
 	init_cmd_info(cmd, info, -1);
-	_print(cmd, info);
 	free(nodes);
 	return (0);
 }
