@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 08:07:00 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:45:10 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,6 @@ bool	get_env_val(char **s, char **env, char **target_val);
 char	*ft_substr(char *s, int start, int len);
 bool	bool_strncmp(const char *s1, const char *s2, size_t n);
 char	*replace_middle(char *s1, int start, int len, char *s2);
-
-/* where?? */
-int		bool_strcmp(char *s1, char *s2);
-char	*ft_strjoin_char(char const *s1, char s2);
 
 /* jungyeok/basicc.c */
 int		ft_getindex(char *s, int c);

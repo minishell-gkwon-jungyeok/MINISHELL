@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 08:05:28 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:30:18 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,18 @@ void	_print(t_command **cmd, t_sys_info *info) {
 }
 */
 
-void	init_cmd_info(t_command **cmd, t_sys_info *info)
+void	init_cmd_info(t_command **cmd, t_sys_info *info, int i)
 {
-	int	i;
-
-	i = -1;
 	while (++i < info->cmd_cnt)
 	{
 		if ((*cmd)[i].info[0])
-			(*cmd)[i].input = (*cmd)[i].info[0];
+			(*cmd)[i].input = ft_strdup((*cmd)[i].info[0]);
 		if ((*cmd)[i].info[1])
-			(*cmd)[i].output = (*cmd)[i].info[1];
+			(*cmd)[i].output = ft_strdup((*cmd)[i].info[1]);
 		if ((*cmd)[i].info[2])
-			(*cmd)[i].delimiter = (*cmd)[i].info[2];
+			(*cmd)[i].delimiter = ft_strdup((*cmd)[i].info[2]);
 		if ((*cmd)[i].info[3])
-			(*cmd)[i].output_append = (*cmd)[i].info[3];
+			(*cmd)[i].output_append = ft_strdup((*cmd)[i].info[3]);
 	}
 }
 
@@ -61,7 +58,7 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 		init_cmd(nodes[i], *cmd + i);
 	doller_parse_with_del_quot(*cmd, info, env);
 	builtin_check(*cmd, info->cmd_cnt);
-	init_cmd_info(cmd, info);
+	init_cmd_info(cmd, info, -1);
 //	_print(cmd, info);
 	free(nodes);
 	return (0);
@@ -91,6 +88,7 @@ void	display(t_sys_info *info, t_mini *c)
 				continue ;
 			}
 			_jungyeok(cmd, c, info->cmd_cnt - 1);
+			system("leaks minishell");
 			ft_free_command(&cmd, info);
 		}
 	}
@@ -116,6 +114,7 @@ int	main(int ac, char **av, char **env)
 	t_mini			c;
 	struct termios	term;
 
+	(void)av;
 	tcgetattr(STDIN_FILENO, &term);
 	main_init(ac, av);
 	ft_memset(&c, 0, sizeof(t_mini));
@@ -127,7 +126,6 @@ int	main(int ac, char **av, char **env)
 	while (env[++c.index])
 		c.env[c.index] = ft_strdup(env[c.index]);
 	display(&info, &c);
-	(void)av;
 	c.index = -1;
 	while (c.env[++c.index])
 		free(c.env[c.index]);
@@ -135,3 +133,4 @@ int	main(int ac, char **av, char **env)
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	return (0);
 }
+//system("leaks minishell");

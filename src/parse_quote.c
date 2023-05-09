@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/09 07:33:32 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:30:16 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,17 @@ void	replace_env(char **line, char **env, int i)
 
 void	parse(char **line, char **env)
 {
-	int	quotes;
-	int	len;
-	int	i;
+	char	**spl;
+	int		quotes;
+	int		len;
+	int		i;
 
+	dprintf(2, "line = %s\n", *line);
 	len = 0;
 	quotes = 0;
-	i = -1;
 	if (*line)
 	{
+		i = -1;
 		while ((*line)[++i])
 		{
 			quotes = parse_set_quotes(&(*line)[i], quotes);
@@ -118,7 +120,11 @@ void	parse(char **line, char **env)
 			else if (((*line)[i] == ';' || (*line)[i] == '\\') && quotes == 0)
 				ft_err("not allowed character used");
 		}
-		*line = *std_split(*line, 7);
+		spl = std_split(*line, 32);
+		*line = ft_strdup(spl[0]);
+		for (int j=0; spl[j]; j++)
+			free(spl[j]);
+		free(spl);
 	}
 }
 
