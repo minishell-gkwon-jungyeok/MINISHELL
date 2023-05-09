@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 19:49:10 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/07 03:58:50 by edwin            ###   ########.fr       */
+/*   Created: 2023/05/09 07:54:10 by gkwon             #+#    #+#             */
+/*   Updated: 2023/05/09 13:47:40 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+/*
+ *	" is 34, ' is 39
+ * */
 
 static int	total_len(char const *str, char c, int i, int count)
 {
@@ -20,7 +24,7 @@ static int	total_len(char const *str, char c, int i, int count)
 	was_in = 0;
 	while (str[i])
 	{
-		while (str[i] == '\"' || str[i] == '\'')
+		while (str[i] == 34 || str[i] == 39)
 		{
 			was_in = 1;
 			quote = str[i++];
@@ -32,7 +36,7 @@ static int	total_len(char const *str, char c, int i, int count)
 			count++;
 		while (str[i] && str[i] == c)
 			i++;
-		if (c == ' ' && (str[i] == '\"' || str[i] == '\''))
+		if (c == ' ' && (str[i] == 34 || str[i] == 39))
 			continue ;
 		if (str[i])
 			count++;
@@ -47,16 +51,10 @@ static char	*get_word(char const *str, int len)
 	char	*ret;
 	int		i;
 
-	i = 0;
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	if (!ret)
-		return (NULL);
-	while (i < len)
-	{
+	ret = ft_calloc(1, len + 1);
+	i = -1;
+	while (++i < len)
 		ret[i] = str[i];
-		i++;
-	}
-	ret[i] = 0;
 	return (ret);
 }
 
@@ -99,10 +97,7 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	t_len = total_len(s, c, i, i);
-	ret = (char **)malloc(sizeof(char *) * (t_len + 1));
-	if (!ret)
-		return (0);
-	ret[t_len] = NULL;
+	ret = ft_calloc(8, t_len + 1);
 	while (*s && i < t_len)
 	{
 		while (*s && *s == c)

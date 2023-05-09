@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/07 03:50:43 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/09 14:49:36 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,18 @@ void	init_cmd(char *node, t_command *cmd)
 
 	if (!node)
 		exit(1);
-	i = -1;
 	cmd->info = ft_calloc(sizeof(char *), 5);
+	i = -1;
 	while (++i < 4)
 		cmd->info[i] = ft_calloc(sizeof(char *), 1);
 	i = 0;
 	while (i < 4)
 	{
 		at = ft_strnstr(node, string_table[i], ft_strlen(node));
-		if (at != -1 && node[at
-				+ ft_strlen(string_table[i])] != string_table[i][0] && (node[at
-				- 1] != '"' && node[at - 1] != '\'') && (node[at + 1] != '"'
-				&& node[at + 1] != '\''))
+		if (at != -1
+			&& node[at + ft_strlen(string_table[i])] != string_table[i][0]
+			&& (node[at - 1] != 34 && node[at - 1] != 39)
+			&& (node[at + 1] != 34 && node[at + 1] != 39))
 			cut_and_paste(&node, i, at, cmd);
 		else if (!cmd->info[i++][0])
 			cmd->info[i - 1] = NULL;

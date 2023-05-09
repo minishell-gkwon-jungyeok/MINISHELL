@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/08 20:20:34 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/09 16:35:59 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,12 @@ void	parse(char **line, char **env)
 	int	len;
 	int	i;
 
+	dprintf(2, "line = %s\n", *line);
 	len = 0;
 	quotes = 0;
-	i = -1;
 	if (*line)
 	{
+		i = -1;
 		while ((*line)[++i])
 		{
 			quotes = parse_set_quotes(&(*line)[i], quotes);
@@ -118,10 +119,17 @@ void	parse(char **line, char **env)
 			else if (((*line)[i] == ';' || (*line)[i] == '\\') && quotes == 0)
 				ft_err("not allowed character used");
 		}
-		*line = *std_split(*line, 7);
+		spl = std_split(*line, 32);
+		*line = ft_strdup(spl[0]);
+		for (int j=0; spl[j]; j++)
+			free(spl[j]);
+		free(spl);
 	}
 }
 
+/*
+ * 	함수 5개 제한 때문에
+ *	src/parse_quote_util.c로 옮겼어요
 int	doller_parse_with_del_quot(t_command *cmd, t_sys_info *info, char **env)
 {
 	int	i;
@@ -140,3 +148,4 @@ int	doller_parse_with_del_quot(t_command *cmd, t_sys_info *info, char **env)
 	}
 	return (1);
 }
+*/
