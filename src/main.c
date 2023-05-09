@@ -6,23 +6,11 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 18:18:32 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/10 02:12:14 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-void	_print(t_command **cmd, t_sys_info *info) {
-	for (int i = 0; i < info->cmd_cnt; i++){
-		for (int j = 0; (*cmd + i)->cmd[j]; j++)
-			printf("cmd[%d].cmd[%d] is : %s\n", i, j, (*cmd + i)->cmd[j]);
-		printf("builtin is : %d\n", (*cmd + i)->built_in);
-		printf("input is : %s\n", (*cmd + i)->info[0]);
-		printf("output is : %s\n", (*cmd + i)->info[1]);
-		printf("del is : %s\n", (*cmd + i)->info[2]);
-		printf("output_append is : %s\n", (*cmd + i)->info[3]);
-	}
-}
 
 void	init_cmd_info(t_command **cmd, t_sys_info *info, int i)
 {
@@ -39,9 +27,9 @@ void	init_cmd_info(t_command **cmd, t_sys_info *info, int i)
 	}
 }
 
-void del_quotes(t_command **cmd, t_sys_info *info)
+void	del_quotes(t_command **cmd, t_sys_info *info)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = -1;
@@ -80,15 +68,6 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 	return (0);
 }
 
-/*
- *	1. | split
- *	2. $ transform
- *	3. ' " >> 7
- *	4. < > >> <<
- *	5. 32 split
- *	6. realloc
- * */
-
 void	display(t_sys_info *info, t_mini *c)
 {
 	t_command	*cmd;
@@ -103,7 +82,17 @@ void	display(t_sys_info *info, t_mini *c)
 		if (*line != '\0')
 		{
 			add_history(line);
-			/*if (!is_ended_quote(&line, -1, 0))
+			if (pipe_split(&line, &cmd, c))
+				continue ;
+			info->cmd_cnt = c->ncmd;
+			env_change(&cmd, c->env, c->ncmd);
+			bracket_remove(&cmd, c->ncmd);
+			_3439to7(&cmd, c->ncmd);
+			_32split(&cmd, c->ncmd);
+			is_builtin(&cmd, c->ncmd);
+			_jungyeok(cmd, c, c->ncmd - 1);
+			/*
+			if (!is_ended_quote(&line, -1, 0))
 				ft_err("invalid quotes");
 			info->cmd_cnt = pipe_cnt(line) + 1;
 			cmd = ft_calloc(sizeof(t_command), info->cmd_cnt);
@@ -111,9 +100,9 @@ void	display(t_sys_info *info, t_mini *c)
 			{
 				ft_free_command(&cmd, info);
 				continue ;
-			}*/
-
+			}
 			_jungyeok(cmd, c, info->cmd_cnt - 1);
+			*/
 			ft_free_command(&cmd, info);
 		}
 	}
@@ -131,18 +120,12 @@ void	main_init(int argc)
 	set_signal_handlers();
 }
 
-void a(void)
-{
-	system("leaks minishell");
-}
-
 int	main(int ac, char **av, char **env)
 {
 	t_sys_info		info;
 	t_mini			c;
 	struct termios	term;
 
-	//atexit(a);
 	(void)av;
 	tcgetattr(STDIN_FILENO, &term);
 	main_init(ac);

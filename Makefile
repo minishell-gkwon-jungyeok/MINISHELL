@@ -1,5 +1,5 @@
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra -g #-fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra #-g -fsanitize=address
 LDFLAGS		=	-lreadline -L${HOME}/.brew/opt/readline/lib/
 CPPFLAGS	=	-I${HOME}/.brew/opt/readline/include/
 
@@ -30,6 +30,13 @@ SRCS = 	src/main.c\
 		src/jungyeok/builtin/export.c\
 		src/jungyeok/builtin/pwd.c\
 		src/jungyeok/builtin/unset.c\
+		src/gyeom/pipe_split.c\
+		src/gyeom/env_change.c\
+		src/gyeom/bracket_remove.c\
+		src/gyeom/bracket_remove_util.c\
+		src/gyeom/_3439to7.c\
+		src/gyeom/_32split.c\
+		src/gyeom/is_builtin.c\
 
 OBJS	=	$(SRCS:.c=.o)
 

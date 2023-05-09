@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 18:18:36 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/10 01:52:17 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@
 # define	LEN	2
 # define	NC	3
 
+/* FOR ENV_CHANGE */
+# define	N34	0
+# define	N39	1
+
+# define	OUQ	0
+# define	INQ	1
+
+# define	JNDEX	0
+# define	CURRENT	1
+# define	LENGTH	2
+
 /* ===============../src=============== */
 
 /* main.c */
@@ -57,6 +68,8 @@ void	*ft_memmove(void *dst, void *src, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 /* basic3.c */
+int		ft_strlen_c(char *s, int c);
+char	*ft_strdup_c(char *s, int c);
 char	*ft_realloc_c(char *s, int c);
 char	**split_jungyeok(char *s, int c);
 
@@ -100,5 +113,22 @@ int		ft_getindex(char *s, int c);
 /* ===============../src/jungyeok=============== */
 
 int		_jungyeok(t_command *command, t_mini *c, int npipe);
+
+/* =================../src/gyeom================= */
+int		pipe_split(char **line, t_command **cmd, t_mini *c);
+
+bool	if_in34(char *s, int cur);
+bool	if_in39(char *s, int cur);
+void	env_change(t_command **cmd, char **env, int ncmd);
+
+void	bracket_remove(t_command **cmd, int ncmd);
+void	check3439(int n[2], char *s, int i);
+char	*ft_strdup3439(char *s, int *len);
+
+void	_3439to7(t_command **cmd, int ncmd);
+
+void	_32split(t_command **cmd, int ncmd);
+
+void	is_builtin(t_command **cmd, int ncmd);
 
 #endif
