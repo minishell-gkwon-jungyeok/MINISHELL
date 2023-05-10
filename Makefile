@@ -28,6 +28,7 @@ SRCS = 	src/main.c\
 		src/jungyeok/builtin/env.c\
 		src/jungyeok/builtin/exit.c\
 		src/jungyeok/builtin/export.c\
+		src/jungyeok/builtin/export_util.c\
 		src/jungyeok/builtin/pwd.c\
 		src/jungyeok/builtin/unset.c\
 		src/gyeom/pipe_split.c\

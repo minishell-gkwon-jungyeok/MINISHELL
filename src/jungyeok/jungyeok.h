@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 07:18:33 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:53:10 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ int		_pwd(void);
 
 /* export.c */
 int		_export(t_command *cmd, char ***env);
+bool	check61(char *s);
+bool	check_env(char *s, char ***env);
+void	_write(char *s);
 
 /* unset.c */
 int		_unset(t_command *cmd, char ***env);

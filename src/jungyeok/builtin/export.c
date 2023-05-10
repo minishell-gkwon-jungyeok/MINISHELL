@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:16:53 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/10 16:54:12 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ char	**_tmp(char ***env)
 int	_sorted_env(char ***env)
 {
 	int		i;
-	int		j;
 	char	**tmp;
 
 	tmp = _tmp(env);
@@ -85,14 +84,7 @@ int	_sorted_env(char ***env)
 	while (tmp[++i])
 	{
 		write(1, "declare -x ", 11);
-		j = 0;
-		while (tmp[i][j] != '=')
-			write(1, tmp[i] + j++, 1);
-		write(1, tmp[i] + j++, 1);
-		write(1, "\"", 1);
-		while (tmp[i][j])
-			write(1, tmp[i] + j++, 1);
-		write(1, "\"\n", 2);
+		_write(tmp[i]);
 	}
 	i = -1;
 	while (tmp[++i])
@@ -106,6 +98,8 @@ void	_env_change(char *s, char ***env, int size)
 	char	**ret;
 	int		i;
 
+	if (!check_env(s, env))
+		return ;
 	while ((*env)[size])
 		size++;
 	ret = ft_calloc(8, size + 2);
@@ -122,7 +116,6 @@ void	_env_change(char *s, char ***env, int size)
 int	_export(t_command *cmd, char ***env)
 {
 	int	i;
-	int	j;
 
 	if (!cmd->cmd[1])
 		return (_sorted_env(env));
@@ -136,10 +129,7 @@ int	_export(t_command *cmd, char ***env)
 			write(2, "': not a valid identifier\n", 26);
 			continue ;
 		}
-		j = -1;
-		while (cmd->cmd[i][++j])
-			if (cmd->cmd[i][j] == '=')
-				_env_change(cmd->cmd[i], env, 0);
+		_env_change(cmd->cmd[i], env, 0);
 	}
 	return (0);
 }
