@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 04:57:47 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 00:08:52 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:41:54 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	_heredoc(char *s, t_mini *c)
 	while (1)
 	{
 		line = readline("heredoc> ");
-		if (!ft_strcmp(s, line))
+		if (!ft_strcmp(s, line) || !line)
 			break ;
 		write(c->fd_in, line, ft_strlen(line));
 		write(c->fd_in, "\n", 1);

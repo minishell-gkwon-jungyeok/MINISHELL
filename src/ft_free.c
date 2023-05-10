@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:58:35 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/10 02:07:03 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:23:28 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	_ft_free_command(t_command **cmd, t_sys_info *info, int i)
+void	_ft_free_command(t_command **cmd, t_mini *c, int i)
 {
-	while (++i < info->cmd_cnt)
+	while (++i < c->cmd_cnt)
 	{
 		if ((*cmd)[i].input)
 			free((*cmd)[i].input);
@@ -27,20 +27,20 @@ void	_ft_free_command(t_command **cmd, t_sys_info *info, int i)
 	}
 }
 
-void	ft_free_command(t_command **cmd, t_sys_info *info)
+void	ft_free_command(t_command **cmd, t_mini *c)
 {
 	int			i;
 	int			j;
 
 	i = -1;
-	while (++i < info->cmd_cnt)
+	while (++i < c->cmd_cnt)
 	{
 		j = -1;
 		while ((*cmd)[i].cmd[++j])
 			free((*cmd)[i].cmd[j]);
 		free((*cmd)[i].cmd);
 	}
-	_ft_free_command(cmd, info, -1);
+	_ft_free_command(cmd, c, -1);
 	free(*cmd);
 }
 
