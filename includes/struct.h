@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/05 21:47:32 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/09 19:37:25 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_command
 	char	*output;
 	char	*delimiter;
 	char	*output_append;
+	char	*unit;
 	char	**info;
 }t_command;
 

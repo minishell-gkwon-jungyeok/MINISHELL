@@ -6,15 +6,11 @@
 /*   By: gkwon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 07:54:10 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/09 13:47:40 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 02:09:07 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-/*
- *	" is 34, ' is 39
- * */
 
 static int	total_len(char const *str, char c, int i, int count)
 {
