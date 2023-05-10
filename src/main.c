@@ -6,15 +6,15 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/10 16:01:18 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/10 18:07:56 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	init_cmd_info(t_command **cmd, t_sys_info *info, int i)
+void	init_cmd_info(t_command **cmd, t_mini *c, int i)
 {
-	while (++i < info->cmd_cnt)
+	while (++i < c->cmd_cnt)
 	{
 		if ((*cmd)[i].info[0])
 			(*cmd)[i].input = ft_strdup((*cmd)[i].info[0]);
@@ -27,13 +27,13 @@ void	init_cmd_info(t_command **cmd, t_sys_info *info, int i)
 	}
 }
 
-void	del_quotes(t_command **cmd, t_sys_info *info)
+void	del_quotes(t_command **cmd, t_mini *c)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while (++i < info->cmd_cnt)
+	while (++i < c->cmd_cnt)
 	{
 		j = -1;
 		while (cmd[i]->cmd[++j])
@@ -45,7 +45,7 @@ void	del_quotes(t_command **cmd, t_sys_info *info)
 	}
 }
 
-int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
+int	tokenize(char *line, t_command **cmd, t_mini *c)
 {
 	char	**nodes;
 	int		i;
@@ -56,18 +56,18 @@ int	tokenize(char *line, t_command **cmd, t_sys_info *info, char **env)
 		free(nodes);
 		return (1);
 	}
-	doller_parse_with_del_quot(&nodes, info, env);
+	doller_parse_with_del_quot(&nodes, c);
 	i = -1;
-	while (++i < info->cmd_cnt)
+	while (++i < c->cmd_cnt)
 		init_cmd(nodes[i], *cmd + i);
-	del_quotes(cmd, info);
-	builtin_check(*cmd, info->cmd_cnt);
-	init_cmd_info(cmd, info, -1);
+	del_quotes(cmd, c);
+	builtin_check(*cmd, c->cmd_cnt);
+	init_cmd_info(cmd, c, -1);
 	free(nodes);
 	return (0);
 }
 
-void	display(t_sys_info *info, t_mini *c)
+void	display(t_mini *c)
 {
 	t_command	*cmd;
 	char		*line;
@@ -83,26 +83,27 @@ void	display(t_sys_info *info, t_mini *c)
 			add_history(line);
 			if (pipe_split(&line, &cmd, c))
 				continue ;
-			info->cmd_cnt = c->ncmd;
+			c->cmd_cnt = c->ncmd;
 			env_change(&cmd, c->env, c->ncmd);
 			bracket_remove(&cmd, c->ncmd);
 			_3439to7(&cmd, c->ncmd);
 			_32split(&cmd, c->ncmd);
 			is_builtin(&cmd, c->ncmd);
 			_jungyeok(cmd, c, c->ncmd - 1);
-			/*
-			if (!is_ended_quote(&line, -1, 0))
-				ft_err("invalid quotes");
-			info->cmd_cnt = pipe_cnt(line) + 1;
-			cmd = ft_calloc(sizeof(t_command), info->cmd_cnt);
-			if (tokenize(line, &cmd, info, c->env))
-			{
-				ft_free_command(&cmd, info);
-				continue ;
-			}
-			_jungyeok(cmd, c, info->cmd_cnt - 1);
-			*/
-			ft_free_command(&cmd, info);
+			//if (!is_ended_quote(&line, -1, 0))
+			//	ft_err("invalid quotes");
+			//c->cmd_cnt = pipe_cnt(line) + 1;
+			//cmd = ft_calloc(sizeof(t_command), c->cmd_cnt);
+			//if (tokenize(line, &cmd, c))
+			//{
+			//	ft_free_command(&cmd, c);
+			//	continue ;
+			//}
+			//if (!cmd->cmd[0] && cmd->info[2][0])
+			//	_heredoc(cmd->info[2], c);
+			//else
+			//	_jungyeok(cmd, c, c->cmd_cnt - 1);
+			ft_free_command(&cmd, c);
 		}
 	}
 }
@@ -121,7 +122,6 @@ void	main_init(int argc)
 
 int	main(int ac, char **av, char **env)
 {
-	t_sys_info		info;
 	t_mini			c;
 	struct termios	term;
 
@@ -136,7 +136,7 @@ int	main(int ac, char **av, char **env)
 	c.index = -1;
 	while (env[++c.index])
 		c.env[c.index] = ft_strdup(env[c.index]);
-	display(&info, &c);
+	display(&c);
 	c.index = -1;
 	while (c.env[++c.index])
 		free(c.env[c.index]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:56:33 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/09 14:49:36 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:26:57 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	init_cmd(char *node, t_command *cmd)
 	int			i;
 	int			at;
 
-	if (!node)
-		exit(1);
 	cmd->info = ft_calloc(sizeof(char *), 5);
 	i = -1;
 	while (++i < 4)
@@ -66,6 +64,11 @@ void	init_cmd(char *node, t_command *cmd)
 			cmd->info[i - 1] = NULL;
 	}
 	cmd->cmd = ft_split(node, ' ');
+	//if (!cmd->cmd && cmd->info[2])
+	//{
+		
+	//	_heredoc(cmd->info[2], c);
+	//}
 	free(node);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/10 01:52:17 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:25:33 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@
 /* ===============../src=============== */
 
 /* main.c */
-int		tokenize(char *line, t_command **cmd, t_sys_info *info, char **env);
-void	display(t_sys_info *info, t_mini *c);
+int		tokenize(char *line, t_command **cmd, t_mini *c);
+void	display(t_mini *c);
 
 /* basic1.c */
 int		ft_strlen(char *s);
@@ -74,7 +74,7 @@ char	*ft_realloc_c(char *s, int c);
 char	**split_jungyeok(char *s, int c);
 
 /* ft_free.c */
-void	ft_free_command(t_command **cmd, t_sys_info *info);
+void	ft_free_command(t_command **cmd, t_mini *c);
 void	ft_exit(int return_val);
 
 /* ft_split.c */
@@ -85,17 +85,16 @@ void	init_cmd(char *node, t_command *cmd);
 void	builtin_check(t_command *cmd, int cmd_cnt);
 
 /* signal.c */
-void	handle_signal(int signum);
-void	set_signal_handlers(void);
+void handle_signal(int signum);
+void set_signal_handlers(void);
 
 /* parse_quote.c */
 int		is_ended_quote(char **nodes, int i, int j);
 int		parse_set_quotes(char *line, int quotes);
-void	parse(char **line, char **env);
+void	parse(char **line, t_mini *c);
 
 /* src/parse_quote_util.c */
-int		doller_parse_with_del_quot(char ***nodes, t_sys_info *info,
-			char **env);
+int		doller_parse_with_del_quot(char ***nodes, t_mini *c);
 
 /* standard_split.c */
 char	**std_split(char const *s, char c);

@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:00:36 by edwin             #+#    #+#             */
-/*   Updated: 2023/05/09 17:52:06 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/10 16:19:24 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	replace_env(char **line, char **env, int i)
 		ft_err("no env exsist");
 }
 
-void	parse(char **line, char **env)
+void	parse(char **line, t_mini *c)
 {
 	int	quotes;
 	int	len;
@@ -115,7 +115,7 @@ void	parse(char **line, char **env)
 		{
 			quotes = parse_set_quotes(&(*line)[i], quotes);
 			if ((quotes == 2 || quotes == 0) && (*line)[i] == '$')
-				replace_env(line, env, i);
+				replace_env(line, c->env, i);
 			else if (((*line)[i] == ';' || (*line)[i] == '\\') && quotes == 0)
 				ft_err("not allowed character used");
 		}

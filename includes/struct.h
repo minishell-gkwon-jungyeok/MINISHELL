@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 00:25:38 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 19:37:25 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:53:19 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_sys_info
 {
-	int		cmd_cnt;
+	
 }t_sys_info;
 
 typedef struct s_list
@@ -41,6 +41,7 @@ typedef struct s_command
 typedef struct s_mini
 {
 	pid_t	pid;
+	int		cmd_cnt;
 	char	**env;
 	char	**path;
 	char	*cmd;
@@ -51,6 +52,7 @@ typedef struct s_mini
 	int		index;
 	int		dollar;
 	int		hered;
+	int		is_two;
 }t_mini;
 
 #endif
