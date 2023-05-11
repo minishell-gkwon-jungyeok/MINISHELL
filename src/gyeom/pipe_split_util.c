@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 21:35:35 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/11 10:33:55 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:37:19 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,12 @@ char	*strdup3439(char *s, int c)
 			break ;
 		_3439(s[i], n);
 	}
-	ret = ft_calloc(1, i);
+	ret = ft_calloc(1, i + 1);
 	j = -1;
 	while (++j < i)
+	{
 		ret[j] = s[j];
+	}
 	return (ret);
 }
 
