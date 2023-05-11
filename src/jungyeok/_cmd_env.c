@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _cmd_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:38:40 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 23:09:38 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:50:50 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	cmd_env__(char **s, char **env)
 	i = -1;
 	while (env[++i])
 	{
-		if (!ft_strncmp(env[i], (*s) + 1, ft_strlen((*s) + 1) + 1))
+		if (ft_strncmp(env[i], (*s) + 1, ft_strlen((*s) + 1) + 1))
 		{
 			tmp = (*s);
 			free(tmp);
@@ -51,7 +51,7 @@ void	_cmd_env(t_command *command, char **env, t_mini *c)
 		j = -1;
 		while (command[i].cmd[++j])
 		{
-			if (!ft_strncmp(command[i].cmd[j], "$?", 3))
+			if (ft_strncmp(command[i].cmd[j], "$?", 3))
 				cmd_env_(command[i].cmd + j, c->dollar);
 			else if (command[i].cmd[j][0] == '$')
 				cmd_env__(command[i].cmd + j, env);

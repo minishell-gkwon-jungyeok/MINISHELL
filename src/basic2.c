@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:06:09 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 14:36:53 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:49:10 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
-int	ft_strncmp(char *s1, char *s2, int n)
+bool	ft_strncmp(char *s1, char *s2, int n)
 {
 	int	i;
 
@@ -46,10 +46,10 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	while (i < n && (s1[i] || s2[i]))
 	{
 		if (s1[i] != s2[i])
-			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 // which is very different with standard strnstr;

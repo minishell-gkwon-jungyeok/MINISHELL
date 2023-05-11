@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:34:07 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/11 16:28:39 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:51:12 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	_env_echo(char *s, char **env, int *j)
 	i = 0;
 	while (env[i])
 	{
-		if (!ft_strncmp(s, env[i], ft_strlen(s)))
+		if (ft_strncmp(s, env[i], ft_strlen(s)))
 		{
 			*j = i;
 			return (true);
@@ -50,7 +50,7 @@ int	_echo(t_command *cmd, t_mini *c)
 	if (ft_strcmp(cmd->cmd[0], "echo"))
 		return (1);
 	flag = 0;
-	if (cmd->cmd[1] && !ft_strncmp(cmd->cmd[1], "-n", 3))
+	if (cmd->cmd[1] && ft_strncmp(cmd->cmd[1], "-n", 3))
 		flag = 1;
 	i = flag + 1;
 	while (cmd->cmd[i])

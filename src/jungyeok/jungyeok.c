@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jungyeok.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 07:11:06 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/11 11:34:17 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:54:49 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*find_path(char **env, char *s)
 	i = 0;
 	while (env[i])
 	{
-		if (!ft_strncmp("PATH", env[i], 4))
+		if (ft_strncmp("PATH", env[i], 4))
 			break ;
 		i++;
 	}
@@ -94,7 +94,7 @@ int	_jungyeok(t_command *command, t_mini *c, int npipe)
 	pat = find_path(c->env, command[0].cmd[0]);
 	if (!pat)
 		return (1);
-	c->path = ft_split(pat, ':');
+	c->path = std_split(pat, ':');
 	if (open_pipe(c, npipe))
 		return (1);
 	if (_run_cmd(command, c->ncmd, c))
