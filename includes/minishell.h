@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/11 16:53:57 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/11 17:33:57 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 /* main.c */
 int		tokenize(char *line, t_command **cmd, t_mini *c);
 void	display(t_mini *c);
+int		is_valid_line_check(char *line);
 
 /* basic1.c */
 int		ft_strlen(char *s);
