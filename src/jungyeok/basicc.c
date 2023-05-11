@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   basicc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 07:13:12 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 07:19:13 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:51:02 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ int	ft_getindex(char *s, int c)
 
 bool	ft_cmd(t_command *command, t_mini *c)
 {
-	if (!ft_strncmp(command[c->index].cmd[0], "export", 7)
-		|| !ft_strncmp(command[c->index].cmd[0], "exit", 5)
-		|| !ft_strncmp(command[c->index].cmd[0], "cd", 3)
-		|| !ft_strncmp(command[c->index].cmd[0], "unset", 6))
+	if (ft_strncmp(command[c->index].cmd[0], "export", 7)
+		|| ft_strncmp(command[c->index].cmd[0], "exit", 5)
+		|| ft_strncmp(command[c->index].cmd[0], "cd", 3)
+		|| ft_strncmp(command[c->index].cmd[0], "unset", 6))
 		return (true);
 	return (false);
 }

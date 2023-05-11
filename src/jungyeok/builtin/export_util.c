@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:05:57 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/10 16:54:10 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:51:18 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	__dp(char *s, char ***env)
 	len = ft_strlen(tmp);
 	i = -1;
 	while ((*env)[++i])
-		if (!ft_strncmp((*env)[i], tmp, len))
+		if (ft_strncmp((*env)[i], tmp, len))
 			break ;
 	ft_memset(tmp, 0, len);
 	free(tmp);
@@ -62,7 +62,7 @@ bool	check_env(char *s, char ***env)
 	ret = 1;
 	while ((*env)[++i])
 	{
-		if (!ft_strncmp((*env)[i], tmp, len))
+		if (ft_strncmp((*env)[i], tmp, len))
 			ret = 0;
 	}
 	ft_memset(tmp, 0, len);

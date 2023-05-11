@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:54:34 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/11 11:18:10 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:51:27 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ bool	_is_s(char *envi, char *cmdj)
 	int	len;
 
 	len = ft_strlen(cmdj);
-	if (!ft_strncmp(envi, cmdj, len) && envi[len] == '=')
+	if (ft_strncmp(envi, cmdj, len) && envi[len] == '=')
 		return (true);
 	else
 		return (false);

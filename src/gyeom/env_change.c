@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_change.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 19:36:30 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/10 02:08:07 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:50:35 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	isenv(char **s, char **env)
 		while (env[i[JNDEX]])
 		{
 			i[LENGTH] = ft_strlen_c(env[i[JNDEX]], 61);
-			if (!ft_strncmp(tmp, env[i[JNDEX]], i[LENGTH])
+			if (ft_strncmp(tmp, env[i[JNDEX]], i[LENGTH])
 				&& (if_in34(*s, i[CURRENT]) || tmp[i[LENGTH]] == 32
 					|| (!if_in34(*s, i[CURRENT]) && !if_in39(*s, i[CURRENT]))))
 				*s = remake_unit(s, tmp - 1 - *s,
