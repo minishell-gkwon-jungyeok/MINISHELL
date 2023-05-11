@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 07:11:06 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/11 16:51:07 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/11 16:54:49 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	_jungyeok(t_command *command, t_mini *c, int npipe)
 	pat = find_path(c->env, command[0].cmd[0]);
 	if (!pat)
 		return (1);
-	c->path = ft_split(pat, ':');
+	c->path = std_split(pat, ':');
 	if (open_pipe(c, npipe))
 		return (1);
 	if (_run_cmd(command, c->ncmd, c))

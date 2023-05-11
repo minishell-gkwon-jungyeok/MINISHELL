@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/11 16:47:35 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/11 16:59:19 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	display(t_mini *c)
 	t_command	*cmd;
 	char		*line;
 
-	line = NULL;
 	while (1)
 	{
 		line = readline("jungkwon$ ");

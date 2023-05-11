@@ -4,15 +4,10 @@ LDFLAGS		=	-lreadline -L${HOME}/.brew/opt/readline/lib/
 CPPFLAGS	=	-I${HOME}/.brew/opt/readline/include/
 
 SRCS = 	src/main.c\
-		src/ft_split.c\
 		src/basic1.c\
 		src/basic2.c\
 		src/basic3.c\
 		src/ft_free.c\
-		src/init_cmd.c\
-		src/parse_quote.c\
-		src/parse_quote_util.c\
-		src/parse_util.c\
 		src/signal.c\
 		src/standard_split.c\
 		src/jungyeok/jungyeok.c src/jungyeok/err.c\

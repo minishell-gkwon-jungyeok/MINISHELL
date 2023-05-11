@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/11 16:47:15 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/11 16:53:57 by gkwon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*ft_strdup(char *s);
 
 /* basic2.c */
 char	*ft_strjoin(char *s1, char *s2);
-bool		ft_strncmp(char *s1, char *s2, int n);
+bool	ft_strncmp(char *s1, char *s2, int n);
 int		ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	*ft_memmove(void *dst, void *src, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
