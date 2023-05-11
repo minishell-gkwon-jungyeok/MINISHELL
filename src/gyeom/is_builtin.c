@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 01:49:05 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/11 10:49:04 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:25:42 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ void	change(char **s)
 	ft_memset(tmp1, 0, ft_strlen(tmp1));
 	tmp1 = tmp2;
 	i = 0;
-	while (!isprintable(tmp1))
+	while (!isprintable(tmp1) && i < 32)
 	{
 		tmp2 = ft_realloc_c(tmp1, i);
 		i++;
 		ft_memset(tmp1, 0, ft_strlen(tmp1));
+		free(tmp1);
 		tmp1 = tmp2;
 	}
 	*s = tmp1;

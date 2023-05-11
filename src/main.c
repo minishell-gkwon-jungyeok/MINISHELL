@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/11 11:34:22 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:25:44 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,32 +83,32 @@ void	display(t_mini *c)
 			add_history(line);
 			if (pipe_split(&line, &cmd, c))
 				continue ;
-//			dprintf(2, "After pipe_split\n");
-//			for (int i = 0; cmd[i].unit; i++)
-//				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
+			dprintf(2, "After pipe_split\n");
+			for (int i = 0; cmd[i].unit; i++)
+				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
 			c->cmd_cnt = c->ncmd;
 			env_change(&cmd, c->env, c->ncmd);
-//			dprintf(2, "After env_change\n");
-//			for (int i = 0; cmd[i].unit; i++)
-//				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
+			dprintf(2, "After env_change\n");
+			for (int i = 0; cmd[i].unit; i++)
+				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
 			bracket_remove(&cmd, c->ncmd);
-//			dprintf(2, "After bracket_remove\n");
-//			for (int i = 0; cmd[i].unit; i++)
-//				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
+			dprintf(2, "After bracket_remove\n");
+			for (int i = 0; cmd[i].unit; i++)
+				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
 			_32split(&cmd, c->ncmd);
-//			dprintf(2, "After _32split\n");
-//			for (int i = 0; cmd[i].cmd; i++){
-//				for (int j = 0; cmd[i].cmd[j]; j++)
-//					dprintf(2, "cmd[%d].cmd[%d] = %s\n", i, j, cmd[i].cmd[j]);
-//			}
+			dprintf(2, "After _32split\n");
+			for (int i = 0; cmd[i].cmd; i++){
+				for (int j = 0; cmd[i].cmd[j]; j++)
+					dprintf(2, "cmd[%d].cmd[%d] = %s\n", i, j, cmd[i].cmd[j]);
+			}
 			_3439to7(&cmd, c->ncmd);
-//			dprintf(2, "After _3439to7\n");
-//			for (int i = 0; cmd[i].cmd; i++){
-//				for (int j = 0; cmd[i].cmd[j]; j++)
-//					dprintf(2, "cmd[%d].cmd[%d] = %s\n", i, j, cmd[i].cmd[j]);
-//			}
+			dprintf(2, "After _3439to7\n");
+			for (int i = 0; cmd[i].cmd; i++){
+				for (int j = 0; cmd[i].cmd[j]; j++)
+					dprintf(2, "cmd[%d].cmd[%d] = %s\n", i, j, cmd[i].cmd[j]);
+			}
 			is_builtin(&cmd, c->ncmd);
-/*
+
 			dprintf(2, "After is_builtin\n");
 			for (int i = 0; cmd[i].cmd; i++){
 				dprintf(2, "built_in = %d\n", cmd[i].built_in);
@@ -127,7 +127,7 @@ void	display(t_mini *c)
 				if (cmd[i].output_append)
 					dprintf(2, "cmd[%d].output_append = %s\n", i, cmd[i].output_append);
 			}
-*/
+
 			_jungyeok(cmd, c, c->ncmd - 1);
 /*
 			if (!is_ended_quote(&line, -1, 0))
