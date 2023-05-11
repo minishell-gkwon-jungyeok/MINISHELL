@@ -6,11 +6,27 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/11 16:59:19 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/11 17:29:03 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+bool	_124(char *s)
+{
+	int	i;
+
+	if (s[0] == 124)
+		return (true);
+	i = 0;
+	while (s[i] && s[i + 1])
+	{
+		if (s[i] == 124 && s[i + 1] == 124)
+			return (true);
+		i++;
+	}
+	return (false);
+}
 
 void	display(t_mini *c)
 {
@@ -24,8 +40,8 @@ void	display(t_mini *c)
 			break ;
 		if (*line != '\0')
 		{
-			if (ft_strncmp(line, "||", ft_strlen(line)))
-				ft_err("invalid command");
+			if (_124(line))
+				continue ;
 			add_history(line);
 			if (pipe_split(&line, &cmd, c))
 				continue ;
