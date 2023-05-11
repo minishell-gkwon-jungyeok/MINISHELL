@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:05:06 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/10 17:25:33 by gkwon            ###   ########.fr       */
+/*   Updated: 2023/05/10 23:49:34 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ int		_jungyeok(t_command *command, t_mini *c, int npipe);
 
 /* =================../src/gyeom================= */
 int		pipe_split(char **line, t_command **cmd, t_mini *c);
+
+char	**split_gyeom(char *s, int c);
 
 bool	if_in34(char *s, int cur);
 bool	if_in39(char *s, int cur);

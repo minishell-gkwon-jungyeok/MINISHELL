@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:54:34 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/11 11:18:10 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,14 @@ void	_kill_envi(char ***env, int i)
 		{
 			tmp = (*env)[j];
 			(*env)[j] = ft_strdup((*env)[j + 1]);
+			ft_memset(tmp, 0, ft_strlen(tmp));
 			free(tmp);
 		}
 		j++;
 	}
-	tmp = (*env)[j];
+	ft_memset((*env)[j - 1], 0, ft_strlen((*env)[j - 1]));
+	free((*env)[j - 1]);
 	(*env)[j - 1] = NULL;
-	free(tmp);
 }
 
 int	_unset(t_command *cmd, char ***env)

@@ -6,11 +6,48 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 01:49:05 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/10 01:55:19 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:49:04 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+bool	isprintable(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (false);
+	while (s[i])
+	{
+		if (32 > s[i] || s[i] > 126)
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+void	change(char **s)
+{
+	char	*tmp1;
+	char	*tmp2;
+	int		i;
+
+	tmp1 = *s;
+	tmp2 = ft_realloc_c(tmp1, 127);
+	ft_memset(tmp1, 0, ft_strlen(tmp1));
+	tmp1 = tmp2;
+	i = 0;
+	while (!isprintable(tmp1))
+	{
+		tmp2 = ft_realloc_c(tmp1, i);
+		i++;
+		ft_memset(tmp1, 0, ft_strlen(tmp1));
+		tmp1 = tmp2;
+	}
+	*s = tmp1;
+}
 
 void	is_builtin(t_command **cmd, int ncmd)
 {
@@ -19,6 +56,8 @@ void	is_builtin(t_command **cmd, int ncmd)
 	i = -1;
 	while (++i < ncmd)
 	{
+		if (!isprintable((*cmd)[i].cmd[0]))
+			change(&(*cmd)[i].cmd[0]);
 		if (!ft_strncmp((*cmd)[i].cmd[0], "cd", 3)
 			|| !ft_strncmp((*cmd)[i].cmd[0], "echo", 5)
 			|| !ft_strncmp((*cmd)[i].cmd[0], "export", 7)

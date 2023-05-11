@@ -6,17 +6,31 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 07:11:06 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/09 17:17:39 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:34:17 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*find_path(char **env)
+char	*find_path(char **env, char *s)
 {
-	while (ft_strncmp("PATH", *env, 4))
-		env++;
-	return (*env + 5);
+	int	i;
+
+	i = 0;
+	while (env[i])
+	{
+		if (!ft_strncmp("PATH", env[i], 4))
+			break ;
+		i++;
+	}
+	if (!env[i])
+	{
+		write(2, "bash: ", 6);
+		write(2, s, ft_strlen(s));
+		write(2, ": No such file or directory\n", 28);
+		return (NULL);
+	}
+	return (env[i] + 5);
 }
 
 int	_run(t_command *command, t_mini *c)
@@ -77,7 +91,9 @@ int	_jungyeok(t_command *command, t_mini *c, int npipe)
 	if (c->ncmd > 20)
 		return (_err("no more than 20 pipes"));
 	_cmd_env(command, c->env, c);
-	pat = find_path(c->env);
+	pat = find_path(c->env, command[0].cmd[0]);
+	if (!pat)
+		return (1);
 	c->path = ft_split(pat, ':');
 	if (open_pipe(c, npipe))
 		return (1);

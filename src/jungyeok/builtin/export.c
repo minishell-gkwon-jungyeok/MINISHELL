@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 02:16:53 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/10 16:54:12 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:34:15 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,20 +95,26 @@ int	_sorted_env(char ***env)
 
 void	_env_change(char *s, char ***env, int size)
 {
+	char	**tmp;
 	char	**ret;
 	int		i;
 
+	tmp = *env;
 	if (!check_env(s, env))
 		return ;
-	while ((*env)[size])
+	while (tmp[size])
 		size++;
 	ret = ft_calloc(8, size + 2);
-	i = -1;
-	while ((*env)[++i])
+	i = 0;
+	while (tmp[i])
 	{
-		ret[i] = ft_strdup((*env)[i]);
-		free((*env)[i]);
+		ret[i] = ft_strdup(tmp[i]);
+		ft_memset(tmp[i], 0, ft_strlen(tmp[i]));
+		free(tmp[i]);
+		i++;
 	}
+	free(tmp[i]);
+	free(tmp);
 	ret[i] = ft_strdup(s);
 	*env = ret;
 }

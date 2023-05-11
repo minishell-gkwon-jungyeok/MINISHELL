@@ -32,6 +32,7 @@ SRCS = 	src/main.c\
 		src/jungyeok/builtin/pwd.c\
 		src/jungyeok/builtin/unset.c\
 		src/gyeom/pipe_split.c\
+		src/gyeom/pipe_split_util.c\
 		src/gyeom/env_change.c\
 		src/gyeom/bracket_remove.c\
 		src/gyeom/bracket_remove_util.c\

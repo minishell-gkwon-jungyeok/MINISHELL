@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 19:10:59 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/10 00:35:34 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/10 23:49:19 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	pipe_split(char **line, t_command **cmd, t_mini *c)
 	int		i;
 	char	**tmp;
 
-	tmp = split_jungyeok(*line, 124);
+	tmp = split_gyeom(*line, 124);
 	ft_memset(*line, 0, ft_strlen(*line));
 	free(*line);
 	i = 0;
