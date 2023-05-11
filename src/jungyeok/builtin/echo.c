@@ -6,7 +6,7 @@
 /*   By: edwin <edwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:34:07 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/05 21:42:20 by edwin            ###   ########.fr       */
+/*   Updated: 2023/05/11 16:28:39 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	_env_write(int len, char *env)
 int	_echo(t_command *cmd, t_mini *c)
 {
 	int	i;
-	int	j;
 	int	flag;
 
+	(void) c;
 	if (ft_strcmp(cmd->cmd[0], "echo"))
 		return (1);
 	flag = 0;
@@ -55,11 +55,7 @@ int	_echo(t_command *cmd, t_mini *c)
 	i = flag + 1;
 	while (cmd->cmd[i])
 	{
-		j = 0;
-		if (_env_echo(cmd->cmd[i] + 1, c->env, &j))
-			_env_write(ft_strlen(cmd->cmd[i] + 1) + 1, c->env[j]);
-		else
-			write(1, cmd->cmd[i], ft_strlen(cmd->cmd[i]));
+		write(1, cmd->cmd[i], ft_strlen(cmd->cmd[i]));
 		if (cmd->cmd[i + 1])
 			write(1, " ", 1);
 		i++;

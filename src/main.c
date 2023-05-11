@@ -6,7 +6,7 @@
 /*   By: gkwon <gkwon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:00:27 by gkwon             #+#    #+#             */
-/*   Updated: 2023/05/11 16:19:39 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:31:29 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,69 +83,13 @@ void	display(t_mini *c)
 			add_history(line);
 			if (pipe_split(&line, &cmd, c))
 				continue ;
-//			dprintf(2, "After pipe_split\n");
-//			for (int i = 0; cmd[i].unit; i++)
-//				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
 			c->cmd_cnt = c->ncmd;
 			env_change(&cmd, c->env, c->ncmd);
-//			dprintf(2, "After env_change\n");
-//			for (int i = 0; cmd[i].unit; i++)
-//				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
 			bracket_remove(&cmd, c->ncmd);
-//			dprintf(2, "After bracket_remove\n");
-//			for (int i = 0; cmd[i].unit; i++)
-//				dprintf(2, "cmd[%d].unit = %s\n", i, cmd[i].unit);
 			_32split(&cmd, c->ncmd);
-//			dprintf(2, "After _32split\n");
-//			for (int i = 0; cmd[i].cmd; i++){
-//				for (int j = 0; cmd[i].cmd[j]; j++)
-//					dprintf(2, "cmd[%d].cmd[%d] = %s\n", i, j, cmd[i].cmd[j]);
-//			}
 			_3439to7(&cmd, c->ncmd);
-/*
-			dprintf(2, "After _3439to7\n");
-			for (int i = 0; cmd[i].cmd; i++){
-				for (int j = 0; cmd[i].cmd[j]; j++)
-					dprintf(2, "cmd[%d].cmd[%d] = %s\n", i, j, cmd[i].cmd[j]);
-			}
-*/
 			is_builtin(&cmd, c->ncmd);
-/*
-			dprintf(2, "After is_builtin\n");
-			for (int i = 0; cmd[i].cmd; i++){
-				dprintf(2, "built_in = %d\n", cmd[i].built_in);
-				for (int j = 0; cmd[i].cmd[j]; j++){
-					dprintf(2, "cmd[%d].cmd[%d] = %s\n", i, j, cmd[i].cmd[j]);
-					dprintf(2, "len = %d\n", ft_strlen(cmd[i].cmd[j]));
-					for (int k=0;cmd[i].cmd[j][k];k++)
-						dprintf(2, "k = %d\n", (int)cmd[i].cmd[j][k]);
-				}
-				if (cmd[i].input)
-					dprintf(2, "cmd[%d].input = %s\n", i, cmd[i].input);
-				if (cmd[i].delimiter)
-					dprintf(2, "cmd[%d].delimiter = %s\n", i, cmd[i].delimiter);
-				if (cmd[i].output)
-					dprintf(2, "cmd[%d].output = %s\n", i, cmd[i].output);
-				if (cmd[i].output_append)
-					dprintf(2, "cmd[%d].output_append = %s\n", i, cmd[i].output_append);
-			}
-*/
 			_jungyeok(cmd, c, c->ncmd - 1);
-/*
-			if (!is_ended_quote(&line, -1, 0))
-				ft_err("invalid quotes");
-			c->cmd_cnt = pipe_cnt(line) + 1;
-			cmd = ft_calloc(sizeof(t_command), c->cmd_cnt);
-			if (tokenize(line, &cmd, c))
-			{
-				ft_free_command(&cmd, c);
-				continue ;
-			}
-			if (!cmd->cmd[0] && cmd->info[2][0])
-				_heredoc(cmd->info[2], c);
-			else
-				_jungyeok(cmd, c, c->cmd_cnt - 1);
-*/
 			ft_free_command(&cmd, c);
 		}
 	}

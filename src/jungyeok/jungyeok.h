@@ -6,7 +6,7 @@
 /*   By: jungyeok <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:06:25 by jungyeok          #+#    #+#             */
-/*   Updated: 2023/05/10 16:53:10 by jungyeok         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:30:14 by jungyeok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		open_pipe(t_mini *c, int npipe);
 void	command_access(char **path, t_command *cmd, t_mini *c);
 void	_c_cmd(t_command *command, t_mini *c);
 void	exe_builtin(char *s, t_command *command, t_mini *c);
-void    _exe(t_command *command, t_mini *c);
+void	_exe(t_command *command, t_mini *c);
 
 /* err.c */
 int		_err(char *s);
